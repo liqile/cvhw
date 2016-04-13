@@ -39,10 +39,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/lql/slam/sbsbsb/cvhw
+CMAKE_SOURCE_DIR = /home/liqile/qtwork/myslam
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/lql/slam/sbsbsb/cvhw/build
+CMAKE_BINARY_DIR = /home/liqile/qtwork/myslam/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -69,9 +69,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lql/slam/sbsbsb/cvhw/build/CMakeFiles /home/lql/slam/sbsbsb/cvhw/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/liqile/qtwork/myslam/build/CMakeFiles /home/liqile/qtwork/myslam/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lql/slam/sbsbsb/cvhw/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/liqile/qtwork/myslam/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -99,19 +99,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named lqlslam
-
-# Build rule for target.
-lqlslam: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 lqlslam
-.PHONY : lqlslam
-
-# fast build rule for target.
-lqlslam/fast:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/build
-.PHONY : lqlslam/fast
-
-#=============================================================================
 # Target rules for targets named main
 
 # Build rule for target.
@@ -123,6 +110,19 @@ main: cmake_check_build_system
 main/fast:
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
 .PHONY : main/fast
+
+#=============================================================================
+# Target rules for targets named myslam
+
+# Build rule for target.
+myslam: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 myslam
+.PHONY : myslam
+
+# fast build rule for target.
+myslam/fast:
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/build
+.PHONY : myslam/fast
 
 main.o: main.cc.o
 .PHONY : main.o
@@ -153,7 +153,7 @@ src/System.o: src/System.cc.o
 
 # target to build an object file
 src/System.cc.o:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/src/System.cc.o
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/System.cc.o
 .PHONY : src/System.cc.o
 
 src/System.i: src/System.cc.i
@@ -161,7 +161,7 @@ src/System.i: src/System.cc.i
 
 # target to preprocess a source file
 src/System.cc.i:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/src/System.cc.i
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/System.cc.i
 .PHONY : src/System.cc.i
 
 src/System.s: src/System.cc.s
@@ -169,7 +169,7 @@ src/System.s: src/System.cc.s
 
 # target to generate assembly for a file
 src/System.cc.s:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/src/System.cc.s
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/System.cc.s
 .PHONY : src/System.cc.s
 
 src/converter/Converter.o: src/converter/Converter.cc.o
@@ -177,7 +177,7 @@ src/converter/Converter.o: src/converter/Converter.cc.o
 
 # target to build an object file
 src/converter/Converter.cc.o:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/src/converter/Converter.cc.o
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/converter/Converter.cc.o
 .PHONY : src/converter/Converter.cc.o
 
 src/converter/Converter.i: src/converter/Converter.cc.i
@@ -185,7 +185,7 @@ src/converter/Converter.i: src/converter/Converter.cc.i
 
 # target to preprocess a source file
 src/converter/Converter.cc.i:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/src/converter/Converter.cc.i
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/converter/Converter.cc.i
 .PHONY : src/converter/Converter.cc.i
 
 src/converter/Converter.s: src/converter/Converter.cc.s
@@ -193,7 +193,7 @@ src/converter/Converter.s: src/converter/Converter.cc.s
 
 # target to generate assembly for a file
 src/converter/Converter.cc.s:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/src/converter/Converter.cc.s
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/converter/Converter.cc.s
 .PHONY : src/converter/Converter.cc.s
 
 src/display/display.o: src/display/display.cc.o
@@ -201,7 +201,7 @@ src/display/display.o: src/display/display.cc.o
 
 # target to build an object file
 src/display/display.cc.o:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/src/display/display.cc.o
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/display/display.cc.o
 .PHONY : src/display/display.cc.o
 
 src/display/display.i: src/display/display.cc.i
@@ -209,7 +209,7 @@ src/display/display.i: src/display/display.cc.i
 
 # target to preprocess a source file
 src/display/display.cc.i:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/src/display/display.cc.i
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/display/display.cc.i
 .PHONY : src/display/display.cc.i
 
 src/display/display.s: src/display/display.cc.s
@@ -217,7 +217,7 @@ src/display/display.s: src/display/display.cc.s
 
 # target to generate assembly for a file
 src/display/display.cc.s:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/src/display/display.cc.s
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/display/display.cc.s
 .PHONY : src/display/display.cc.s
 
 src/display/drawer/TrackingDrawer.o: src/display/drawer/TrackingDrawer.cc.o
@@ -225,7 +225,7 @@ src/display/drawer/TrackingDrawer.o: src/display/drawer/TrackingDrawer.cc.o
 
 # target to build an object file
 src/display/drawer/TrackingDrawer.cc.o:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/src/display/drawer/TrackingDrawer.cc.o
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/display/drawer/TrackingDrawer.cc.o
 .PHONY : src/display/drawer/TrackingDrawer.cc.o
 
 src/display/drawer/TrackingDrawer.i: src/display/drawer/TrackingDrawer.cc.i
@@ -233,7 +233,7 @@ src/display/drawer/TrackingDrawer.i: src/display/drawer/TrackingDrawer.cc.i
 
 # target to preprocess a source file
 src/display/drawer/TrackingDrawer.cc.i:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/src/display/drawer/TrackingDrawer.cc.i
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/display/drawer/TrackingDrawer.cc.i
 .PHONY : src/display/drawer/TrackingDrawer.cc.i
 
 src/display/drawer/TrackingDrawer.s: src/display/drawer/TrackingDrawer.cc.s
@@ -241,7 +241,7 @@ src/display/drawer/TrackingDrawer.s: src/display/drawer/TrackingDrawer.cc.s
 
 # target to generate assembly for a file
 src/display/drawer/TrackingDrawer.cc.s:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/src/display/drawer/TrackingDrawer.cc.s
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/display/drawer/TrackingDrawer.cc.s
 .PHONY : src/display/drawer/TrackingDrawer.cc.s
 
 src/display/drawers.o: src/display/drawers.cc.o
@@ -249,7 +249,7 @@ src/display/drawers.o: src/display/drawers.cc.o
 
 # target to build an object file
 src/display/drawers.cc.o:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/src/display/drawers.cc.o
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/display/drawers.cc.o
 .PHONY : src/display/drawers.cc.o
 
 src/display/drawers.i: src/display/drawers.cc.i
@@ -257,7 +257,7 @@ src/display/drawers.i: src/display/drawers.cc.i
 
 # target to preprocess a source file
 src/display/drawers.cc.i:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/src/display/drawers.cc.i
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/display/drawers.cc.i
 .PHONY : src/display/drawers.cc.i
 
 src/display/drawers.s: src/display/drawers.cc.s
@@ -265,7 +265,7 @@ src/display/drawers.s: src/display/drawers.cc.s
 
 # target to generate assembly for a file
 src/display/drawers.cc.s:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/src/display/drawers.cc.s
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/display/drawers.cc.s
 .PHONY : src/display/drawers.cc.s
 
 src/frame/Frame.o: src/frame/Frame.cc.o
@@ -273,7 +273,7 @@ src/frame/Frame.o: src/frame/Frame.cc.o
 
 # target to build an object file
 src/frame/Frame.cc.o:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/src/frame/Frame.cc.o
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/frame/Frame.cc.o
 .PHONY : src/frame/Frame.cc.o
 
 src/frame/Frame.i: src/frame/Frame.cc.i
@@ -281,7 +281,7 @@ src/frame/Frame.i: src/frame/Frame.cc.i
 
 # target to preprocess a source file
 src/frame/Frame.cc.i:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/src/frame/Frame.cc.i
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/frame/Frame.cc.i
 .PHONY : src/frame/Frame.cc.i
 
 src/frame/Frame.s: src/frame/Frame.cc.s
@@ -289,7 +289,7 @@ src/frame/Frame.s: src/frame/Frame.cc.s
 
 # target to generate assembly for a file
 src/frame/Frame.cc.s:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/src/frame/Frame.cc.s
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/frame/Frame.cc.s
 .PHONY : src/frame/Frame.cc.s
 
 src/frame/Pose.o: src/frame/Pose.cc.o
@@ -297,7 +297,7 @@ src/frame/Pose.o: src/frame/Pose.cc.o
 
 # target to build an object file
 src/frame/Pose.cc.o:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/src/frame/Pose.cc.o
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/frame/Pose.cc.o
 .PHONY : src/frame/Pose.cc.o
 
 src/frame/Pose.i: src/frame/Pose.cc.i
@@ -305,7 +305,7 @@ src/frame/Pose.i: src/frame/Pose.cc.i
 
 # target to preprocess a source file
 src/frame/Pose.cc.i:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/src/frame/Pose.cc.i
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/frame/Pose.cc.i
 .PHONY : src/frame/Pose.cc.i
 
 src/frame/Pose.s: src/frame/Pose.cc.s
@@ -313,7 +313,7 @@ src/frame/Pose.s: src/frame/Pose.cc.s
 
 # target to generate assembly for a file
 src/frame/Pose.cc.s:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/src/frame/Pose.cc.s
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/frame/Pose.cc.s
 .PHONY : src/frame/Pose.cc.s
 
 src/image/Features.o: src/image/Features.cc.o
@@ -321,7 +321,7 @@ src/image/Features.o: src/image/Features.cc.o
 
 # target to build an object file
 src/image/Features.cc.o:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/src/image/Features.cc.o
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/image/Features.cc.o
 .PHONY : src/image/Features.cc.o
 
 src/image/Features.i: src/image/Features.cc.i
@@ -329,7 +329,7 @@ src/image/Features.i: src/image/Features.cc.i
 
 # target to preprocess a source file
 src/image/Features.cc.i:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/src/image/Features.cc.i
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/image/Features.cc.i
 .PHONY : src/image/Features.cc.i
 
 src/image/Features.s: src/image/Features.cc.s
@@ -337,7 +337,7 @@ src/image/Features.s: src/image/Features.cc.s
 
 # target to generate assembly for a file
 src/image/Features.cc.s:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/src/image/Features.cc.s
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/image/Features.cc.s
 .PHONY : src/image/Features.cc.s
 
 src/image/ORBVocabulary.o: src/image/ORBVocabulary.cc.o
@@ -345,7 +345,7 @@ src/image/ORBVocabulary.o: src/image/ORBVocabulary.cc.o
 
 # target to build an object file
 src/image/ORBVocabulary.cc.o:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/src/image/ORBVocabulary.cc.o
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/image/ORBVocabulary.cc.o
 .PHONY : src/image/ORBVocabulary.cc.o
 
 src/image/ORBVocabulary.i: src/image/ORBVocabulary.cc.i
@@ -353,7 +353,7 @@ src/image/ORBVocabulary.i: src/image/ORBVocabulary.cc.i
 
 # target to preprocess a source file
 src/image/ORBVocabulary.cc.i:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/src/image/ORBVocabulary.cc.i
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/image/ORBVocabulary.cc.i
 .PHONY : src/image/ORBVocabulary.cc.i
 
 src/image/ORBVocabulary.s: src/image/ORBVocabulary.cc.s
@@ -361,7 +361,7 @@ src/image/ORBVocabulary.s: src/image/ORBVocabulary.cc.s
 
 # target to generate assembly for a file
 src/image/ORBVocabulary.cc.s:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/src/image/ORBVocabulary.cc.s
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/image/ORBVocabulary.cc.s
 .PHONY : src/image/ORBVocabulary.cc.s
 
 src/image/ORBextractor.o: src/image/ORBextractor.cc.o
@@ -369,7 +369,7 @@ src/image/ORBextractor.o: src/image/ORBextractor.cc.o
 
 # target to build an object file
 src/image/ORBextractor.cc.o:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/src/image/ORBextractor.cc.o
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/image/ORBextractor.cc.o
 .PHONY : src/image/ORBextractor.cc.o
 
 src/image/ORBextractor.i: src/image/ORBextractor.cc.i
@@ -377,7 +377,7 @@ src/image/ORBextractor.i: src/image/ORBextractor.cc.i
 
 # target to preprocess a source file
 src/image/ORBextractor.cc.i:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/src/image/ORBextractor.cc.i
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/image/ORBextractor.cc.i
 .PHONY : src/image/ORBextractor.cc.i
 
 src/image/ORBextractor.s: src/image/ORBextractor.cc.s
@@ -385,7 +385,7 @@ src/image/ORBextractor.s: src/image/ORBextractor.cc.s
 
 # target to generate assembly for a file
 src/image/ORBextractor.cc.s:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/src/image/ORBextractor.cc.s
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/image/ORBextractor.cc.s
 .PHONY : src/image/ORBextractor.cc.s
 
 src/image/ORBmatcher.o: src/image/ORBmatcher.cc.o
@@ -393,7 +393,7 @@ src/image/ORBmatcher.o: src/image/ORBmatcher.cc.o
 
 # target to build an object file
 src/image/ORBmatcher.cc.o:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/src/image/ORBmatcher.cc.o
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/image/ORBmatcher.cc.o
 .PHONY : src/image/ORBmatcher.cc.o
 
 src/image/ORBmatcher.i: src/image/ORBmatcher.cc.i
@@ -401,7 +401,7 @@ src/image/ORBmatcher.i: src/image/ORBmatcher.cc.i
 
 # target to preprocess a source file
 src/image/ORBmatcher.cc.i:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/src/image/ORBmatcher.cc.i
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/image/ORBmatcher.cc.i
 .PHONY : src/image/ORBmatcher.cc.i
 
 src/image/ORBmatcher.s: src/image/ORBmatcher.cc.s
@@ -409,7 +409,7 @@ src/image/ORBmatcher.s: src/image/ORBmatcher.cc.s
 
 # target to generate assembly for a file
 src/image/ORBmatcher.cc.s:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/src/image/ORBmatcher.cc.s
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/image/ORBmatcher.cc.s
 .PHONY : src/image/ORBmatcher.cc.s
 
 src/map/Map.o: src/map/Map.cc.o
@@ -417,7 +417,7 @@ src/map/Map.o: src/map/Map.cc.o
 
 # target to build an object file
 src/map/Map.cc.o:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/src/map/Map.cc.o
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/map/Map.cc.o
 .PHONY : src/map/Map.cc.o
 
 src/map/Map.i: src/map/Map.cc.i
@@ -425,7 +425,7 @@ src/map/Map.i: src/map/Map.cc.i
 
 # target to preprocess a source file
 src/map/Map.cc.i:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/src/map/Map.cc.i
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/map/Map.cc.i
 .PHONY : src/map/Map.cc.i
 
 src/map/Map.s: src/map/Map.cc.s
@@ -433,7 +433,7 @@ src/map/Map.s: src/map/Map.cc.s
 
 # target to generate assembly for a file
 src/map/Map.cc.s:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/src/map/Map.cc.s
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/map/Map.cc.s
 .PHONY : src/map/Map.cc.s
 
 src/map/MapPoint.o: src/map/MapPoint.cc.o
@@ -441,7 +441,7 @@ src/map/MapPoint.o: src/map/MapPoint.cc.o
 
 # target to build an object file
 src/map/MapPoint.cc.o:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/src/map/MapPoint.cc.o
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/map/MapPoint.cc.o
 .PHONY : src/map/MapPoint.cc.o
 
 src/map/MapPoint.i: src/map/MapPoint.cc.i
@@ -449,7 +449,7 @@ src/map/MapPoint.i: src/map/MapPoint.cc.i
 
 # target to preprocess a source file
 src/map/MapPoint.cc.i:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/src/map/MapPoint.cc.i
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/map/MapPoint.cc.i
 .PHONY : src/map/MapPoint.cc.i
 
 src/map/MapPoint.s: src/map/MapPoint.cc.s
@@ -457,7 +457,7 @@ src/map/MapPoint.s: src/map/MapPoint.cc.s
 
 # target to generate assembly for a file
 src/map/MapPoint.cc.s:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/src/map/MapPoint.cc.s
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/map/MapPoint.cc.s
 .PHONY : src/map/MapPoint.cc.s
 
 src/optimizer/Optimizer.o: src/optimizer/Optimizer.cc.o
@@ -465,7 +465,7 @@ src/optimizer/Optimizer.o: src/optimizer/Optimizer.cc.o
 
 # target to build an object file
 src/optimizer/Optimizer.cc.o:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/src/optimizer/Optimizer.cc.o
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/optimizer/Optimizer.cc.o
 .PHONY : src/optimizer/Optimizer.cc.o
 
 src/optimizer/Optimizer.i: src/optimizer/Optimizer.cc.i
@@ -473,7 +473,7 @@ src/optimizer/Optimizer.i: src/optimizer/Optimizer.cc.i
 
 # target to preprocess a source file
 src/optimizer/Optimizer.cc.i:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/src/optimizer/Optimizer.cc.i
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/optimizer/Optimizer.cc.i
 .PHONY : src/optimizer/Optimizer.cc.i
 
 src/optimizer/Optimizer.s: src/optimizer/Optimizer.cc.s
@@ -481,7 +481,7 @@ src/optimizer/Optimizer.s: src/optimizer/Optimizer.cc.s
 
 # target to generate assembly for a file
 src/optimizer/Optimizer.cc.s:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/src/optimizer/Optimizer.cc.s
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/optimizer/Optimizer.cc.s
 .PHONY : src/optimizer/Optimizer.cc.s
 
 src/setting/parameter.o: src/setting/parameter.cc.o
@@ -489,7 +489,7 @@ src/setting/parameter.o: src/setting/parameter.cc.o
 
 # target to build an object file
 src/setting/parameter.cc.o:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/src/setting/parameter.cc.o
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/setting/parameter.cc.o
 .PHONY : src/setting/parameter.cc.o
 
 src/setting/parameter.i: src/setting/parameter.cc.i
@@ -497,7 +497,7 @@ src/setting/parameter.i: src/setting/parameter.cc.i
 
 # target to preprocess a source file
 src/setting/parameter.cc.i:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/src/setting/parameter.cc.i
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/setting/parameter.cc.i
 .PHONY : src/setting/parameter.cc.i
 
 src/setting/parameter.s: src/setting/parameter.cc.s
@@ -505,7 +505,7 @@ src/setting/parameter.s: src/setting/parameter.cc.s
 
 # target to generate assembly for a file
 src/setting/parameter.cc.s:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/src/setting/parameter.cc.s
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/setting/parameter.cc.s
 .PHONY : src/setting/parameter.cc.s
 
 src/track/Tracking.o: src/track/Tracking.cc.o
@@ -513,7 +513,7 @@ src/track/Tracking.o: src/track/Tracking.cc.o
 
 # target to build an object file
 src/track/Tracking.cc.o:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/src/track/Tracking.cc.o
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/track/Tracking.cc.o
 .PHONY : src/track/Tracking.cc.o
 
 src/track/Tracking.i: src/track/Tracking.cc.i
@@ -521,7 +521,7 @@ src/track/Tracking.i: src/track/Tracking.cc.i
 
 # target to preprocess a source file
 src/track/Tracking.cc.i:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/src/track/Tracking.cc.i
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/track/Tracking.cc.i
 .PHONY : src/track/Tracking.cc.i
 
 src/track/Tracking.s: src/track/Tracking.cc.s
@@ -529,7 +529,7 @@ src/track/Tracking.s: src/track/Tracking.cc.s
 
 # target to generate assembly for a file
 src/track/Tracking.cc.s:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/src/track/Tracking.cc.s
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/track/Tracking.cc.s
 .PHONY : src/track/Tracking.cc.s
 
 # Help Target
@@ -539,8 +539,8 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
-	@echo "... lqlslam"
 	@echo "... main"
+	@echo "... myslam"
 	@echo "... rebuild_cache"
 	@echo "... main.o"
 	@echo "... main.i"

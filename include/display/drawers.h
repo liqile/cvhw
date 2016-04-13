@@ -4,7 +4,8 @@
 #include "TrackingDrawer.h"
 
 namespace lqlslam {
-    extern TrackingMatcherCounter trackingMatcherCounter;
+    extern MatcherCounter trackingMatcherCounter;
+    extern MatcherCounter mappingMatcherCounter;
     extern TrackingDepthDrawer trackingDepthDrawer;
 }
 

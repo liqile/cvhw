@@ -38,7 +38,14 @@ struct CameraParam {
     void undistortBound();
     CameraParam(const cv::Mat& k, const cv::Mat& distCoef, float basef, int rows, int cols);
     bool getGridBound(const float &x, const float &y, const float &r, int& cellX0, int& cellX1, int& cellY0, int& cellY1);
-
+    /*
+     * project
+     * @param const cv::Mat& localPos, pos of point in camera system
+     * @param float& x, store projection coordinate
+     * @param float& y, store projection coordinate
+     * function: project local pos to frame, compute x, y
+     */
+    void CameraParam::project(const cv::Mat& localPos, float& x, float& y);
     //bool unProject(const cv::Mat& p, float& u, float& v, float& invz, float& ur);
 };
 

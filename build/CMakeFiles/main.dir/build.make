@@ -35,10 +35,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/lql/slam/sbsbsb/cvhw
+CMAKE_SOURCE_DIR = /home/liqile/qtwork/myslam
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/lql/slam/sbsbsb/cvhw/build
+CMAKE_BINARY_DIR = /home/liqile/qtwork/myslam/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/main.dir/depend.make
@@ -51,17 +51,17 @@ include CMakeFiles/main.dir/flags.make
 
 CMakeFiles/main.dir/main.cc.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/main.cc.o: ../main.cc
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/lql/slam/sbsbsb/cvhw/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/liqile/qtwork/myslam/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/main.dir/main.cc.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/main.dir/main.cc.o -c /home/lql/slam/sbsbsb/cvhw/main.cc
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/main.dir/main.cc.o -c /home/liqile/qtwork/myslam/main.cc
 
 CMakeFiles/main.dir/main.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/main.cc.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/lql/slam/sbsbsb/cvhw/main.cc > CMakeFiles/main.dir/main.cc.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/liqile/qtwork/myslam/main.cc > CMakeFiles/main.dir/main.cc.i
 
 CMakeFiles/main.dir/main.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/main.cc.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/lql/slam/sbsbsb/cvhw/main.cc -o CMakeFiles/main.dir/main.cc.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/liqile/qtwork/myslam/main.cc -o CMakeFiles/main.dir/main.cc.s
 
 CMakeFiles/main.dir/main.cc.o.requires:
 .PHONY : CMakeFiles/main.dir/main.cc.o.requires
@@ -81,7 +81,7 @@ main_EXTERNAL_OBJECTS =
 
 main: CMakeFiles/main.dir/main.cc.o
 main: CMakeFiles/main.dir/build.make
-main: ../lib/liblqlslam.so
+main: ../lib/libmyslam.so
 main: /usr/local/lib/libopencv_videostab.so.2.4.9
 main: /usr/local/lib/libopencv_ts.a
 main: /usr/local/lib/libopencv_superres.so.2.4.9
@@ -173,6 +173,6 @@ CMakeFiles/main.dir/clean:
 .PHONY : CMakeFiles/main.dir/clean
 
 CMakeFiles/main.dir/depend:
-	cd /home/lql/slam/sbsbsb/cvhw/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/lql/slam/sbsbsb/cvhw /home/lql/slam/sbsbsb/cvhw /home/lql/slam/sbsbsb/cvhw/build /home/lql/slam/sbsbsb/cvhw/build /home/lql/slam/sbsbsb/cvhw/build/CMakeFiles/main.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/liqile/qtwork/myslam/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/liqile/qtwork/myslam /home/liqile/qtwork/myslam /home/liqile/qtwork/myslam/build /home/liqile/qtwork/myslam/build /home/liqile/qtwork/myslam/build/CMakeFiles/main.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/main.dir/depend
 

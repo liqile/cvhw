@@ -1,2 +1,2 @@
-/home/lql/slam/sbsbsb/cvhw/build/CMakeFiles/lqlslam.dir
-/home/lql/slam/sbsbsb/cvhw/build/CMakeFiles/main.dir
+/home/liqile/qtwork/myslam/build/CMakeFiles/main.dir
+/home/liqile/qtwork/myslam/build/CMakeFiles/myslam.dir

@@ -74,6 +74,14 @@ bool CameraParam::getGridBound (const float &x, const float &y, const float &r, 
     }
     return true;
 }
+
+void CameraParam::project(const cv::Mat& localPos, float& x, float& y) {
+    const cv::Mat& c2 = localPos;
+    float invz = 1.0f / c2.at<float>(2);
+    x = fx * c2.at<float>(0) * invz + cx;
+    y = fy * c2.at<float>(1) * invz + cy;
+}
+
 ParamReader::ParamReader(const string& fileName) {
     data.clear();
     ifstream fin(fileName.c_str());

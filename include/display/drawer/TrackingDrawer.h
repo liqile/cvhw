@@ -7,8 +7,8 @@
 
 namespace lqlslam {
 
-class TrackingMatcherCounter {
-private:
+class MatcherCounter {
+public:
     /*
      * number of keypoints in last frame
      */
@@ -30,10 +30,19 @@ private:
      */
     int lastMatchFilterNum;
     /*
-     * match index with trackref frame
+     * match index with trackref frame (last frame also called second frame)
      * -1 for no such match
      */
     vector <int> lastIdx;
+    /*
+     * match index with current frame (also called first frame)
+     * -1 for no such match
+     */
+    vector <int> currIdx;
+    /*
+     * img of match
+     */
+    cv::Mat match;
 public:
     /*
      * reset

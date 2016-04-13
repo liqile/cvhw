@@ -11,14 +11,120 @@ namespace lqlslam {
 #define TH_LOW 50
 #define HISTO_LENGTH 30
 
+typedef vector<unsigned int> Indices;
+typedef vector<pair<int, int> > Matches;
+
+typedef bool (*NeedMatch)(const Feature& feature);
+
+bool unmatched(const Feature& feature);
+
+bool matched(const Feature& feature);
+
+struct Checker {
+    /*
+     * first frame, current frame
+     */
+    Frame* f1;
+    /*
+     * second frame, last frame
+     */
+    Frame* f2;
+    /*
+     * Checker
+     * @param Frame* f1,
+     * @param Frame* f2,
+     * function: constructor
+     */
+    Checker(Frame* f1, Frame* f2) {
+        this->f1 = f1;
+        this->f2 = f2;
+    }
+    /*
+     * need1
+     * @param const Feature& f, feature in frame1
+     * function: check whether feature f in frame1 needs a match
+     */
+    virtual bool need1(const Feature& f) {
+        return (f.mapPoint != NULL);
+    }
+    /*
+     * need2
+     * @param const Feature& f, feature in frame2
+     * function: check whether feature f in frame2 needs a match
+     */
+    virtual bool need2(const Feature& f) {
+        return (f.mapPoint == NULL);
+    }
+    /*
+     * check
+     * @param const Feature& f1, feature in frame1
+     * @param const Feature& f2, feature in frame2
+     * function: check whether f1 and f2 is a valid match
+     */
+    virtual bool check(const Feature& f1, const Feature& f2) {
+        return true;
+    }
+};
+
+struct TChecker:public Checker {
+    /*
+     * ex of eppipolar
+     */
+    float ex;
+    /*
+     * ey of eppipolar
+     */
+    float ey;
+    /*
+     * fundamental matrix of f1 and f2
+     */
+    cv::Mat fun12;
+    TChecker(Frame* f1, Frame* f2) : Checker(f1, f2) {
+        f2->pose.computeEpipole (f1->pose, ex, ey);
+        fun12 = f2->pose.getF12 (f1->pose);
+    }
+    bool need1(const Feature& f) {
+        return (f.mapPoint == NULL);
+    }
+    /*
+     * check
+     * @param const Feature& f1, feature in frame1
+     * @param const Feature& f2, feature in frame2
+     * function: check whether f1 and f2 satisify epipole constraint
+     */
+    bool check(const Feature& f1, const Feature& f2) {
+        const cv::KeyPoint& kp1= f1.keyPoint;
+        const cv::KeyPoint& kp2 = f2.keyPoint;
+        const float distex = ex - kp1.pt.x;
+        const float distey = ey - kp2.pt.y;
+        const int octave = kp2.octave;
+        if (distex * distex + distey * distey < 100 * extract->scaleFactor[octave]) {
+            return false;
+        }
+        return Pose::checkDistEpipolarLine (kp1, kp2, fun12);
+    }
+};
+
 class ORBmatcher {
     private:
     /*
-     * current frame
+     * counter of matches
+     */
+    MatcherCounter* counter;
+    /*
+     * checker of matches
+     */
+    Checker* checker;
+    /*
+     * a function, check whether a Feature needs a match
+     */
+    //NeedMatch need;
+    /*
+     * current frame, also regarded as first frame
      */
     Frame* currFrame;
     /*
-     * last frame
+     * last frame, also regarded as second frame
      */
     Frame* lastFrame;
     /*
@@ -73,6 +179,23 @@ class ORBmatcher {
      * function: filter matches preserving 3 heighest appreance dis-angle of keypoint pairs
      */
     void filterByRot();
+    /*
+     * disMatch
+     * @param const cv::Mat& d1, descriptor of keypoint in first frame (curr frame)
+     * @param const Indices& indices, idx of keypoints in last frame (second frame)
+     * @param int& idx2, best match idx of keypoint in second frame
+     * function: find best matches in idx2 with d1, return dis,
+     *         index in second(last) frame stored in idx2
+     */
+    int disMatch(const cv::Mat& d1, const Indices& indices2, int& idx2);
+    /*
+     * searchMatches
+     * @param const Indices& idx1, keypoints indices of first frame (current frame)
+     * @param const Indices& idx2, keypoints indices of second frame (last frame)
+     * function: search matches between idx1 and idx2, matches will be stored in
+     *         tracking matcher counter
+     */
+    void searchMatches(const Indices& idx1, const Indices& idx2);
     public:
     /*
      * ORBmatcher
@@ -105,6 +228,7 @@ class ORBmatcher {
      * @param vector<pair<int, int> >& matches, store matches of keypoints index of two frames
      * function: search unmatched keypoint matches between first and second frames
      *         pair of matched indices will be stored in matches
+     *         return number of matches
      */
     int searchByTriangular(Frame* secondFrame, vector<pair<int, int> >& matches);
 };

@@ -7,10 +7,14 @@
 
 namespace lqlslam {
 
-void TrackingMatcherCounter::reset(const Features* curr, const Features* last) {
+void MatcherCounter::reset(const Features* curr, const Features* last) {
     lastIdx.clear();
     for (int i = 0; i < curr->keyPointsNum; i++) {
         lastIdx.push_back(-1);
+    }
+    currIdx.clear();
+    for (int i = 0; i < last->keyPointsNum; i++) {
+        currIdx.push_back(-1);
     }
     lastKeyPointNum = last->keyPointsNum;
     lastMapPointNum = 0;
@@ -26,7 +30,7 @@ void TrackingMatcherCounter::reset(const Features* curr, const Features* last) {
     lastMatchFilterNum = 0;
 }
 
-void TrackingMatcherCounter::print() {
+void MatcherCounter::print() {
     cout << "[Matcher] last frame keypoints num: " << lastKeyPointNum << endl;
     cout << "[Matcher] last frame map point num: " << lastMapPointNum << endl;
     cout << "[Matcher] last frame map point reproject num: " << lastProjectNum << endl;
@@ -34,18 +38,19 @@ void TrackingMatcherCounter::print() {
     cout << "[Matcher] last frame matches num (after filter): " << lastMatchFilterNum << endl;
 }
 
-void TrackingMatcherCounter::addMatch(int currIdx, int lastIdx) {
+void MatcherCounter::addMatch(int currIdx, int lastIdx) {
     this->lastIdx[currIdx] = lastIdx;
+    this->currIdx[lastIdx] = currIdx;
     lastMatchNum ++;
     lastMatchFilterNum ++;
 }
 
-void TrackingMatcherCounter::reduceMatch(int currIdx) {
+void MatcherCounter::reduceMatch(int currIdx) {
     lastIdx[currIdx] = -1;
     lastMatchFilterNum --;
 }
 
-void TrackingMatcherCounter::drawMatches(const Frame *curr, const Frame *last) {
+void MatcherCounter::drawMatches(const Frame *curr, const Frame *last) {
     print();
     const vector<cv::KeyPoint>& kp1 = last->features->rawKeyPoints;
     const vector<cv::KeyPoint>& kp2 = curr->features->rawKeyPoints;
@@ -62,12 +67,11 @@ void TrackingMatcherCounter::drawMatches(const Frame *curr, const Frame *last) {
         match.trainIdx = i;
         matches.push_back(match);
     }
-    cv::Mat imgMatches;
-    cv::drawMatches(img1, kp1, img2, kp2, matches, imgMatches, cv::Scalar(255, 0, 0));
-    displayer->setMatchGraph(imgMatches);
+    cv::drawMatches(img1, kp1, img2, kp2, matches, match, cv::Scalar(255, 0, 0));
+    displayer->setMatchGraph(match);
 }
 
-void TrackingMatcherCounter::addLastProjectNum() {
+void MatcherCounter::addLastProjectNum() {
     lastProjectNum ++;
 }
 

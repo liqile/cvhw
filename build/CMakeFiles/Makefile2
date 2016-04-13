@@ -47,54 +47,19 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/lql/slam/sbsbsb/cvhw
+CMAKE_SOURCE_DIR = /home/liqile/qtwork/myslam
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/lql/slam/sbsbsb/cvhw/build
-
-#=============================================================================
-# Target rules for target CMakeFiles/lqlslam.dir
-
-# All Build rule for target.
-CMakeFiles/lqlslam.dir/all:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/depend
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/lql/slam/sbsbsb/cvhw/build/CMakeFiles  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
-	@echo "Built target lqlslam"
-.PHONY : CMakeFiles/lqlslam.dir/all
-
-# Include target in all.
-all: CMakeFiles/lqlslam.dir/all
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/lqlslam.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lql/slam/sbsbsb/cvhw/build/CMakeFiles 16
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/lqlslam.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lql/slam/sbsbsb/cvhw/build/CMakeFiles 0
-.PHONY : CMakeFiles/lqlslam.dir/rule
-
-# Convenience name for target.
-lqlslam: CMakeFiles/lqlslam.dir/rule
-.PHONY : lqlslam
-
-# clean rule for target.
-CMakeFiles/lqlslam.dir/clean:
-	$(MAKE) -f CMakeFiles/lqlslam.dir/build.make CMakeFiles/lqlslam.dir/clean
-.PHONY : CMakeFiles/lqlslam.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/lqlslam.dir/clean
-.PHONY : clean
+CMAKE_BINARY_DIR = /home/liqile/qtwork/myslam/build
 
 #=============================================================================
 # Target rules for target CMakeFiles/main.dir
 
 # All Build rule for target.
-CMakeFiles/main.dir/all: CMakeFiles/lqlslam.dir/all
+CMakeFiles/main.dir/all: CMakeFiles/myslam.dir/all
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/depend
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/lql/slam/sbsbsb/cvhw/build/CMakeFiles  17
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/liqile/qtwork/myslam/build/CMakeFiles  1
 	@echo "Built target main"
 .PHONY : CMakeFiles/main.dir/all
 
@@ -104,9 +69,9 @@ all: CMakeFiles/main.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/main.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lql/slam/sbsbsb/cvhw/build/CMakeFiles 17
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/liqile/qtwork/myslam/build/CMakeFiles 17
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/main.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lql/slam/sbsbsb/cvhw/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/liqile/qtwork/myslam/build/CMakeFiles 0
 .PHONY : CMakeFiles/main.dir/rule
 
 # Convenience name for target.
@@ -120,6 +85,41 @@ CMakeFiles/main.dir/clean:
 
 # clean rule for target.
 clean: CMakeFiles/main.dir/clean
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/myslam.dir
+
+# All Build rule for target.
+CMakeFiles/myslam.dir/all:
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/depend
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/liqile/qtwork/myslam/build/CMakeFiles  2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17
+	@echo "Built target myslam"
+.PHONY : CMakeFiles/myslam.dir/all
+
+# Include target in all.
+all: CMakeFiles/myslam.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/myslam.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/liqile/qtwork/myslam/build/CMakeFiles 16
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/myslam.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/liqile/qtwork/myslam/build/CMakeFiles 0
+.PHONY : CMakeFiles/myslam.dir/rule
+
+# Convenience name for target.
+myslam: CMakeFiles/myslam.dir/rule
+.PHONY : myslam
+
+# clean rule for target.
+CMakeFiles/myslam.dir/clean:
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/clean
+.PHONY : CMakeFiles/myslam.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/myslam.dir/clean
 .PHONY : clean
 
 #=============================================================================

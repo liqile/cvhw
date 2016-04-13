@@ -48,6 +48,36 @@ struct Pose {
          * function: a const function, compute and return local pos of point
          */
         cv::Mat toLocal(const cv::Mat& worldPos) const;
+        /*
+         * computeEpipole
+         * @param const Pose& p1, pose of first frame
+         * @param float& ex, store ex of epipole on second frame (this)
+         * @param float& ey, store ey of epipole on second frame (this)
+         * function: compute epipole of second frame,
+         *         here, [this] ptr point to the pose of second frame
+         */
+        void computeEpipole(const Pose& p1, float& ex, float& ey);
+        /*
+         * getF12
+         * @param const Pose& p1, pose of first frame
+         * function: compute and return F12,
+         *         here, [this] ptr point to the pose of second frame
+         */
+        cv::Mat getF12(const Pose& p1);
+        /*
+         * skewSymmetricMatrix
+         * @param const cv::Mat& v, a 3d vector
+         * function: return skey symmetric matrix of v
+         */
+        static cv::Mat skewSymmetricMatrix(const cv::Mat& v);
+        /*
+         * checkDistEpipolarLine
+         * @param const cv::KeyPoint& kp1, keypoint in frame1
+         * @param const cv::KeyPoint& kp2, keypoint in frame2
+         * @param const cv::Mat& F12, fundamental matrix of frame1 and frame2
+         * function: check whether kp1 and kp2 satisify eppipolar constraint
+         */
+        static bool checkDistEpipolarLine(const cv::KeyPoint &kp1,const cv::KeyPoint &kp2,const cv::Mat &F12);
 };
 
 }

@@ -117,7 +117,7 @@ Features::Features(cv::Mat& image, const cv::Mat& depth) {
         keyPoints.resize(keyPointsNum);
         undistort ();
         getSteroMatch (depth);
-        //computeBow();
+        computeBow();
         assignFeaturesToGrid ();
 }
 
