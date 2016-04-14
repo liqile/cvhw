@@ -12,12 +12,21 @@ namespace lqlslam {
 void System::initialize (Frame* frame) {
     //frame->setPose(cv::Mat::eye(4,4,CV_32F));
     tracker->initialize(frame);
+    frame->generate3dPoints();
+    lastKeyFrame = frame;
     //KeyFrame* keyFrame = new KeyFrame(frame);
     //keyFrame->reset();
     //map->clear ();
     //map->addKeyFrame(keyFrame);
 }
-
+#if 0
+bool System::needKeyFrame(Frame *frame) {
+    if (frame->frameId - lastKeyFrame->frameId >= 5) {
+        return true;
+    }
+    return false;
+}
+#endif
 System::System(const string& fileName) {
     setParam (fileName);
     cout << "nFeatures:" << extract->nFeatures << endl;
@@ -45,6 +54,14 @@ Pose System::track(const cv::Mat& img, const cv::Mat& depth, const double& times
         int points = tracker->trackLastFrame(frame);
         cout << "track points: " << points << endl;
         cout << "pose: " << frame->pose.mTcw << endl;
+        if (frame->frameId == 2) {
+            lastKeyFrame = frame;
+        } else {
+            if (frame->frameId - lastKeyFrame->frameId > 3) {
+                ORBmatcher matcher(frame);
+                matcher.searchByTriangular(lastKeyFrame);
+            }
+        }
     }
     return frame->pose;
 }

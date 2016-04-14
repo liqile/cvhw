@@ -115,15 +115,16 @@ int ORBmatcher::disMatch(const cv::Mat& d1, const Indices& indices2, int& idx2) 
     const Features* feat2 = lastFrame->features;
     int bestDis = TH_LOW;
     idx2 = -1;
-    for (int i = 0; i < indices2.size(); i++) {
+    for (int it = 0; it < indices2.size(); it++) {
+        int i = indices2[it];
         if (counter->currIdx[i] != -1) {
             continue;
         }
         const Feature& f2 = feat2->keyPoints[i];
-        if (!checker->need(f2)) {
+        if (!checker->need2(f2)) {
             continue;
         }
-        const cv::Mat& d2 = feat2->descriptor.row(i);
+        const cv::Mat& d2 = feat2->descriptors.row(i);
         int dis = descriptorDis(d1, d2);
         if (dis < bestDis) {
             bestDis = dis;
@@ -134,21 +135,28 @@ int ORBmatcher::disMatch(const cv::Mat& d1, const Indices& indices2, int& idx2) 
 }
 
 void ORBmatcher::searchMatches(const Indices& idx1, const Indices& idx2) {
-    for (int i = 0; i < idx1.size(); i++) {
+    int count = 0;
+    for (int it = 0; it < idx1.size(); it++) {
+        int i = idx1[it];
         const Feature& f1 = this->currFrame->features->keyPoints[i];
-        if (!checker->need(f1)) {
+        if (!checker->need1(f1)) {
             continue;
         }
         const cv::Mat& d1 = currFrame->features->descriptors.row(i);
         int j, dis;
         dis = disMatch(d1, idx2, j);
         if (dis < TH_LOW) {
-            const Feature& f2 = this->lastFrame->features->keyPoints(j);
+            const Feature& f2 = this->lastFrame->features->keyPoints[j];
+            if (!checker->check(f1, f2)) {
+                continue;
+            }
+            count ++;
             int bin = getAngle(f1, f2);
-            rotHist.push_back(bin, i);
+            rotHist[bin].push_back(i);
             counter->addMatch (i, j);
         }
     }
+    cout << "find: " << count << endl;
 }
 
 ORBmatcher::ORBmatcher(Frame* currFrame) {
@@ -219,16 +227,16 @@ int ORBmatcher::searchByProject(Frame* lastFrame, float th) {
     }
     filterByRot();
 #if DEBUG_MATCHER
-    counter->drawMatches(currFrame, lastFrame);
+    counter->drawTrackingMatches(currFrame, lastFrame);
 #endif
     return matches;
 }
 
-int ORBmatcher::searchByTriangular(Frame *secondFrame, Matches &matches) {
+void ORBmatcher::searchByTriangular(Frame *secondFrame) {
     Frame* firstFrame = currFrame;
     this->lastFrame = secondFrame;
     counter = &mappingMatcherCounter;
-    matches.clear();
+    //matches.clear();
     const DBoW2::FeatureVector &fv1 = firstFrame->features->featVec;
     const DBoW2::FeatureVector &fv2 = secondFrame->features->featVec;
     matchInit();
@@ -241,7 +249,11 @@ int ORBmatcher::searchByTriangular(Frame *secondFrame, Matches &matches) {
         if (class1 == class2) {
             const Indices& idx1 = it1->second;
             const Indices& idx2 = it2->second;
+            cout << "curr class: " << class1 << " size: " << idx1.size() << endl;
+            cout << "last class: " << class2 << " size: " << idx2.size() << endl << endl;
             searchMatches(idx1, idx2);
+            it1 ++;
+            it2 ++;
         } else {
             if (class1 < class2) {
                 it1 = fv1.lower_bound(class2);
@@ -250,14 +262,19 @@ int ORBmatcher::searchByTriangular(Frame *secondFrame, Matches &matches) {
             }
         }
     }
-    fillterByRot();
+    filterByRot();
+#if 0
     matches.clear();
     for (int i = 0; i < counter->lastIdx.size(); i++) {
         int idx1 = i;
         int idx2 = counter->lastIdx[i];
         matches.push_back(make_pair(idx1, idx2));
     }
-    return matches.size();
+#endif
+#if DEBUG_MATCHER
+    counter->drawMatches(currFrame, lastFrame);
+#endif
+    //return matches.size();
 }
 
 }

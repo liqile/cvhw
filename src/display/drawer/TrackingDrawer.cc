@@ -52,10 +52,10 @@ void MatcherCounter::reduceMatch(int currIdx) {
 
 void MatcherCounter::drawMatches(const Frame *curr, const Frame *last) {
     print();
-    const vector<cv::KeyPoint>& kp1 = last->features->rawKeyPoints;
-    const vector<cv::KeyPoint>& kp2 = curr->features->rawKeyPoints;
-    const cv::Mat& img1 = last->rawData->img;
-    const cv::Mat& img2 = curr->rawData->img;
+    const vector<cv::KeyPoint>& kp2 = last->features->rawKeyPoints;
+    const vector<cv::KeyPoint>& kp1 = curr->features->rawKeyPoints;
+    const cv::Mat& img2 = last->rawData->img;
+    const cv::Mat& img1 = curr->rawData->img;
     vector<cv::DMatch> matches;
     matches.clear();
     for (int i = 0; i < lastIdx.size(); i++) {
@@ -67,8 +67,23 @@ void MatcherCounter::drawMatches(const Frame *curr, const Frame *last) {
         match.trainIdx = i;
         matches.push_back(match);
     }
-    cv::drawMatches(img1, kp1, img2, kp2, matches, match, cv::Scalar(255, 0, 0));
+    cv::drawMatches(img2, kp2, img1, kp1, matches, match, cv::Scalar(255, 0, 0));
     displayer->setMatchGraph(match);
+}
+
+void MatcherCounter::drawTrackingMatches(const Frame *curr, const Frame *last) {
+    const vector<cv::KeyPoint>& kp1 = curr->features->rawKeyPoints;
+    const vector<cv::KeyPoint>& kp2 = last->features->rawKeyPoints;
+    cv::Mat img1 = curr->rawData->img.clone();
+    for (int i = 0; i < lastIdx.size(); i++) {
+        if (lastIdx[i] == -1) {
+            continue;
+        }
+        const cv::KeyPoint& k1 = kp1[i];
+        const cv::KeyPoint& k2 = kp2[lastIdx[i]];
+        cv::line(img1, k1.pt, k2.pt, cv::Scalar(255, 0, 0));
+    }
+    displayer->setTrackingMatchGraph(img1);
 }
 
 void MatcherCounter::addLastProjectNum() {

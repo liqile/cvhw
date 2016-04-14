@@ -53,7 +53,7 @@ bool Pose::checkDistEpipolarLine(const cv::KeyPoint &kp1,const cv::KeyPoint &kp2
 
     const float dsqr = num*num/den;
 
-    return dsqr<3.84*extractor->mvLevelSigma2[kp2.octave];
+    return dsqr<3.84*extract->levelSigma2[kp2.octave];
 }
 
 }

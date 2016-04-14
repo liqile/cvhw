@@ -71,7 +71,7 @@ CMakeFiles/myslam.dir/src/System.cc.o
  ../include/optimizer/Optimizer.h
  ../include/setting/parameter.h
  ../include/track/Tracking.h
- /home/liqile/qtwork/myslam/src/System.cc
+ /home/lql/slam/cvhw/src/System.cc
  /usr/include/eigen3/Eigen/Cholesky
  /usr/include/eigen3/Eigen/Core
  /usr/include/eigen3/Eigen/Dense
@@ -594,7 +594,7 @@ CMakeFiles/myslam.dir/src/converter/Converter.cc.o
  ../Thirdparty/g2o/g2o/types/types_seven_dof_expmap.h
  ../Thirdparty/g2o/g2o/types/types_six_dof_expmap.h
  ../include/converter/Converter.h
- /home/liqile/qtwork/myslam/src/converter/Converter.cc
+ /home/lql/slam/cvhw/src/converter/Converter.cc
  /usr/include/eigen3/Eigen/Cholesky
  /usr/include/eigen3/Eigen/Core
  /usr/include/eigen3/Eigen/Dense
@@ -807,7 +807,7 @@ CMakeFiles/myslam.dir/src/converter/Converter.cc.o
  /usr/local/include/opencv2/core/version.hpp
 CMakeFiles/myslam.dir/src/display/display.cc.o
  ../include/display/display.h
- /home/liqile/qtwork/myslam/src/display/display.cc
+ /home/lql/slam/cvhw/src/display/display.cc
  /usr/include/eigen3/Eigen/Cholesky
  /usr/include/eigen3/Eigen/Core
  /usr/include/eigen3/Eigen/Dense
@@ -1251,7 +1251,7 @@ CMakeFiles/myslam.dir/src/display/drawer/TrackingDrawer.cc.o
  ../include/map/Map.h
  ../include/map/MapPoint.h
  ../include/setting/parameter.h
- /home/liqile/qtwork/myslam/src/display/drawer/TrackingDrawer.cc
+ /home/lql/slam/cvhw/src/display/drawer/TrackingDrawer.cc
  /usr/include/eigen3/Eigen/Cholesky
  /usr/include/eigen3/Eigen/Core
  /usr/include/eigen3/Eigen/Dense
@@ -1719,7 +1719,7 @@ CMakeFiles/myslam.dir/src/display/drawers.cc.o
  ../include/map/Map.h
  ../include/map/MapPoint.h
  ../include/setting/parameter.h
- /home/liqile/qtwork/myslam/src/display/drawers.cc
+ /home/lql/slam/cvhw/src/display/drawers.cc
  /usr/include/eigen3/Eigen/Cholesky
  /usr/include/eigen3/Eigen/Core
  /usr/include/eigen3/Eigen/Dense
@@ -2170,7 +2170,7 @@ CMakeFiles/myslam.dir/src/frame/Frame.cc.o
  ../include/map/Map.h
  ../include/map/MapPoint.h
  ../include/setting/parameter.h
- /home/liqile/qtwork/myslam/src/frame/Frame.cc
+ /home/lql/slam/cvhw/src/frame/Frame.cc
  /usr/include/eigen3/Eigen/Core
  /usr/include/eigen3/Eigen/Eigen2Support
  /usr/include/eigen3/Eigen/src/Core/Array.h
@@ -2354,26 +2354,182 @@ CMakeFiles/myslam.dir/src/frame/Frame.cc.o
  /usr/local/include/opencv2/video/video.hpp
 CMakeFiles/myslam.dir/src/frame/Pose.cc.o
  ../include/frame/Pose.h
- /home/liqile/qtwork/myslam/src/frame/Pose.cc
+ ../include/image/ORBextractor.h
+ ../include/setting/parameter.h
+ /home/lql/slam/cvhw/src/frame/Pose.cc
+ /usr/include/eigen3/Eigen/Core
+ /usr/include/eigen3/Eigen/Eigen2Support
+ /usr/include/eigen3/Eigen/src/Core/Array.h
+ /usr/include/eigen3/Eigen/src/Core/ArrayBase.h
+ /usr/include/eigen3/Eigen/src/Core/ArrayWrapper.h
+ /usr/include/eigen3/Eigen/src/Core/Assign.h
+ /usr/include/eigen3/Eigen/src/Core/Assign_MKL.h
+ /usr/include/eigen3/Eigen/src/Core/BandMatrix.h
+ /usr/include/eigen3/Eigen/src/Core/Block.h
+ /usr/include/eigen3/Eigen/src/Core/BooleanRedux.h
+ /usr/include/eigen3/Eigen/src/Core/CommaInitializer.h
+ /usr/include/eigen3/Eigen/src/Core/CoreIterators.h
+ /usr/include/eigen3/Eigen/src/Core/CwiseBinaryOp.h
+ /usr/include/eigen3/Eigen/src/Core/CwiseNullaryOp.h
+ /usr/include/eigen3/Eigen/src/Core/CwiseUnaryOp.h
+ /usr/include/eigen3/Eigen/src/Core/CwiseUnaryView.h
+ /usr/include/eigen3/Eigen/src/Core/DenseBase.h
+ /usr/include/eigen3/Eigen/src/Core/DenseCoeffsBase.h
+ /usr/include/eigen3/Eigen/src/Core/DenseStorage.h
+ /usr/include/eigen3/Eigen/src/Core/Diagonal.h
+ /usr/include/eigen3/Eigen/src/Core/DiagonalMatrix.h
+ /usr/include/eigen3/Eigen/src/Core/DiagonalProduct.h
+ /usr/include/eigen3/Eigen/src/Core/Dot.h
+ /usr/include/eigen3/Eigen/src/Core/EigenBase.h
+ /usr/include/eigen3/Eigen/src/Core/Flagged.h
+ /usr/include/eigen3/Eigen/src/Core/ForceAlignedAccess.h
+ /usr/include/eigen3/Eigen/src/Core/Functors.h
+ /usr/include/eigen3/Eigen/src/Core/Fuzzy.h
+ /usr/include/eigen3/Eigen/src/Core/GeneralProduct.h
+ /usr/include/eigen3/Eigen/src/Core/GenericPacketMath.h
+ /usr/include/eigen3/Eigen/src/Core/GlobalFunctions.h
+ /usr/include/eigen3/Eigen/src/Core/IO.h
+ /usr/include/eigen3/Eigen/src/Core/Map.h
+ /usr/include/eigen3/Eigen/src/Core/MapBase.h
+ /usr/include/eigen3/Eigen/src/Core/MathFunctions.h
+ /usr/include/eigen3/Eigen/src/Core/Matrix.h
+ /usr/include/eigen3/Eigen/src/Core/MatrixBase.h
+ /usr/include/eigen3/Eigen/src/Core/NestByValue.h
+ /usr/include/eigen3/Eigen/src/Core/NoAlias.h
+ /usr/include/eigen3/Eigen/src/Core/NumTraits.h
+ /usr/include/eigen3/Eigen/src/Core/PermutationMatrix.h
+ /usr/include/eigen3/Eigen/src/Core/PlainObjectBase.h
+ /usr/include/eigen3/Eigen/src/Core/ProductBase.h
+ /usr/include/eigen3/Eigen/src/Core/Random.h
+ /usr/include/eigen3/Eigen/src/Core/Redux.h
+ /usr/include/eigen3/Eigen/src/Core/Ref.h
+ /usr/include/eigen3/Eigen/src/Core/Replicate.h
+ /usr/include/eigen3/Eigen/src/Core/ReturnByValue.h
+ /usr/include/eigen3/Eigen/src/Core/Reverse.h
+ /usr/include/eigen3/Eigen/src/Core/Select.h
+ /usr/include/eigen3/Eigen/src/Core/SelfAdjointView.h
+ /usr/include/eigen3/Eigen/src/Core/SelfCwiseBinaryOp.h
+ /usr/include/eigen3/Eigen/src/Core/SolveTriangular.h
+ /usr/include/eigen3/Eigen/src/Core/StableNorm.h
+ /usr/include/eigen3/Eigen/src/Core/Stride.h
+ /usr/include/eigen3/Eigen/src/Core/Swap.h
+ /usr/include/eigen3/Eigen/src/Core/Transpose.h
+ /usr/include/eigen3/Eigen/src/Core/Transpositions.h
+ /usr/include/eigen3/Eigen/src/Core/TriangularMatrix.h
+ /usr/include/eigen3/Eigen/src/Core/VectorBlock.h
+ /usr/include/eigen3/Eigen/src/Core/VectorwiseOp.h
+ /usr/include/eigen3/Eigen/src/Core/Visitor.h
+ /usr/include/eigen3/Eigen/src/Core/arch/AltiVec/Complex.h
+ /usr/include/eigen3/Eigen/src/Core/arch/AltiVec/PacketMath.h
+ /usr/include/eigen3/Eigen/src/Core/arch/Default/Settings.h
+ /usr/include/eigen3/Eigen/src/Core/arch/NEON/Complex.h
+ /usr/include/eigen3/Eigen/src/Core/arch/NEON/PacketMath.h
+ /usr/include/eigen3/Eigen/src/Core/arch/SSE/Complex.h
+ /usr/include/eigen3/Eigen/src/Core/arch/SSE/MathFunctions.h
+ /usr/include/eigen3/Eigen/src/Core/arch/SSE/PacketMath.h
+ /usr/include/eigen3/Eigen/src/Core/products/CoeffBasedProduct.h
+ /usr/include/eigen3/Eigen/src/Core/products/GeneralBlockPanelKernel.h
+ /usr/include/eigen3/Eigen/src/Core/products/GeneralMatrixMatrix.h
+ /usr/include/eigen3/Eigen/src/Core/products/GeneralMatrixMatrixTriangular.h
+ /usr/include/eigen3/Eigen/src/Core/products/GeneralMatrixMatrixTriangular_MKL.h
+ /usr/include/eigen3/Eigen/src/Core/products/GeneralMatrixMatrix_MKL.h
+ /usr/include/eigen3/Eigen/src/Core/products/GeneralMatrixVector.h
+ /usr/include/eigen3/Eigen/src/Core/products/GeneralMatrixVector_MKL.h
+ /usr/include/eigen3/Eigen/src/Core/products/Parallelizer.h
+ /usr/include/eigen3/Eigen/src/Core/products/SelfadjointMatrixMatrix.h
+ /usr/include/eigen3/Eigen/src/Core/products/SelfadjointMatrixMatrix_MKL.h
+ /usr/include/eigen3/Eigen/src/Core/products/SelfadjointMatrixVector.h
+ /usr/include/eigen3/Eigen/src/Core/products/SelfadjointMatrixVector_MKL.h
+ /usr/include/eigen3/Eigen/src/Core/products/SelfadjointProduct.h
+ /usr/include/eigen3/Eigen/src/Core/products/SelfadjointRank2Update.h
+ /usr/include/eigen3/Eigen/src/Core/products/TriangularMatrixMatrix.h
+ /usr/include/eigen3/Eigen/src/Core/products/TriangularMatrixMatrix_MKL.h
+ /usr/include/eigen3/Eigen/src/Core/products/TriangularMatrixVector.h
+ /usr/include/eigen3/Eigen/src/Core/products/TriangularMatrixVector_MKL.h
+ /usr/include/eigen3/Eigen/src/Core/products/TriangularSolverMatrix.h
+ /usr/include/eigen3/Eigen/src/Core/products/TriangularSolverMatrix_MKL.h
+ /usr/include/eigen3/Eigen/src/Core/products/TriangularSolverVector.h
+ /usr/include/eigen3/Eigen/src/Core/util/BlasUtil.h
+ /usr/include/eigen3/Eigen/src/Core/util/Constants.h
+ /usr/include/eigen3/Eigen/src/Core/util/DisableStupidWarnings.h
+ /usr/include/eigen3/Eigen/src/Core/util/ForwardDeclarations.h
+ /usr/include/eigen3/Eigen/src/Core/util/MKL_support.h
+ /usr/include/eigen3/Eigen/src/Core/util/Macros.h
+ /usr/include/eigen3/Eigen/src/Core/util/Memory.h
+ /usr/include/eigen3/Eigen/src/Core/util/Meta.h
+ /usr/include/eigen3/Eigen/src/Core/util/ReenableStupidWarnings.h
+ /usr/include/eigen3/Eigen/src/Core/util/StaticAssert.h
+ /usr/include/eigen3/Eigen/src/Core/util/XprHelper.h
+ /usr/include/eigen3/Eigen/src/Eigen2Support/Block.h
+ /usr/include/eigen3/Eigen/src/Eigen2Support/Cwise.h
+ /usr/include/eigen3/Eigen/src/Eigen2Support/CwiseOperators.h
+ /usr/include/eigen3/Eigen/src/Eigen2Support/Lazy.h
+ /usr/include/eigen3/Eigen/src/Eigen2Support/Macros.h
+ /usr/include/eigen3/Eigen/src/Eigen2Support/MathFunctions.h
+ /usr/include/eigen3/Eigen/src/Eigen2Support/Memory.h
+ /usr/include/eigen3/Eigen/src/Eigen2Support/Meta.h
+ /usr/include/eigen3/Eigen/src/Eigen2Support/Minor.h
+ /usr/include/eigen3/Eigen/src/Eigen2Support/TriangularSolver.h
+ /usr/include/eigen3/Eigen/src/Eigen2Support/VectorBlock.h
+ /usr/include/eigen3/Eigen/src/plugins/ArrayCwiseBinaryOps.h
+ /usr/include/eigen3/Eigen/src/plugins/ArrayCwiseUnaryOps.h
+ /usr/include/eigen3/Eigen/src/plugins/BlockMethods.h
+ /usr/include/eigen3/Eigen/src/plugins/CommonCwiseBinaryOps.h
+ /usr/include/eigen3/Eigen/src/plugins/CommonCwiseUnaryOps.h
+ /usr/include/eigen3/Eigen/src/plugins/MatrixCwiseBinaryOps.h
+ /usr/include/eigen3/Eigen/src/plugins/MatrixCwiseUnaryOps.h
+ /usr/local/include/opencv/cv.h
  /usr/local/include/opencv2/calib3d/calib3d.hpp
  /usr/local/include/opencv2/contrib/contrib.hpp
  /usr/local/include/opencv2/contrib/openfabmap.hpp
  /usr/local/include/opencv2/contrib/retina.hpp
  /usr/local/include/opencv2/core/core.hpp
  /usr/local/include/opencv2/core/core_c.h
+ /usr/local/include/opencv2/core/eigen.hpp
+ /usr/local/include/opencv2/core/internal.hpp
  /usr/local/include/opencv2/core/mat.hpp
  /usr/local/include/opencv2/core/operations.hpp
  /usr/local/include/opencv2/core/types_c.h
  /usr/local/include/opencv2/core/version.hpp
  /usr/local/include/opencv2/features2d/features2d.hpp
+ /usr/local/include/opencv2/flann/all_indices.h
+ /usr/local/include/opencv2/flann/allocator.h
+ /usr/local/include/opencv2/flann/any.h
+ /usr/local/include/opencv2/flann/autotuned_index.h
+ /usr/local/include/opencv2/flann/composite_index.h
  /usr/local/include/opencv2/flann/config.h
  /usr/local/include/opencv2/flann/defines.h
+ /usr/local/include/opencv2/flann/dist.h
+ /usr/local/include/opencv2/flann/dynamic_bitset.h
+ /usr/local/include/opencv2/flann/flann.hpp
+ /usr/local/include/opencv2/flann/flann_base.hpp
+ /usr/local/include/opencv2/flann/general.h
+ /usr/local/include/opencv2/flann/ground_truth.h
+ /usr/local/include/opencv2/flann/heap.h
+ /usr/local/include/opencv2/flann/hierarchical_clustering_index.h
+ /usr/local/include/opencv2/flann/index_testing.h
+ /usr/local/include/opencv2/flann/kdtree_index.h
+ /usr/local/include/opencv2/flann/kdtree_single_index.h
+ /usr/local/include/opencv2/flann/kmeans_index.h
+ /usr/local/include/opencv2/flann/linear_index.h
+ /usr/local/include/opencv2/flann/logger.h
+ /usr/local/include/opencv2/flann/lsh_index.h
+ /usr/local/include/opencv2/flann/lsh_table.h
+ /usr/local/include/opencv2/flann/matrix.h
  /usr/local/include/opencv2/flann/miniflann.hpp
+ /usr/local/include/opencv2/flann/nn_index.h
+ /usr/local/include/opencv2/flann/params.h
+ /usr/local/include/opencv2/flann/random.h
+ /usr/local/include/opencv2/flann/result_set.h
+ /usr/local/include/opencv2/flann/sampling.h
+ /usr/local/include/opencv2/flann/saving.h
+ /usr/local/include/opencv2/flann/timer.h
  /usr/local/include/opencv2/highgui/highgui.hpp
  /usr/local/include/opencv2/highgui/highgui_c.h
  /usr/local/include/opencv2/imgproc/imgproc.hpp
  /usr/local/include/opencv2/imgproc/imgproc_c.h
  /usr/local/include/opencv2/imgproc/types_c.h
+ /usr/local/include/opencv2/legacy/compat.hpp
  /usr/local/include/opencv2/ml/ml.hpp
  /usr/local/include/opencv2/objdetect/objdetect.hpp
  /usr/local/include/opencv2/opencv.hpp
@@ -2398,7 +2554,7 @@ CMakeFiles/myslam.dir/src/image/Features.cc.o
  ../include/map/Map.h
  ../include/map/MapPoint.h
  ../include/setting/parameter.h
- /home/liqile/qtwork/myslam/src/image/Features.cc
+ /home/lql/slam/cvhw/src/image/Features.cc
  /usr/include/eigen3/Eigen/Core
  /usr/include/eigen3/Eigen/Eigen2Support
  /usr/include/eigen3/Eigen/src/Core/Array.h
@@ -2589,7 +2745,7 @@ CMakeFiles/myslam.dir/src/image/ORBVocabulary.cc.o
  ../Thirdparty/DBoW2/DBoW2/TemplatedVocabulary.h
  ../Thirdparty/DBoW2/DUtils/Random.h
  ../include/image/ORBVocabulary.h
- /home/liqile/qtwork/myslam/src/image/ORBVocabulary.cc
+ /home/lql/slam/cvhw/src/image/ORBVocabulary.cc
  /usr/local/include/opencv2/core/core.hpp
  /usr/local/include/opencv2/core/mat.hpp
  /usr/local/include/opencv2/core/operations.hpp
@@ -2597,7 +2753,7 @@ CMakeFiles/myslam.dir/src/image/ORBVocabulary.cc.o
  /usr/local/include/opencv2/core/version.hpp
 CMakeFiles/myslam.dir/src/image/ORBextractor.cc.o
  ../include/image/ORBextractor.h
- /home/liqile/qtwork/myslam/src/image/ORBextractor.cc
+ /home/lql/slam/cvhw/src/image/ORBextractor.cc
  /usr/include/eigen3/Eigen/Core
  /usr/include/eigen3/Eigen/Eigen2Support
  /usr/include/eigen3/Eigen/src/Core/Array.h
@@ -2790,7 +2946,7 @@ CMakeFiles/myslam.dir/src/image/ORBmatcher.cc.o
  ../include/map/Map.h
  ../include/map/MapPoint.h
  ../include/setting/parameter.h
- /home/liqile/qtwork/myslam/src/image/ORBmatcher.cc
+ /home/lql/slam/cvhw/src/image/ORBmatcher.cc
  /usr/include/eigen3/Eigen/Cholesky
  /usr/include/eigen3/Eigen/Core
  /usr/include/eigen3/Eigen/Dense
@@ -3241,7 +3397,7 @@ CMakeFiles/myslam.dir/src/map/Map.cc.o
  ../include/map/Map.h
  ../include/map/MapPoint.h
  ../include/setting/parameter.h
- /home/liqile/qtwork/myslam/src/map/Map.cc
+ /home/lql/slam/cvhw/src/map/Map.cc
  /usr/include/eigen3/Eigen/Core
  /usr/include/eigen3/Eigen/Eigen2Support
  /usr/include/eigen3/Eigen/src/Core/Array.h
@@ -3439,7 +3595,7 @@ CMakeFiles/myslam.dir/src/map/MapPoint.cc.o
  ../include/map/Map.h
  ../include/map/MapPoint.h
  ../include/setting/parameter.h
- /home/liqile/qtwork/myslam/src/map/MapPoint.cc
+ /home/lql/slam/cvhw/src/map/MapPoint.cc
  /usr/include/eigen3/Eigen/Core
  /usr/include/eigen3/Eigen/Eigen2Support
  /usr/include/eigen3/Eigen/src/Core/Array.h
@@ -3685,7 +3841,7 @@ CMakeFiles/myslam.dir/src/optimizer/Optimizer.cc.o
  ../include/map/MapPoint.h
  ../include/optimizer/Optimizer.h
  ../include/setting/parameter.h
- /home/liqile/qtwork/myslam/src/optimizer/Optimizer.cc
+ /home/lql/slam/cvhw/src/optimizer/Optimizer.cc
  /usr/include/eigen3/Eigen/Cholesky
  /usr/include/eigen3/Eigen/Core
  /usr/include/eigen3/Eigen/Dense
@@ -4016,7 +4172,7 @@ CMakeFiles/myslam.dir/src/optimizer/Optimizer.cc.o
 CMakeFiles/myslam.dir/src/setting/parameter.cc.o
  ../include/image/ORBextractor.h
  ../include/setting/parameter.h
- /home/liqile/qtwork/myslam/src/setting/parameter.cc
+ /home/lql/slam/cvhw/src/setting/parameter.cc
  /usr/include/eigen3/Eigen/Core
  /usr/include/eigen3/Eigen/Eigen2Support
  /usr/include/eigen3/Eigen/src/Core/Array.h
@@ -4266,7 +4422,7 @@ CMakeFiles/myslam.dir/src/track/Tracking.cc.o
  ../include/optimizer/Optimizer.h
  ../include/setting/parameter.h
  ../include/track/Tracking.h
- /home/liqile/qtwork/myslam/src/track/Tracking.cc
+ /home/lql/slam/cvhw/src/track/Tracking.cc
  /usr/include/eigen3/Eigen/Cholesky
  /usr/include/eigen3/Eigen/Core
  /usr/include/eigen3/Eigen/Dense

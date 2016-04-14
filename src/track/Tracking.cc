@@ -5,7 +5,7 @@ namespace lqlslam {
 void Tracking::setLastFrame(Frame *frame) {
     lastFrame = frame;
 #if ONLY_TRACKING
-    lastFrame->becomeKeyframe();
+    lastFrame->generate3dPoints();
 #endif
 }
 

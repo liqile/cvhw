@@ -155,6 +155,7 @@ Param* readParam(const std::string& fileName) {
                 extract->fMinThFAST
     );
     extract->scaleFactor = extractor->GetScaleFactors ();
+    extract->levelSigma2 = extractor->GetScaleSigmaSquares();
     extract->invLevelSigma2 = extractor->GetInverseScaleSigmaSquares();
     Setting* setting = new Setting();
     setting->dataRoot = reader.strs["DataRoot"];

@@ -72,11 +72,18 @@ public:
 
     /*
      * drawMatches
-     * @param const Frame* curr, current frame
-     * @param const Frame* last, last frame
-     * function: draw matches of current frame and last frame
+     * @param const Frame* curr, current frame (first frame)
+     * @param const Frame* last, last frame (second frame)
+     * function: draw matches of current frame and last frame in two images
      */
     void drawMatches(const Frame* curr, const Frame* last);
+    /*
+     * drawTrackingMatches
+     * @param const Frame* curr, current frame (first frame)
+     * @param const Frame* last, last frame (second frame)
+     * function: draw matches in a single image
+     */
+    void drawTrackingMatches(const Frame* curr, const Frame* last);
     /*
      * addLastProjectNum
      * function: increase lastProjectNum by 1

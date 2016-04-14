@@ -2,8 +2,8 @@
 
 namespace lqlslam {
 
-TrackingMatcherCounter trackingMatcherCounter;
-TrackingMatcherCounter mappingMatcherCounter;
+MatcherCounter trackingMatcherCounter;
+MatcherCounter mappingMatcherCounter;
 TrackingDepthDrawer trackingDepthDrawer;
 
 }

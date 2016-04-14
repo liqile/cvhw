@@ -45,7 +45,7 @@ struct CameraParam {
      * @param float& y, store projection coordinate
      * function: project local pos to frame, compute x, y
      */
-    void CameraParam::project(const cv::Mat& localPos, float& x, float& y);
+    void project(const cv::Mat& localPos, float& x, float& y);
     //bool unProject(const cv::Mat& p, float& u, float& v, float& invz, float& ur);
 };
 
@@ -56,6 +56,7 @@ struct ExtractParam {
     int fIniThFAST;
     int fMinThFAST;
     vector<float> scaleFactor;
+    vector<float> levelSigma2;
     vector <float> invLevelSigma2;
 };
 

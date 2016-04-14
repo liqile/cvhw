@@ -702,15 +702,15 @@ ORBmatcher.h
 Optimizer.h
 ../include/track/Optimizer.h
 
-/home/liqile/qtwork/myslam/main.cc
+/home/lql/slam/cvhw/main.cc
 iostream
 -
 parameter.h
-/home/liqile/qtwork/myslam/parameter.h
+/home/lql/slam/cvhw/parameter.h
 Frame.h
-/home/liqile/qtwork/myslam/Frame.h
+/home/lql/slam/cvhw/Frame.h
 System.h
-/home/liqile/qtwork/myslam/System.h
+/home/lql/slam/cvhw/System.h
 opencv2/highgui/highgui.hpp
 -
 opencv2/imgproc/imgproc.hpp

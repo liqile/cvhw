@@ -19,7 +19,10 @@ private:
      * image of matches
      */
     cv::Mat matchImg;
-
+    /*
+     * image of matches in tracking
+     */
+    cv::Mat trackingMatchImg;
     /*
      * point cloud of tracking,
      * used only in "ONLY_TRACKING" mode
@@ -38,6 +41,12 @@ public:
      * function: set image of matches
      */
     void setMatchGraph(cv::Mat img);
+    /*
+     * setTrackingMatchGraph
+     * @param cv::Mat img, the image of tracking matches
+     * function: set img of tracking matches
+     */
+    void setTrackingMatchGraph(cv::Mat img);
     /*
      * setTrackingPCL
      * @param PointCloud::Ptr pcl, point cloud of tracking

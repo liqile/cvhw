@@ -84,8 +84,18 @@ struct TChecker:public Checker {
         fun12 = f2->pose.getF12 (f1->pose);
     }
     bool need1(const Feature& f) {
+#if ONLY_TRACKING
+        return true;
+#endif
         return (f.mapPoint == NULL);
     }
+    bool need2(const Feature& f) {
+#if ONLY_TRACKING
+        return true;
+#endif
+        return (f.mapPoint == NULL);
+    }
+
     /*
      * check
      * @param const Feature& f1, feature in frame1
@@ -220,17 +230,18 @@ class ORBmatcher {
      *         by projecting mappoints from lastFrame to currFrame
      *         after matching,  the curr (Features type) will contain corresponding mappoint information
      *         the return value is the number of matches found
+     *         trackingMatchCounter will count
      */
     int searchByProject(Frame* lastFrame, float th);
     /*
      * searchByTriangular
      * @param Frame* secondFrame, second frame, current frame as first frame
-     * @param vector<pair<int, int> >& matches, store matches of keypoints index of two frames
      * function: search unmatched keypoint matches between first and second frames
      *         pair of matched indices will be stored in matches
      *         return number of matches
+     *         mappingMatchCounter will count
      */
-    int searchByTriangular(Frame* secondFrame, vector<pair<int, int> >& matches);
+    void searchByTriangular(Frame* secondFrame);//, vector<pair<int, int> >& matches);
 };
 
 }

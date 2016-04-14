@@ -70,7 +70,7 @@ CMakeFiles/main.dir/main.cc.o
  ../include/optimizer/Optimizer.h
  ../include/setting/parameter.h
  ../include/track/Tracking.h
- /home/liqile/qtwork/myslam/main.cc
+ /home/lql/slam/cvhw/main.cc
  /usr/include/eigen3/Eigen/Cholesky
  /usr/include/eigen3/Eigen/Core
  /usr/include/eigen3/Eigen/Dense

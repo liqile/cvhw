@@ -22,24 +22,6 @@ int Frame::nextId = 0;
 
 int Frame::nextKFId = 0;
 
-void Frame::generate3dPoints() {
-#if ONLY_TRACKING
-    for (int i = 0; i < features->keyPointsNum; i++) {
-        cv::Mat p;
-        Feature& feature = features->keyPoints[i];
-        if (feature.mapPoint != NULL) {
-            delete feature.mapPoint;
-            feature.mapPoint = NULL;
-        }
-        if (feature.unProject (pose, p)) {
-            feature.mapPoint = new MapPoint(p, this, i);
-        } else {
-            feature.mapPoint = NULL;
-        }
-    }
-#endif
-}
-
 Frame::Frame(
         const cv::Mat& imGray,
         const cv::Mat& depth,
@@ -62,11 +44,24 @@ bool Frame::unProject(const int& i, cv::Mat& p) {
     return f.unProject (pose, p);
 }
 
+void Frame::generate3dPoints() {
+    for (int i = 0; i < features->keyPointsNum; i++) {
+        cv::Mat p;
+        Feature& feature = features->keyPoints[i];
+        if (feature.unProject (pose, p)) {
+            if (feature.mapPoint != NULL) {
+                delete feature.mapPoint;
+                feature.mapPoint = NULL;
+            }
+            feature.mapPoint = new MapPoint(p, this, i);
+        }
+    }
+}
+
 void Frame::becomeKeyframe () {
     isKeyFrame = true;
     keyFrameId = nextKFId;
     nextKFId ++;
-    generate3dPoints();
 }
 #if 0
 void Frame::reset() {

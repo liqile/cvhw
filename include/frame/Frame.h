@@ -45,14 +45,6 @@ class Frame {
          */
         bool isKeyFrame;
 
-        /*
-         * generate3dPoints
-         * function: generate 3d points for keypoints
-         *         if corresbonding depth information from sensor is valid
-         *         for monocular, this function does nothing
-         */
-        void generate3dPoints();
-
         public:
 
         /*
@@ -110,6 +102,14 @@ class Frame {
          *         return true, and store coordinate in p
          */
         bool unProject(const int& i, cv::Mat& p);
+
+        /*
+         * generate3dPoints
+         * function: generate 3d points for keypoints
+         *         if corresbonding depth information from sensor is valid
+         *         for monocular, this function does nothing
+         */
+        void generate3dPoints();
 
         /*
          * becomeKeyframe

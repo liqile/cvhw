@@ -33,6 +33,8 @@ void Features::undistort() {
             for (int i = 0; i < rawKeyPoints.size(); i++) {
                     Feature& kp = keyPoints[i];
                     kp.keyPoint = rawKeyPoints[i];
+                    kp.depth = -1;
+                    kp.right=  -1;
             }
             return;
     }
@@ -50,10 +52,15 @@ void Features::undistort() {
             kp.pt.y=mat.at<float>(i,1);
             Feature& feature = keyPoints[i];
             feature.keyPoint=kp;
+            feature.depth = -1;
+            feature.right = -1;
     }
 }
 
 void Features::getSteroMatch (const cv::Mat& depth) {
+    if (depth.empty()) {
+        return;
+    }
     for (int i = 0; i < keyPointsNum; i++) {
         const cv::KeyPoint& kp = rawKeyPoints[i];
         Feature& feature = keyPoints[i];
@@ -63,9 +70,6 @@ void Features::getSteroMatch (const cv::Mat& depth) {
         if (d > 0) {
             feature.depth = d;
             feature.right = feature.keyPoint.pt.x - camera->basef / d;
-        } else {
-            feature.depth = -1;
-            feature.right = -1;
         }
         feature.mapPoint = NULL;
     }

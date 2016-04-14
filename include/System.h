@@ -25,7 +25,7 @@ class System {
     /*
      * last Frame
      */
-    Frame* lastFrame;
+    Frame* lastKeyFrame;
     #endif
 
     /*
@@ -35,7 +35,14 @@ class System {
      *     initialize map
      */
     void initialize(Frame* frame);
-
+#if 0
+    /*
+     * needKeyFrame
+     * @param Frame* frame, current frame
+     * function: check if current frame would become a key frame
+     */
+    bool needKeyFrame(Frame* frame);
+#endif
     public:
 
     /*
