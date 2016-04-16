@@ -19,14 +19,26 @@ void System::initialize (Frame* frame) {
     //map->clear ();
     //map->addKeyFrame(keyFrame);
 }
-#if 0
-bool System::needKeyFrame(Frame *frame) {
-    if (frame->frameId - lastKeyFrame->frameId >= 5) {
+bool System::needKeyFrame(Frame *frame, int points) {
+    if (frame->frameId <= 2) {
+        return true;
+    }
+    if (frame->frameId - lastKeyFrame->frameId >= 30) {
+        return true;
+    }
+    float rate = (float)points / trackingMatcherCounter.lastMapPointNum;
+    cout << "points tracking rate: " << rate << endl;
+    if (rate < 0.9) {
         return true;
     }
     return false;
 }
-#endif
+void System::createNewKeyFrame(Frame* frame) {
+    frame->becomeKeyframe();
+    lastKeyFrame = frame;
+    map->addKeyFrame(frame);
+}
+
 System::System(const string& fileName) {
     setParam (fileName);
     cout << "nFeatures:" << extract->nFeatures << endl;
@@ -109,7 +121,11 @@ void testSystem3() {
         cv::Mat d;
         cv::Mat rgbImg;
         readImage(rgb[i], depth[i], img, d, rgbImg);
-        Pose pose = system->track(img, d, 0);
+        cv::Mat dep;
+        if (i == 0) {
+            dep = d;
+        }
+        Pose pose = system->track(img, dep, 0);
         trackingDepthDrawer.drawDepth(rgbImg, d, pose);
         displayer->show();
     }

@@ -67,7 +67,7 @@ src/image/ORBmatcher.cc
 src/System.cc
 src/image/Features.cc
 src/image/ORBVocabulary.cc
-src/map/Map.cc
+src/map/LocalMap.cc
 src/map/MapPoint.cc
 src/optimizer/Optimizer.cc
 src/track/Tracking.cc

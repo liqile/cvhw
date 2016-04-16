@@ -56,4 +56,9 @@ bool Pose::checkDistEpipolarLine(const cv::KeyPoint &kp1,const cv::KeyPoint &kp2
     return dsqr<3.84*extract->levelSigma2[kp2.octave];
 }
 
+cv::Mat Pose::triangular(const Pose &p1, const Pose &p2, const cv::KeyPoint &k1, const cv::KeyPoint &k2) {
+    //todo
+    return cv::Mat();
+}
+
 }

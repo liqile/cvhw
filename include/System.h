@@ -35,14 +35,19 @@ class System {
      *     initialize map
      */
     void initialize(Frame* frame);
-#if 0
     /*
      * needKeyFrame
      * @param Frame* frame, current frame
+     * @param int points, number of map points tracked
      * function: check if current frame would become a key frame
      */
-    bool needKeyFrame(Frame* frame);
-#endif
+    bool needKeyFrame(Frame* frame, int points);
+    /*
+     * createNewKeyFrame
+     * @param Frame* frame, current frame
+     * function: create a new key frame and send it to map
+     */
+    void createNewKeyFrame(Frame* frame);
     public:
 
     /*

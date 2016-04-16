@@ -78,6 +78,17 @@ struct Pose {
          * function: check whether kp1 and kp2 satisify eppipolar constraint
          */
         static bool checkDistEpipolarLine(const cv::KeyPoint &kp1,const cv::KeyPoint &kp2,const cv::Mat &F12);
+        /*
+         * triangular
+         * @param const Pose& p1, pose of frame1 (current frame)
+         * @param const Pose& p2, pose of frame2 (last frame)
+         * @param const cv::KeyPoint& k1, key point in frame1
+         * @param const cv::KeyPoint& k2, key point in frame2
+         * function: given a match of k1 and k2. compute 3d-coordinate
+         *         by triangulation and return. if the coordinate isn't valid,
+         *         return an empty mat
+         */
+        static cv::Mat triangular(const Pose& p1, const Pose& p2, const cv::KeyPoint& k1, const cv::KeyPoint& k2);
 };
 
 }
