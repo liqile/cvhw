@@ -18,6 +18,8 @@ void MapPoint::addObservation(Frame* keyFrame, int index) {
         observation.refKF = keyFrame;
         observation.descriptor = keyFrame->features->descriptors.row(index);
     }
+    Feature& f = keyFrame->features->keyPoints[index];
+    f.mapPoint = this;
 }
 
 cv::Mat MapPoint::getCamPos(const Pose& pose) {

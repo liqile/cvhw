@@ -14,15 +14,17 @@ void System::initialize (Frame* frame) {
     tracker->initialize(frame);
     frame->generate3dPoints();
     lastKeyFrame = frame;
+    frame->becomeKeyframe();
+    map->addKeyFrame(lastKeyFrame);
     //KeyFrame* keyFrame = new KeyFrame(frame);
     //keyFrame->reset();
     //map->clear ();
     //map->addKeyFrame(keyFrame);
 }
 bool System::needKeyFrame(Frame *frame, int points) {
-    if (frame->frameId <= 2) {
-        return true;
-    }
+    //if (frame->frameId <= 1) {
+    //    return true;
+    //}
     if (frame->frameId - lastKeyFrame->frameId >= 20) {
         return true;
     }

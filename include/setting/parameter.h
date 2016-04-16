@@ -46,6 +46,13 @@ struct CameraParam {
      * function: project local pos to frame, compute x, y
      */
     void project(const cv::Mat& localPos, float& x, float& y);
+    /*
+     * getRay
+     * @param float x, x coordinate of point on image
+     * @Param float y, y coordinate of point on image
+     * function: compute and return ray of (x,y)
+     */
+    cv::Mat getRay(float x, float y);
     //bool unProject(const cv::Mat& p, float& u, float& v, float& invz, float& ur);
 };
 

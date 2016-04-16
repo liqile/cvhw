@@ -10,6 +10,8 @@ class Frame;
 
 class LocalMap {
     private:
+
+    //void addPoint(Frame* f1, Frame* f2, int i1, int i2);
     /*
      * triangularPoints
      * @param Frame* f1, first frame in matcher

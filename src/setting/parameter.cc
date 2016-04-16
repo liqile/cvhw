@@ -82,6 +82,11 @@ void CameraParam::project(const cv::Mat& localPos, float& x, float& y) {
     y = fy * c2.at<float>(1) * invz + cy;
 }
 
+cv::Mat CameraParam::getRay(float x, float y) {
+    cv::Mat ray = (cv::Mat_<float>(3, 1) << (x - cx) * invFx, (y - cy) * invFy, 1.0);
+    return ray;
+}
+
 ParamReader::ParamReader(const string& fileName) {
     data.clear();
     ifstream fin(fileName.c_str());

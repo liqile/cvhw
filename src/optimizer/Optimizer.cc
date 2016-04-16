@@ -90,6 +90,12 @@ int Optimizer::poseOptimize(Frame *frame) {
             }
         }
     }
+    for (int i = 0; i < frame->features->keyPointsNum; i++) {
+        Feature& feature =frame->features->keyPoints[i];
+        if (feature.isOutlier) {
+            feature.mapPoint = NULL;
+        }
+    }
     g2o::VertexSE3Expmap* vSE3_recov = static_cast<g2o::VertexSE3Expmap*>(optimizer.vertex(0));
     g2o::SE3Quat SE3quat_recov = vSE3_recov->estimate();
     //todo set pose

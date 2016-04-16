@@ -87,12 +87,14 @@ struct TChecker:public Checker {
 #if ONLY_TRACKING
         return true;
 #endif
+        return true;
         return (f.mapPoint == NULL);
     }
     bool need2(const Feature& f) {
 #if ONLY_TRACKING
         return true;
 #endif
+        return true;
         return (f.mapPoint == NULL);
     }
 

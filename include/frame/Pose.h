@@ -56,14 +56,29 @@ struct Pose {
          * function: compute epipole of second frame,
          *         here, [this] ptr point to the pose of second frame
          */
-        void computeEpipole(const Pose& p1, float& ex, float& ey);
+        void computeEpipole(const Pose& p1, float& ex, float& ey) const;
         /*
          * getF12
          * @param const Pose& p1, pose of first frame
          * function: compute and return F12,
          *         here, [this] ptr point to the pose of second frame
          */
-        cv::Mat getF12(const Pose& p1);
+        cv::Mat getF12(const Pose& p1) const;
+        /*
+         * checkPoint
+         * @param const cv::Mat& pos, pos of 3d point in world system
+         * @param const cv::KeyPoint& k, key point
+         * function: check pos whether in front of camera,
+         *         and check the distance of projection key point
+         *         if the pos is valid, return true, otherwise return false
+         */
+        bool checkPoint(const cv::Mat& pos, const cv::KeyPoint& k) const;
+        /*
+         * distance
+         * @param const cv::Mat& wp, 3d coordinate in world system
+         * function: get the distance of wp and camera center
+         */
+        float distance(const cv::Mat& wp) const;
         /*
          * skewSymmetricMatrix
          * @param const cv::Mat& v, a 3d vector
