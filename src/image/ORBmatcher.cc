@@ -156,7 +156,7 @@ void ORBmatcher::searchMatches(const Indices& idx1, const Indices& idx2) {
             counter->addMatch (i, j);
         }
     }
-    cout << "find: " << count << endl;
+    //cout << "find: " << count << endl;
 }
 
 ORBmatcher::ORBmatcher(Frame* currFrame) {
@@ -249,8 +249,8 @@ void ORBmatcher::searchByTriangular(Frame *secondFrame) {
         if (class1 == class2) {
             const Indices& idx1 = it1->second;
             const Indices& idx2 = it2->second;
-            cout << "curr class: " << class1 << " size: " << idx1.size() << endl;
-            cout << "last class: " << class2 << " size: " << idx2.size() << endl << endl;
+            //cout << "curr class: " << class1 << " size: " << idx1.size() << endl;
+            //cout << "last class: " << class2 << " size: " << idx2.size() << endl << endl;
             searchMatches(idx1, idx2);
             it1 ++;
             it2 ++;

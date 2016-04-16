@@ -15,7 +15,7 @@ SET(CMAKE_DEPENDS_CHECK_CXX
   "/home/lql/slam/cvhw/src/image/ORBVocabulary.cc" "/home/lql/slam/cvhw/build/CMakeFiles/myslam.dir/src/image/ORBVocabulary.cc.o"
   "/home/lql/slam/cvhw/src/image/ORBextractor.cc" "/home/lql/slam/cvhw/build/CMakeFiles/myslam.dir/src/image/ORBextractor.cc.o"
   "/home/lql/slam/cvhw/src/image/ORBmatcher.cc" "/home/lql/slam/cvhw/build/CMakeFiles/myslam.dir/src/image/ORBmatcher.cc.o"
-  "/home/lql/slam/cvhw/src/map/Map.cc" "/home/lql/slam/cvhw/build/CMakeFiles/myslam.dir/src/map/Map.cc.o"
+  "/home/lql/slam/cvhw/src/map/LocalMap.cc" "/home/lql/slam/cvhw/build/CMakeFiles/myslam.dir/src/map/LocalMap.cc.o"
   "/home/lql/slam/cvhw/src/map/MapPoint.cc" "/home/lql/slam/cvhw/build/CMakeFiles/myslam.dir/src/map/MapPoint.cc.o"
   "/home/lql/slam/cvhw/src/optimizer/Optimizer.cc" "/home/lql/slam/cvhw/build/CMakeFiles/myslam.dir/src/optimizer/Optimizer.cc.o"
   "/home/lql/slam/cvhw/src/setting/parameter.cc" "/home/lql/slam/cvhw/build/CMakeFiles/myslam.dir/src/setting/parameter.cc.o"

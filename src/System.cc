@@ -23,12 +23,12 @@ bool System::needKeyFrame(Frame *frame, int points) {
     if (frame->frameId <= 2) {
         return true;
     }
-    if (frame->frameId - lastKeyFrame->frameId >= 30) {
+    if (frame->frameId - lastKeyFrame->frameId >= 20) {
         return true;
     }
     float rate = (float)points / trackingMatcherCounter.lastMapPointNum;
     cout << "points tracking rate: " << rate << endl;
-    if (rate < 0.9) {
+    if (points < 90) {
         return true;
     }
     return false;
@@ -49,7 +49,7 @@ System::System(const string& fileName) {
     cout << "vocFile: " << setting->vocFile << endl;
     loadVocabulary(setting->vocFile);
     state = 0;
-    map = new Map();
+    map = new LocalMap();
     tracker = new Tracking();
     Display::start();
 }
@@ -66,6 +66,7 @@ Pose System::track(const cv::Mat& img, const cv::Mat& depth, const double& times
         int points = tracker->trackLastFrame(frame);
         cout << "track points: " << points << endl;
         cout << "pose: " << frame->pose.mTcw << endl;
+        /*
         if (frame->frameId == 2) {
             lastKeyFrame = frame;
         } else {
@@ -73,6 +74,10 @@ Pose System::track(const cv::Mat& img, const cv::Mat& depth, const double& times
                 ORBmatcher matcher(frame);
                 matcher.searchByTriangular(lastKeyFrame);
             }
+        }
+        */
+        if (needKeyFrame(frame, points)) {
+            createNewKeyFrame(frame);
         }
     }
     return frame->pose;

@@ -233,28 +233,28 @@ CMakeFiles/myslam.dir/src/image/ORBVocabulary.cc.o.provides: CMakeFiles/myslam.d
 
 CMakeFiles/myslam.dir/src/image/ORBVocabulary.cc.o.provides.build: CMakeFiles/myslam.dir/src/image/ORBVocabulary.cc.o
 
-CMakeFiles/myslam.dir/src/map/Map.cc.o: CMakeFiles/myslam.dir/flags.make
-CMakeFiles/myslam.dir/src/map/Map.cc.o: ../src/map/Map.cc
+CMakeFiles/myslam.dir/src/map/LocalMap.cc.o: CMakeFiles/myslam.dir/flags.make
+CMakeFiles/myslam.dir/src/map/LocalMap.cc.o: ../src/map/LocalMap.cc
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/lql/slam/cvhw/build/CMakeFiles $(CMAKE_PROGRESS_9)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/myslam.dir/src/map/Map.cc.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/myslam.dir/src/map/Map.cc.o -c /home/lql/slam/cvhw/src/map/Map.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/myslam.dir/src/map/LocalMap.cc.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/myslam.dir/src/map/LocalMap.cc.o -c /home/lql/slam/cvhw/src/map/LocalMap.cc
 
-CMakeFiles/myslam.dir/src/map/Map.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/myslam.dir/src/map/Map.cc.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/lql/slam/cvhw/src/map/Map.cc > CMakeFiles/myslam.dir/src/map/Map.cc.i
+CMakeFiles/myslam.dir/src/map/LocalMap.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/myslam.dir/src/map/LocalMap.cc.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/lql/slam/cvhw/src/map/LocalMap.cc > CMakeFiles/myslam.dir/src/map/LocalMap.cc.i
 
-CMakeFiles/myslam.dir/src/map/Map.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/myslam.dir/src/map/Map.cc.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/lql/slam/cvhw/src/map/Map.cc -o CMakeFiles/myslam.dir/src/map/Map.cc.s
+CMakeFiles/myslam.dir/src/map/LocalMap.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/myslam.dir/src/map/LocalMap.cc.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/lql/slam/cvhw/src/map/LocalMap.cc -o CMakeFiles/myslam.dir/src/map/LocalMap.cc.s
 
-CMakeFiles/myslam.dir/src/map/Map.cc.o.requires:
-.PHONY : CMakeFiles/myslam.dir/src/map/Map.cc.o.requires
+CMakeFiles/myslam.dir/src/map/LocalMap.cc.o.requires:
+.PHONY : CMakeFiles/myslam.dir/src/map/LocalMap.cc.o.requires
 
-CMakeFiles/myslam.dir/src/map/Map.cc.o.provides: CMakeFiles/myslam.dir/src/map/Map.cc.o.requires
-	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/map/Map.cc.o.provides.build
-.PHONY : CMakeFiles/myslam.dir/src/map/Map.cc.o.provides
+CMakeFiles/myslam.dir/src/map/LocalMap.cc.o.provides: CMakeFiles/myslam.dir/src/map/LocalMap.cc.o.requires
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/map/LocalMap.cc.o.provides.build
+.PHONY : CMakeFiles/myslam.dir/src/map/LocalMap.cc.o.provides
 
-CMakeFiles/myslam.dir/src/map/Map.cc.o.provides.build: CMakeFiles/myslam.dir/src/map/Map.cc.o
+CMakeFiles/myslam.dir/src/map/LocalMap.cc.o.provides.build: CMakeFiles/myslam.dir/src/map/LocalMap.cc.o
 
 CMakeFiles/myslam.dir/src/map/MapPoint.cc.o: CMakeFiles/myslam.dir/flags.make
 CMakeFiles/myslam.dir/src/map/MapPoint.cc.o: ../src/map/MapPoint.cc
@@ -427,7 +427,7 @@ myslam_OBJECTS = \
 "CMakeFiles/myslam.dir/src/System.cc.o" \
 "CMakeFiles/myslam.dir/src/image/Features.cc.o" \
 "CMakeFiles/myslam.dir/src/image/ORBVocabulary.cc.o" \
-"CMakeFiles/myslam.dir/src/map/Map.cc.o" \
+"CMakeFiles/myslam.dir/src/map/LocalMap.cc.o" \
 "CMakeFiles/myslam.dir/src/map/MapPoint.cc.o" \
 "CMakeFiles/myslam.dir/src/optimizer/Optimizer.cc.o" \
 "CMakeFiles/myslam.dir/src/track/Tracking.cc.o" \
@@ -447,7 +447,7 @@ myslam_EXTERNAL_OBJECTS =
 ../lib/libmyslam.so: CMakeFiles/myslam.dir/src/System.cc.o
 ../lib/libmyslam.so: CMakeFiles/myslam.dir/src/image/Features.cc.o
 ../lib/libmyslam.so: CMakeFiles/myslam.dir/src/image/ORBVocabulary.cc.o
-../lib/libmyslam.so: CMakeFiles/myslam.dir/src/map/Map.cc.o
+../lib/libmyslam.so: CMakeFiles/myslam.dir/src/map/LocalMap.cc.o
 ../lib/libmyslam.so: CMakeFiles/myslam.dir/src/map/MapPoint.cc.o
 ../lib/libmyslam.so: CMakeFiles/myslam.dir/src/optimizer/Optimizer.cc.o
 ../lib/libmyslam.so: CMakeFiles/myslam.dir/src/track/Tracking.cc.o
@@ -588,7 +588,7 @@ CMakeFiles/myslam.dir/requires: CMakeFiles/myslam.dir/src/image/ORBmatcher.cc.o.
 CMakeFiles/myslam.dir/requires: CMakeFiles/myslam.dir/src/System.cc.o.requires
 CMakeFiles/myslam.dir/requires: CMakeFiles/myslam.dir/src/image/Features.cc.o.requires
 CMakeFiles/myslam.dir/requires: CMakeFiles/myslam.dir/src/image/ORBVocabulary.cc.o.requires
-CMakeFiles/myslam.dir/requires: CMakeFiles/myslam.dir/src/map/Map.cc.o.requires
+CMakeFiles/myslam.dir/requires: CMakeFiles/myslam.dir/src/map/LocalMap.cc.o.requires
 CMakeFiles/myslam.dir/requires: CMakeFiles/myslam.dir/src/map/MapPoint.cc.o.requires
 CMakeFiles/myslam.dir/requires: CMakeFiles/myslam.dir/src/optimizer/Optimizer.cc.o.requires
 CMakeFiles/myslam.dir/requires: CMakeFiles/myslam.dir/src/track/Tracking.cc.o.requires

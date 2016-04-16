@@ -48,7 +48,7 @@ void LocalMap::addKeyFrame(Frame* keyFrame) {
     processNewKeyFrame(keyFrame);
 }
 
-void getNeighborKeyFrames(const Frame* frame, std::vector<Frame*>& frames) {
+void LocalMap::getNeighborKeyFrames(const Frame* frame, std::vector<Frame*>& frames) {
     frames.clear();
     for (int i = 0; i < keyFrames.size(); i++) {
         Frame* f = keyFrames[i];

@@ -2,7 +2,7 @@
 #define MAP_POINT_H
 
 #include "Frame.h"
-#include "Map.h"
+#include "LocalMap.h"
 #include "Pose.h"
 #include <opencv2/core/core.hpp>
 #include <opencv2/opencv.hpp>
@@ -11,7 +11,7 @@
 namespace lqlslam {
 
 class Frame;
-class Map;
+class LocalMap;
 
 struct Observation {
     /*

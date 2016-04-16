@@ -2,7 +2,7 @@
 #define SYSTEM_H
 
 #include "Frame.h"
-#include "Map.h"
+#include "LocalMap.h"
 #include "ORBextractor.h"
 #include "ORBmatcher.h"
 #include "Tracking.h"
@@ -53,7 +53,7 @@ class System {
     /*
      * map
      */
-    Map* map;
+    LocalMap* map;
 
     public:
 

@@ -533,8 +533,8 @@ Eigen/Geometry
 ../include/System.h
 Frame.h
 ../include/Frame.h
-Map.h
-../include/Map.h
+LocalMap.h
+../include/LocalMap.h
 ORBextractor.h
 ../include/ORBextractor.h
 ORBmatcher.h
@@ -632,7 +632,7 @@ Frame.h
 TrackingDrawer.h
 ../include/image/TrackingDrawer.h
 
-../include/map/Map.h
+../include/map/LocalMap.h
 MapPoint.h
 ../include/map/MapPoint.h
 Frame.h
@@ -641,8 +641,8 @@ Frame.h
 ../include/map/MapPoint.h
 Frame.h
 ../include/map/Frame.h
-Map.h
-../include/map/Map.h
+LocalMap.h
+../include/map/LocalMap.h
 Pose.h
 ../include/map/Pose.h
 opencv2/core/core.hpp
