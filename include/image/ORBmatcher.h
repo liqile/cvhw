@@ -107,12 +107,14 @@ struct TChecker:public Checker {
     bool check(const Feature& f1, const Feature& f2) {
         const cv::KeyPoint& kp1= f1.keyPoint;
         const cv::KeyPoint& kp2 = f2.keyPoint;
-        const float distex = ex - kp1.pt.x;
+        /*
+        const float distex = ex - kp2.pt.x;
         const float distey = ey - kp2.pt.y;
         const int octave = kp2.octave;
         if (distex * distex + distey * distey < 100 * extract->scaleFactor[octave]) {
             return false;
         }
+        */
         return Pose::checkDistEpipolarLine (kp1, kp2, fun12);
     }
 };
@@ -244,6 +246,14 @@ class ORBmatcher {
      *         mappingMatchCounter will count
      */
     void searchByTriangular(Frame* secondFrame);//, vector<pair<int, int> >& matches);
+
+#if DEBUG_MATCHER
+    /*
+     * debugTriangular
+     * function: debug triangular matches last time
+     */
+    void debugTriangular();
+#endif
 };
 
 }

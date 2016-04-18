@@ -86,6 +86,16 @@ struct Pose {
          */
         static cv::Mat skewSymmetricMatrix(const cv::Mat& v);
         /*
+         * getEpipolarLine
+         * @param const cv::KeyPoint& kp1, keypoint in frame1
+         * @param const cv::Mat& F12, fundamental matrix of frame1 and frame2
+         * @param float& a, line: ax + by + c = 0 on second frame
+         * @param float& b, line: ax + by + c = 0 on second frame
+         * @param float& c, line: ax + by + c = 0 on second frame
+         * function: get eppipolar line on second frame, line: Ax + by + c = 0
+         */
+        static void getEpipolarLine(const cv::KeyPoint &kp1, const cv::Mat &F12, float& a, float& b, float& c);
+        /*
          * checkDistEpipolarLine
          * @param const cv::KeyPoint& kp1, keypoint in frame1
          * @param const cv::KeyPoint& kp2, keypoint in frame2

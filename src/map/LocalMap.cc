@@ -41,7 +41,10 @@ void LocalMap::createMapPoints(Frame *keyFrame) {
         cout << "triangular : " << keyFrame->frameId << " with " << neigh->frameId << endl;
         matcher.searchByTriangular(neigh);
         triangularPoints(keyFrame, neigh);
-        displayer->show();
+        if (displayer->show()) {
+            cout << "triangular debug" << endl;
+            matcher.debugTriangular ();
+        }
     }
 }
 

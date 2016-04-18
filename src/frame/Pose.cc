@@ -56,6 +56,12 @@ cv::Mat Pose::skewSymmetricMatrix (const cv::Mat &v) {
             v.at<float>(2),               0,-v.at<float>(0),
             -v.at<float>(1),  v.at<float>(0),              0);
 }
+void Pose::getEpipolarLine(const cv::KeyPoint &kp1, const cv::Mat &F12, float &a, float &b, float &c) {
+    a = kp1.pt.x*F12.at<float>(0,0)+kp1.pt.y*F12.at<float>(1,0)+F12.at<float>(2,0);
+    b = kp1.pt.x*F12.at<float>(0,1)+kp1.pt.y*F12.at<float>(1,1)+F12.at<float>(2,1);
+    c = kp1.pt.x*F12.at<float>(0,2)+kp1.pt.y*F12.at<float>(1,2)+F12.at<float>(2,2);
+}
+
 bool Pose::checkDistEpipolarLine(const cv::KeyPoint &kp1,const cv::KeyPoint &kp2,const cv::Mat &F12) {
     // Epipolar line in second image l = x1'F12 = [a b c]
     const float a = kp1.pt.x*F12.at<float>(0,0)+kp1.pt.y*F12.at<float>(1,0)+F12.at<float>(2,0);

@@ -277,4 +277,9 @@ void ORBmatcher::searchByTriangular(Frame *secondFrame) {
     //return matches.size();
 }
 
+void ORBmatcher::debugTriangular() {
+    TChecker* c = (TChecker*) checker;
+    mappingMatcherCounter.drawMatchOneByOne (currFrame, lastFrame, c->fun12);
+}
+
 }

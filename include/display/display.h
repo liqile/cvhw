@@ -56,8 +56,9 @@ public:
     /*
      * show
      * function: display informations
+     *         return: whether need debug
      */
-    void show();
+    bool show();
 
     /*
      * start

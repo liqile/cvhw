@@ -71,6 +71,50 @@ void MatcherCounter::drawMatches(const Frame *curr, const Frame *last) {
     displayer->setMatchGraph(match);
 }
 
+void MatcherCounter::drawMatchOneByOne(const Frame *curr, const Frame *last, const cv::Mat &F12) {
+    const vector<cv::KeyPoint>& kp2 = last->features->rawKeyPoints;
+    const vector<cv::KeyPoint>& kp1 = curr->features->rawKeyPoints;
+    const cv::Mat& img2 = last->rawData->img;
+    const cv::Mat& img1 = curr->rawData->img;
+    for (int i = 0; i < lastIdx.size(); i++) {
+        if (lastIdx[i] == -1) {
+            continue;
+        }
+        vector<cv::DMatch> matches;
+        matches.clear();
+        cv::DMatch m;
+        m.queryIdx = lastIdx[i];
+        m.trainIdx = i;
+        matches.push_back(m);
+        cv::drawMatches(img2, kp2, img1, kp1, matches, match, cv::Scalar(255, 0, 0));
+        float a, b, c;
+        Pose::getEpipolarLine (kp1[i], F12, a, b, c);
+        if (b != 0) {
+            //y = - a / b * x - c / b;
+            float x0 = 0;
+            float y0 = - a / b * x0 - c / b;
+            float x1 = img2.cols - 1;
+            float y1 = - a / b * x1 - c / b;
+            cv::Point2f p0(x0, y0);
+            cv::Point2f p1(x1, y1);
+            cv::line(match, p0, p1, cv::Scalar(0, 0, 255));
+        } else {
+            //x = - b / a * y - c / a;
+            float y0 = 0;
+            float x0 = - b / a * x0 - c / a;
+            float y1 = img2.rows - 1;
+            float x1 = - b / a * x1 - c / a;
+            cv::Point2f p0(x0, y0);
+            cv::Point2f p1(x1, y1);
+            cv::line(match, p0, p1, cv::Scalar(0, 0, 255));
+        }
+        displayer->setMatchGraph(match);
+        if (!displayer->show()) {
+            break;
+        }
+    }
+}
+
 void MatcherCounter::drawTrackingMatches(const Frame *curr, const Frame *last) {
     const vector<cv::KeyPoint>& kp1 = curr->features->rawKeyPoints;
     const vector<cv::KeyPoint>& kp2 = last->features->rawKeyPoints;
