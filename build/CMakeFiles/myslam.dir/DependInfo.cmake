@@ -16,6 +16,7 @@ SET(CMAKE_DEPENDS_CHECK_CXX
   "/home/liqile/git/cvhw/src/image/ORBextractor.cc" "/home/liqile/git/cvhw/build/CMakeFiles/myslam.dir/src/image/ORBextractor.cc.o"
   "/home/liqile/git/cvhw/src/image/ORBmatcher.cc" "/home/liqile/git/cvhw/build/CMakeFiles/myslam.dir/src/image/ORBmatcher.cc.o"
   "/home/liqile/git/cvhw/src/map/LocalMap.cc" "/home/liqile/git/cvhw/build/CMakeFiles/myslam.dir/src/map/LocalMap.cc.o"
+  "/home/liqile/git/cvhw/src/map/Map.cc" "/home/liqile/git/cvhw/build/CMakeFiles/myslam.dir/src/map/Map.cc.o"
   "/home/liqile/git/cvhw/src/map/MapPoint.cc" "/home/liqile/git/cvhw/build/CMakeFiles/myslam.dir/src/map/MapPoint.cc.o"
   "/home/liqile/git/cvhw/src/optimizer/Optimizer.cc" "/home/liqile/git/cvhw/build/CMakeFiles/myslam.dir/src/optimizer/Optimizer.cc.o"
   "/home/liqile/git/cvhw/src/setting/parameter.cc" "/home/liqile/git/cvhw/build/CMakeFiles/myslam.dir/src/setting/parameter.cc.o"

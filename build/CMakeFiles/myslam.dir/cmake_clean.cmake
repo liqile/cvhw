@@ -7,6 +7,7 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/myslam.dir/src/System.cc.o"
   "CMakeFiles/myslam.dir/src/image/Features.cc.o"
   "CMakeFiles/myslam.dir/src/image/ORBVocabulary.cc.o"
+  "CMakeFiles/myslam.dir/src/map/Map.cc.o"
   "CMakeFiles/myslam.dir/src/map/LocalMap.cc.o"
   "CMakeFiles/myslam.dir/src/map/MapPoint.cc.o"
   "CMakeFiles/myslam.dir/src/optimizer/Optimizer.cc.o"

@@ -65,7 +65,7 @@ Pose System::track(const cv::Mat& img, const cv::Mat& depth, const double& times
         initialize(frame);
         state = 1;
     } else {
-        int points = tracker->trackLastFrame(frame);
+        int points = tracker->track(frame);
         cout << "track points: " << points << endl;
         cout << "pose: " << frame->pose.mTcw << endl;
         /*
@@ -133,8 +133,10 @@ void testSystem3() {
             dep = d;
         }
         Pose pose = system->track(img, dep, 0);
+        cout << " drawing depth of frame: " << i << endl;
         trackingDepthDrawer.drawDepth(rgbImg, d, pose);
         displayer->show();
+        cout << " depth of frame: " << i << endl;
     }
 }
 

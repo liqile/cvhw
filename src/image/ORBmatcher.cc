@@ -193,10 +193,12 @@ int ORBmatcher::searchByProject(Frame* lastFrame, float th) {
     matchInit();
     for (int i = 0; i < last->keyPointsNum; i++) {
         //int idxLast = i;
-        cv::Mat desLast = last->descriptors.row(i);
         const Feature& featureLast = last->keyPoints[i];
         MapPoint* point = featureLast.mapPoint;
         if (point == NULL) {
+            continue;
+        }
+        if (point->trackLog.trackMatchedFrame == currFrame->frameId) {
             continue;
         }
         float u, v, invzc, ur;
@@ -208,12 +210,15 @@ int ORBmatcher::searchByProject(Frame* lastFrame, float th) {
         float radius = th * extract->scaleFactor[lastOctave];
         //cout <<"level: "<<lastOctave<<" radius: " <<radius<<endl;
         //const vector<int>& vidxCurr = curr->getFeaturesInArea (u, v, radius, lastOctave - 1, lastOctave + 1);
-         u = featureLast.keyPoint.pt.x;
-         v = featureLast.keyPoint.pt.y;
+        // u = featureLast.keyPoint.pt.x;
+        // v = featureLast.keyPoint.pt.y;
         const vector<int>& vidxCurr = curr->getFeaturesInArea (u, v, radius, lastOctave - 1, lastOctave + 1);
         if (vidxCurr.size() == 0) {
             continue;
         }
+
+        cv::Mat desLast = last->descriptors.row(i);
+
         int bestIdxCurr;
         int bestDist = bestMatch(desLast, ur, vidxCurr, radius, bestIdxCurr);
         if (bestDist <= TH_HIGH) {
@@ -227,7 +232,8 @@ int ORBmatcher::searchByProject(Frame* lastFrame, float th) {
     }
     filterByRot();
 #if DEBUG_MATCHER
-    counter->drawTrackingMatches(currFrame, lastFrame);
+    //counter->drawTrackingMatches(currFrame, lastFrame);
+    counter->drawMatches(currFrame, lastFrame);
 #endif
     return matches;
 }

@@ -24,6 +24,14 @@ namespace lqlslam {
          */
         void setLastFrame(Frame* frame);
 
+        /*
+         * filterOutlier
+         * @param Frame* frame, current tracking frame
+         * function: after tracking, some matches in frame will
+         *     be regared as outlier. just filter them
+         */
+        void filterOutlier(Frame* frame);
+
         public:
         /*
          * Tracking
@@ -50,6 +58,19 @@ namespace lqlslam {
          */
         int trackLastFrame(Frame* frame);
 
+        /*
+         * trackLocalMap
+         * @param Frame* frame, current frame
+         * function: track current frame from local map
+         */
+        int trackLocalMap(Frame* frame);
+
+        /*
+         * track
+         * @param Frame* frame, current frame
+         * function: track current frame
+         */
+        int track(Frame* frame);
     };
 
 }

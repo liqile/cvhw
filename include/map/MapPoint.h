@@ -36,6 +36,19 @@ struct Observation {
     Observation();
 };
 
+struct TrackLog {
+    /*
+     * current frame id matched in tracking
+     * -1 for not matched
+     */
+    int trackMatchedFrame;
+    /*
+     * setTrackFrameId;
+     * @param int id, id of current frame, -1 for no such frame
+     */
+    void setTrackMatchedFrame(int id);
+};
+
 struct MapPoint {
     /*
      * pos of mappoint in word coordinate system
@@ -46,7 +59,10 @@ struct MapPoint {
      * observation information of this map point
      */
     Observation observation;
-
+    /*
+     * log of tracking
+     */
+    TrackLog trackLog;
     /*
      * MapPoint
      * @param const cv::Mat& pos, the pos of point in word system

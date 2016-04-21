@@ -436,6 +436,30 @@ src/map/LocalMap.cc.s:
 	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/map/LocalMap.cc.s
 .PHONY : src/map/LocalMap.cc.s
 
+src/map/Map.o: src/map/Map.cc.o
+.PHONY : src/map/Map.o
+
+# target to build an object file
+src/map/Map.cc.o:
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/map/Map.cc.o
+.PHONY : src/map/Map.cc.o
+
+src/map/Map.i: src/map/Map.cc.i
+.PHONY : src/map/Map.i
+
+# target to preprocess a source file
+src/map/Map.cc.i:
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/map/Map.cc.i
+.PHONY : src/map/Map.cc.i
+
+src/map/Map.s: src/map/Map.cc.s
+.PHONY : src/map/Map.s
+
+# target to generate assembly for a file
+src/map/Map.cc.s:
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/map/Map.cc.s
+.PHONY : src/map/Map.cc.s
+
 src/map/MapPoint.o: src/map/MapPoint.cc.o
 .PHONY : src/map/MapPoint.o
 
@@ -581,6 +605,9 @@ help:
 	@echo "... src/map/LocalMap.o"
 	@echo "... src/map/LocalMap.i"
 	@echo "... src/map/LocalMap.s"
+	@echo "... src/map/Map.o"
+	@echo "... src/map/Map.i"
+	@echo "... src/map/Map.s"
 	@echo "... src/map/MapPoint.o"
 	@echo "... src/map/MapPoint.i"
 	@echo "... src/map/MapPoint.s"

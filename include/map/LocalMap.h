@@ -1,5 +1,5 @@
-#ifndef MAP_H
-#define MAP_H
+#ifndef LOCAL_MAP_H
+#define LOCAL_MAP_H
 
 #include "MapPoint.h"
 #include "Frame.h"

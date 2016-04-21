@@ -7,7 +7,12 @@ Observation::Observation() {
     observations.clear();
 }
 
+void TrackLog::setTrackMatchedFrame(int id) {
+    trackMatchedFrame = id;
+}
+
 MapPoint::MapPoint(const cv::Mat& pos, Frame* keyFrame, int index) {
+    trackLog.setTrackMatchedFrame(-1);
     this->pos = pos.clone();
     addObservation(keyFrame, index);
 }
