@@ -1,6 +1,6 @@
 #include "Tracking.h"
 #include "Map.h"
-
+#include "drawers.h"
 namespace lqlslam {
 
 void Tracking::setLastFrame(Frame *frame) {
@@ -23,6 +23,18 @@ void Tracking::filterOutlier(Frame* frame) {
     }
 }
 
+void Tracking::setMapPoint(Frame* f1, Frame* f2) {
+    for (int i = 0; i < f1->features->keyPointsNum; i++) {
+        int idx2 = trackingMatcherCounter.lastIdx[i];
+        if (idx2 == -1) {
+            continue;
+        }
+        Feature& fe1 = f1->features->keyPoints[i];
+        Feature& fe2 = f2->features->keyPoints[idx2];
+        fe1.mapPoint = fe2.mapPoint;
+    }
+}
+
 Tracking::Tracking() {
     lastFrame = NULL;
 }
@@ -36,18 +48,20 @@ int Tracking::trackLastFrame(Frame* frame) {
     cout << "last frame id: " << lastFrame->frameId << endl;
     frame->setPose(lastFrame->pose.mTcw);
     ORBmatcher matcher(frame);
-    matcher.searchByProject(lastFrame, 14);
+    matcher.searchLastFrame(lastFrame, 14);
+    setMapPoint(frame, lastFrame);
     int good = Optimizer::poseOptimize(frame);
     return good;
 }
 
 int Tracking::trackLocalMap(Frame* frame) {
-    vector<Frame*> neigh;
+    neigh.clear();
     mapInfo.getNeighborKF(frame, neigh);
     ORBmatcher matcher(frame);
     for (int i = 0; i < neigh.size(); i++) {
         Frame* ref = neigh[i];
-        matcher.searchByProject (ref, 2);
+        matcher.searchKeyFrame(ref, 2);
+        setMapPoint(frame, ref);
         cout << "match local map of : " << ref->frameId << endl;
         displayer->show();
     }

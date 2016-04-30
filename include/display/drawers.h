@@ -2,6 +2,7 @@
 #define DRAWERS_H
 
 #include "TrackingDrawer.h"
+#include "MatcherCounter.h"
 
 namespace lqlslam {
     extern MatcherCounter trackingMatcherCounter;

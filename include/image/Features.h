@@ -137,6 +137,21 @@ struct Features {
      *           return index of Feature in features
      */
     vector<int> getFeaturesInArea(const float& x, const float& y, const float& r, const int minLevel, const int maxLevel = -1);
+
+    /*
+     * eraseMapPoint
+     * @param int index, index of keyPoints
+     * function: erase mappoint of the keypoint
+     */
+    void eraseMapPoint(int index);
+
+    /*
+     * setMapPoint
+     * @param int index, index of keypoint
+     * @param MapPoint* p, map point
+     * function: set map point
+     */
+    void setMapPoint(int index, MapPoint* p);
 };
 
 }

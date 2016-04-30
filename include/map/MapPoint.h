@@ -14,6 +14,15 @@ class Frame;
 class LocalMap;
 
 struct Observation {
+    bool needUpdate;
+    /*
+     * min posible distance
+     */
+    float minDis;
+    /*
+     * max posible distance
+     */
+    float maxDis;
     /*
      * descriptor of mappoint
      */
@@ -34,22 +43,69 @@ struct Observation {
      * function: constructor
      */
     Observation();
+
+    /*
+     * updateDescriptor
+     * function: update descriptor
+     */
+    void updateDescriptor();
+
+    /*
+     * addObservation
+     * @param cv::Mat& pos, pos of map point in world system
+     * @param Frame* keyFrame, keyframe observes this point
+     * @param int index, the index of feature in keyframe matching this point
+     * function: add observation record with keyframe and index in this map point
+     */
+    void addObservation(const cv::Mat& pos, Frame* keyFrame, int index);
+
+    /*
+     * firstKFId
+     * function : return id of ref kf
+     */
+    int firstKFId();
 };
 
-struct TrackLog {
+struct Marker {
     /*
      * current frame id matched in tracking
-     * -1 for not matched
+     * -1 for not visited
      */
     int trackMatchedFrame;
     /*
-     * setTrackFrameId;
+     * current frame id matched in local map
+     * -1 for not visited
+     */
+    int mapMatchedFrame;
+    /*
+     * setTrackMatchedFrame
      * @param int id, id of current frame, -1 for no such frame
      */
     void setTrackMatchedFrame(int id);
+
+    /*
+     * setMapMatchedFrame
+     * @param int id, id of current frame, -1 for no such frame
+     */
+    void setMapMatchedFrame(int id);
+
+    Marker();
 };
 
 struct MapPoint {
+    /*
+     * whether map point is good
+     */
+    bool good;
+    /*
+     * id of next map point
+     */
+    static int nextId;
+    /*
+     * id of map point
+     */
+    int pointId;
+
     /*
      * pos of mappoint in word coordinate system
      */
@@ -62,7 +118,7 @@ struct MapPoint {
     /*
      * log of tracking
      */
-    TrackLog trackLog;
+    Marker trackLog;
     /*
      * MapPoint
      * @param const cv::Mat& pos, the pos of point in word system
@@ -101,7 +157,54 @@ struct MapPoint {
      */
     bool reProject(const Pose& pose, float& u, float& v, float& invz, float& ur);
 
+    /*
+     * getDiscriptor
+     * function: return a suitable discriptor of mappoint
+     *         a mappoint can be observed by more than one keyframes
+     *         so there may be more than one keypoint discriptors
+     */
     cv::Mat getDiscriptor();
+
+    /*
+     * getOctave
+     * @param float dis, distance of mappoint and camera center
+     * function: compute and return a suitable octave for
+     *         key point search
+     */
+    int getOctave(float dis);
+
+    /*
+     * getMinDis
+     */
+    float getMinDis();
+
+    /*
+     * getMaxDis
+     */
+    float getMaxDis();
+
+    /*
+     * merge
+     * @param MapPoint* p, a map point
+     * function: merge observations in p to current mappoint
+     */
+    void merge(MapPoint* p);
+
+    /*
+     * destroy
+     * function: destroy this map point
+     */
+    void destroy();
+
+    /*
+     * merge
+     * @param MapPoint* p1,
+     * @param MapPoint* p2,
+     * function: merge observation of p1 and p2 to one mappoint
+     *         return the mappoint remained
+     */
+    static MapPoint* merge(MapPoint* p1, MapPoint* p2);
+
 };
 
 }

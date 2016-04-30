@@ -25,14 +25,25 @@ bool System::needKeyFrame(Frame *frame, int points) {
     //if (frame->frameId <= 1) {
     //    return true;
     //}
-    if (frame->frameId - lastKeyFrame->frameId >= 20) {
+
+    Frame* ref = tracker->neigh[0];
+    int num = 0;
+    for (int i = 0; i < ref->features->keyPointsNum; i++) {
+        const Feature& f = ref->features->keyPoints[i];
+        if (f.mapPoint != NULL) {
+            num ++;
+        }
+    }
+    float rate = (float)points / num;
+    cout << "[tracking] ref keyframe map point: " << num << endl;
+    cout << "[tracking] points tracking number: " << points << endl;
+    cout << "[tracking] points tracking rate: " << rate << endl;
+    if (frame->frameId - lastKeyFrame->frameId >= 20 && rate < 0.9) {
         return true;
     }
-    float rate = (float)points / trackingMatcherCounter.lastMapPointNum;
-    cout << "points tracking rate: " << rate << endl;
-    if (points < 90) {
-        return true;
-    }
+    //if (points < 90) {
+    //    return true;
+    //}
     return false;
 }
 void System::createNewKeyFrame(Frame* frame) {

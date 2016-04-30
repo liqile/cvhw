@@ -154,4 +154,14 @@ vector<int> Features::getFeaturesInArea(const float& x, const float& y, const fl
     return result;
 }
 
+void Features::eraseMapPoint(int index) {
+    Feature& f = keyPoints[index];
+    f.mapPoint = static_cast<MapPoint*>(NULL);
+}
+
+void Features::setMapPoint(int index, MapPoint *p) {
+    Feature& f = keyPoints[index];
+    f.mapPoint = p;
+}
+
 }

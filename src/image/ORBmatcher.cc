@@ -16,12 +16,15 @@ int ORBmatcher::bestMatch(const cv::Mat& desLast, float ur, const std::vector<in
     bestIdxCurr = -1;
     for (int j = 0; j < vidxCurr.size(); j++) {
         int idxCurr = vidxCurr[j];
-        Feature& featureCurr = curr->keyPoints[idxCurr];
+        const Feature& featureCurr = curr->keyPoints[idxCurr];
+        if (!mark->canMatch(featureCurr)) {
+            continue;
+        }
+        /*
         if (featureCurr.mapPoint != NULL) {
             //todo check observations
             continue;
         }
-        /*
         if (featureCurr.right > 0 && fabs(ur - featureCurr.right) > radius) {
             continue;
         }*/
@@ -103,7 +106,7 @@ void ORBmatcher::filterByRot() {
         {
             for(size_t j=0, jend=rotHist[i].size(); j<jend; j++)
             {
-                curr->keyPoints[rotHist[i][j]].mapPoint=static_cast<MapPoint*>(NULL);
+                //curr->keyPoints[rotHist[i][j]].mapPoint=static_cast<MapPoint*>(NULL);
                 counter->reduceMatch(rotHist[i][j]);
                 matches--;
             }
@@ -185,12 +188,13 @@ int ORBmatcher::descriptorDis(const cv::Mat &a, const cv::Mat &b) {
     return dist;
 }
 
-int ORBmatcher::searchByProject(Frame* lastFrame, float th) {
+int ORBmatcher::searchByProject(Frame* lastFrame, float th, bool usePointDes) {
     //th *= 2;
-    counter = &trackingMatcherCounter;
     const Features* last = lastFrame->features;
     this->lastFrame = lastFrame;
     matchInit();
+    int pointNum = 0;
+    int unvisitNum = 0;
     for (int i = 0; i < last->keyPointsNum; i++) {
         //int idxLast = i;
         const Feature& featureLast = last->keyPoints[i];
@@ -198,38 +202,69 @@ int ORBmatcher::searchByProject(Frame* lastFrame, float th) {
         if (point == NULL) {
             continue;
         }
-        if (point->trackLog.trackMatchedFrame == currFrame->frameId) {
+        if (!point->good) {
             continue;
         }
+        /*
+        if (point->trackLog.trackMatchedFrame == currFrame->frameId) {
+            continue;
+        }*/
+        pointNum ++;
+        if (!mark->unVisited(point)) {
+            continue;
+        }
+        mark->mark(point);
+        unvisitNum ++;
         float u, v, invzc, ur;
         if (!point->reProject (pose, u, v, invzc, ur)) {
             continue;
         }
         counter->addLastProjectNum();
         int lastOctave = featureLast.keyPoint.octave;
-        float radius = th * extract->scaleFactor[lastOctave];
         //cout <<"level: "<<lastOctave<<" radius: " <<radius<<endl;
         //const vector<int>& vidxCurr = curr->getFeaturesInArea (u, v, radius, lastOctave - 1, lastOctave + 1);
         // u = featureLast.keyPoint.pt.x;
         // v = featureLast.keyPoint.pt.y;
-        const vector<int>& vidxCurr = curr->getFeaturesInArea (u, v, radius, lastOctave - 1, lastOctave + 1);
+        int minOctave;
+        int maxOctave;
+        cv::Mat desLast;
+        float radius;
+        if (!usePointDes) {
+            minOctave = lastOctave - 1;
+            maxOctave = lastOctave + 1;
+            desLast = last->descriptors.row(i);
+            radius = th * extract->scaleFactor[lastOctave];
+        } else {
+            desLast = point->getDiscriptor();
+            float dis = pose.distance(point->pos);
+            maxOctave = point->getOctave(dis);
+            minOctave = maxOctave - 1;
+            if (minOctave < 0) {
+                minOctave = 0;
+            }
+            radius = th * extract->scaleFactor[minOctave] * sqrt(extract->fScaleFactor);
+        }
+        const vector<int>& vidxCurr = curr->getFeaturesInArea (u, v, radius, minOctave, maxOctave);
         if (vidxCurr.size() == 0) {
             continue;
         }
 
-        cv::Mat desLast = last->descriptors.row(i);
+        //cv::Mat desLast = last->descriptors.row(i);
 
         int bestIdxCurr;
         int bestDist = bestMatch(desLast, ur, vidxCurr, radius, bestIdxCurr);
         if (bestDist <= TH_HIGH) {
-            Feature& featureCurr = curr->keyPoints[bestIdxCurr];
-            featureCurr.mapPoint = point;
+            const Feature& featureCurr = curr->keyPoints[bestIdxCurr];
+            //featureCurr.mapPoint = point;
             int bin = getAngle(featureCurr, featureLast);
             rotHist[bin].push_back (bestIdxCurr);
             matches ++;
             counter->addMatch(bestIdxCurr, i);
         }
     }
+    cout << "[tracking] current frame id: " << currFrame->frameId << endl;
+    cout << "[tracking] last frame map point num: " << pointNum << endl;
+    cout << "[tracking] last frame unvisit point num: " << unvisitNum << endl;
     filterByRot();
 #if DEBUG_MATCHER
     //counter->drawTrackingMatches(currFrame, lastFrame);
@@ -281,6 +316,39 @@ void ORBmatcher::searchByTriangular(Frame *secondFrame) {
     counter->drawMatches(currFrame, lastFrame);
 #endif
     //return matches.size();
+}
+#if 0
+void ORBmatcher::setTrackPoint(Frame* lastFrame) {
+    for (int i = 0; i < curr->keyPointsNum; i++) {
+        int lastIdx = trackingMatcherCounter.lastIdx[i];
+        if (lastIdx == -1) {
+            continue;
+        }
+        Feature& fl = lastFrame->features->keyPoints[lastIdx];
+        Feature& fc = curr->keyPoints[i];
+        fc.mapPoint = fl.mapPoint;
+    }
+}
+#endif
+void ORBmatcher::searchLastFrame(Frame *lastFrame, float th) {
+    mark = new TrackMark(currFrame, lastFrame);
+    counter = &trackingMatcherCounter;
+    searchByProject(lastFrame, th, false);
+    delete mark;
+}
+
+void ORBmatcher::searchKeyFrame(Frame *keyFrame, float th) {
+    mark = new TrackMark(currFrame, keyFrame);
+    counter = &trackingMatcherCounter;
+    searchByProject(keyFrame, th, true);
+    delete mark;
+}
+
+void ORBmatcher::searchForFuse(Frame *keyFrame, float th) {
+    mark = new FuseMark(currFrame, keyFrame);
+    counter = &mappingMatcherCounter;
+    searchByProject(keyFrame, th, true);
+    delete mark;
 }
 
 void ORBmatcher::debugTriangular() {

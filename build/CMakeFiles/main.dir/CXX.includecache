@@ -566,14 +566,6 @@ pcl/point_types.h
 pcl/visualization/cloud_viewer.h
 -
 
-../include/display/drawer/TrackingDrawer.h
-Frame.h
-../include/display/drawer/Frame.h
-Features.h
-../include/display/drawer/Features.h
-display.h
-../include/display/drawer/display.h
-
 ../include/frame/Frame.h
 ORBextractor.h
 ../include/frame/ORBextractor.h
@@ -606,6 +598,14 @@ vector
 ORBVocabulary.h
 ../include/image/ORBVocabulary.h
 
+../include/image/MatcherCounter.h
+Frame.h
+../include/image/Frame.h
+Features.h
+../include/image/Features.h
+display.h
+../include/image/display.h
+
 ../include/image/ORBVocabulary.h
 Thirdparty/DBoW2/DBoW2/FORB.h
 ../include/image/Thirdparty/DBoW2/DBoW2/FORB.h
@@ -625,8 +625,8 @@ Features.h
 ../include/image/Features.h
 Frame.h
 ../include/image/Frame.h
-TrackingDrawer.h
-../include/image/TrackingDrawer.h
+MatcherCounter.h
+../include/image/MatcherCounter.h
 
 ../include/map/LocalMap.h
 MapPoint.h
@@ -702,15 +702,15 @@ ORBmatcher.h
 Optimizer.h
 ../include/track/Optimizer.h
 
-/home/liqile/git/cvhw/main.cc
+/home/lql/slam/cvhw/main.cc
 iostream
 -
 parameter.h
-/home/liqile/git/cvhw/parameter.h
+/home/lql/slam/cvhw/parameter.h
 Frame.h
-/home/liqile/git/cvhw/Frame.h
+/home/lql/slam/cvhw/Frame.h
 System.h
-/home/liqile/git/cvhw/System.h
+/home/lql/slam/cvhw/System.h
 opencv2/highgui/highgui.hpp
 -
 opencv2/imgproc/imgproc.hpp

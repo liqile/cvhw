@@ -17,6 +17,7 @@ class Map {
      */
     vector<Frame*> keyFrames;
     public:
+    Map();
     /*
      * getNeighborKf
      * @param const Frame* frame, current query frame

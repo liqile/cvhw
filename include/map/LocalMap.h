@@ -7,11 +7,18 @@
 namespace lqlslam {
 
 class Frame;
+class MapPoint;
 
 class LocalMap {
     private:
-
-    //void addPoint(Frame* f1, Frame* f2, int i1, int i2);
+    /*
+     * neighbor keyframe of current keyframe
+     */
+    vector<Frame*> neighbor;
+    /*
+     * newly created map points
+     */
+    std::list<MapPoint*> newMapPoints;
     /*
      * triangularPoints
      * @param Frame* f1, first frame in matcher
@@ -28,6 +35,31 @@ class LocalMap {
      */
     void createMapPoints(Frame* keyFrame);
     /*
+     * fuseMatches
+     * @param Frame* f1, first frame
+     * @param Frame* f2, second frame
+     * function: fuse mappoints according to matches
+     */
+    void fuseMatches(Frame* f1, Frame* f2);
+    /*
+     * fuseMapPoint
+     * @param Frame* keyFrame
+     * function: fuse mappoint in keyframe and its neighbor keyframes
+     */
+    void fuseMapPoints(Frame* keyFrame);
+    /*
+     * processTrackedPoints
+     * @param Frame* keyFrame
+     * function: process tracked map points
+     */
+    void processTrackedPoints(Frame* keyFrame);
+    /*
+     * cullMapPoint
+     * @param Frame* keyFrame, current key frame
+     * function: cull map points in newMapPoints list
+     */
+    void cullMapPoint(Frame* keyFrame);
+    /*
      * processNewKeyFrame
      * @param Frame* keyFrame, a new key frame
      * function: deal with a keyframe received by local map thread
@@ -39,6 +71,15 @@ class LocalMap {
      * function: constructor
      */
     LocalMap();
+    /*
+     * initialize
+     * @param Frame* keyFrame, first key frame
+     * function: initialize map
+     */
+    void initialize(Frame* keyFrame);
+    /*
+     * clear
+     */
     void clear();
     /*
      * addKeyFrame(Frame* keyFrame)
@@ -46,6 +87,9 @@ class LocalMap {
      * function: a interface for add a new keyframe in other thread (tracking thread)
      */
     void addKeyFrame(Frame* keyFrame);
+    /*
+     * keyframes
+     */
     std::vector<Frame*> keyFrames;
     /*
      * getNeighborKeyFrames

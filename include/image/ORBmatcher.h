@@ -3,7 +3,7 @@
 
 #include "Features.h"
 #include "Frame.h"
-#include "TrackingDrawer.h"
+#include "MatcherCounter.h"
 
 namespace lqlslam {
 
@@ -119,6 +119,43 @@ struct TChecker:public Checker {
     }
 };
 
+struct Mark {
+    int time;
+    Frame* f1;
+    Frame* f2;
+    Mark(Frame* f1, Frame* f2) {
+        this->f1 = f1;
+        this->f2 = f2;
+        this->time = f1->frameId;
+    }
+    virtual bool unVisited(MapPoint* p) { return true; }
+    virtual bool canMatch(const Feature& feature) { return true;}
+    virtual void mark(MapPoint* p) {}
+};
+
+struct TrackMark:public Mark {
+    TrackMark(Frame* f1, Frame* f2) : Mark(f1, f2) {}
+    bool unVisited(MapPoint *p) {
+        return p->trackLog.trackMatchedFrame != time;
+    }
+    bool canMatch(const Feature& feature) {
+        return (feature.mapPoint == NULL);
+    }
+    void mark(MapPoint* p) {
+        p->trackLog.trackMatchedFrame = time;
+    }
+};
+
+struct FuseMark:public Mark {
+    FuseMark(Frame* f1, Frame* f2) : Mark(f1, f2) {}
+    bool unVisited(MapPoint* p) {
+        return p->trackLog.mapMatchedFrame != time;
+    }
+    void mark(MapPoint *p) {
+        p->trackLog.mapMatchedFrame = time;
+    }
+};
+
 class ORBmatcher {
     private:
     /*
@@ -129,6 +166,10 @@ class ORBmatcher {
      * checker of matches
      */
     Checker* checker;
+    /*
+     * mark of a mappoint whether has been visited during this match
+     */
+    Mark* mark;
     /*
      * a function, check whether a Feature needs a match
      */
@@ -210,6 +251,29 @@ class ORBmatcher {
      *         tracking matcher counter
      */
     void searchMatches(const Indices& idx1, const Indices& idx2);
+    /*
+     * searchByProject
+     * @param Frame* lastFrame, last frame
+     * @param float th, the search range, in level i, the search range is th * sf^i
+     *         sf is the scale factor of pyramid, 1.2 as default
+     * @param bool usePointDes, for keypoints in last frame, whether use descriptor of mappoint
+     *         default is false. if usePointDes is false, descriptor of keypoints will be used
+     * function: match keypoints between current Frame and last Frame
+     *         by projecting mappoints from lastFrame to currFrame
+     *         after matching,  the curr (Features type) will contain corresponding mappoint information
+     *         the return value is the number of matches found
+     *         trackingMatchCounter will count
+     */
+    int searchByProject(Frame* lastFrame, float th, bool usePointDes = false);
+#if 0
+    /*
+     * setTrackPoint
+     * @param Frame* lastFrame, last frame during matching
+     * function: for tracking, set mappoint in last frame
+     *         into current frame according match result
+     */
+    void setTrackPoint(Frame* lastFrame);
+#endif
     public:
     /*
      * ORBmatcher
@@ -226,18 +290,6 @@ class ORBmatcher {
      */
     static int descriptorDis(const cv::Mat& a, const cv::Mat& b);
     /*
-     * searchByProject
-     * @param Frame* lastFrame, last frame
-     * @param float th, the search range, in level i, the search range is th * sf^i
-     *         sf is the scale factor of pyramid, 1.2 as defualt
-     * function: match keypoints between current Frame and last Frame
-     *         by projecting mappoints from lastFrame to currFrame
-     *         after matching,  the curr (Features type) will contain corresponding mappoint information
-     *         the return value is the number of matches found
-     *         trackingMatchCounter will count
-     */
-    int searchByProject(Frame* lastFrame, float th);
-    /*
      * searchByTriangular
      * @param Frame* secondFrame, second frame, current frame as first frame
      * function: search unmatched keypoint matches between first and second frames
@@ -246,7 +298,31 @@ class ORBmatcher {
      *         mappingMatchCounter will count
      */
     void searchByTriangular(Frame* secondFrame);//, vector<pair<int, int> >& matches);
-
+    /*
+     * searchLastFrame
+     * @param Frame* lastFrame, last frame
+     * @param th, search range
+     * function: search matches in last frame by reproject
+     *         its mappoint to current frame (first frame)
+     */
+    void searchLastFrame(Frame* lastFrame, float th);
+    /*
+     * searchKeyFrame
+     * @param Frame* keyFrame, key frame
+     * @param th, search range
+     * function: search matches in key frame by reproject
+     *         its mappoint to current frame (first frame)
+     */
+    void searchKeyFrame(Frame* keyFrame, float th);
+    /*
+     * searchForFuse
+     * @param Frame* keyFrame, key frame
+     * @param th, search range
+     * function: search matches in key frame by reproject
+     *         its mappoint to current frame, duplicated
+     *         map point in current frame will be fused
+     */
+    void searchForFuse(Frame* keyFrame, float th);
 #if DEBUG_MATCHER
     /*
      * debugTriangular

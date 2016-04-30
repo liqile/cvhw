@@ -32,7 +32,19 @@ namespace lqlslam {
          */
         void filterOutlier(Frame* frame);
 
+        /*
+         * setMapPoint
+         * @param Frame* f1, first frame
+         * @param Frame* f2, second frame
+         * function: set mappoints in f2 into f1
+         *         according to match results
+         */
+        void setMapPoint(Frame* f1, Frame* f2);
         public:
+        /*
+         * neighbor key frame of current tracked frame
+         */
+        vector<Frame*> neigh;
         /*
          * Tracking
          * @param

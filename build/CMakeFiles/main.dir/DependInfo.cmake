@@ -4,7 +4,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/liqile/git/cvhw/main.cc" "/home/liqile/git/cvhw/build/CMakeFiles/main.dir/main.cc.o"
+  "/home/lql/slam/cvhw/main.cc" "/home/lql/slam/cvhw/build/CMakeFiles/main.dir/main.cc.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -20,7 +20,7 @@ SET(CMAKE_TARGET_DEFINITIONS
 
 # Targets to which this target links.
 SET(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/liqile/git/cvhw/build/CMakeFiles/myslam.dir/DependInfo.cmake"
+  "/home/lql/slam/cvhw/build/CMakeFiles/myslam.dir/DependInfo.cmake"
   )
 
 # The include file search paths:

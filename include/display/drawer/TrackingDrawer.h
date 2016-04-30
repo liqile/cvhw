@@ -1,103 +1,11 @@
-#ifndef MATCHER_COUNTER_H
-#define MATCHER_COUNTER_H
+#ifndef TRACKING_DEPTH_DRAWER_H
+#define TRACKING_DEPTH_DRAWER_H
 
 #include "Frame.h"
 #include "Features.h"
 #include "display.h"
 
 namespace lqlslam {
-
-class MatcherCounter {
-public:
-    /*
-     * number of keypoints in last frame
-     */
-    int lastKeyPointNum;
-    /*
-     * number of mappoints in last frame
-     */
-    int lastMapPointNum;
-    /*
-     * number of map points successfully project from last frame to current frame
-     */
-    int lastProjectNum;
-    /*
-     * all matches num before filter
-     */
-    int lastMatchNum;
-    /*
-     * matches num after filter
-     */
-    int lastMatchFilterNum;
-    /*
-     * match index with trackref frame (last frame also called second frame)
-     * -1 for no such match
-     */
-    vector <int> lastIdx;
-    /*
-     * match index with current frame (also called first frame)
-     * -1 for no such match
-     */
-    vector <int> currIdx;
-    /*
-     * img of match
-     */
-    cv::Mat match;
-public:
-    /*
-     * reset
-     * @param const Features* curr, features of curr frame
-     * @param const Features* last, features of last frame
-     * function: reset counter
-     */
-    void reset(const Features* curr, const Features* last);
-    /*
-     * print
-     * function: print counter information
-     */
-    void print();
-    /*
-     * addMatch
-     * @param int currIdx, feature idx of current frame
-     * @param int lastIdx, feature idx of last frame
-     * function: log information of a match
-     */
-    void addMatch(int currIdx, int lastIdx);
-    /*
-     * reduceMatch
-     * @param int currIdx, feature idx of current frame
-     * function: unlog information of a match
-     */
-    void reduceMatch(int currIdx);
-    /*
-     * drawMatches
-     * @param const Frame* curr, current frame (first frame)
-     * @param const Frame* last, last frame (second frame)
-     * function: draw matches of current frame and last frame in two images
-     */
-    void drawMatches(const Frame* curr, const Frame* last);
-    /*
-     * drawMatchOneByOne
-     * @param const Frame* curr, current frame (first frame)
-     * @param const Frame* last, last frame (second frame)
-     * @param const cv::Mat& F12, fundamental matrix of frame1 and frame2,
-     *         empty for no such fundamental matrix
-     * function: draw matches one by one
-     */
-    void drawMatchOneByOne(const Frame* curr, const Frame* last, const cv::Mat& F12);
-    /*
-     * drawTrackingMatches
-     * @param const Frame* curr, current frame (first frame)
-     * @param const Frame* last, last frame (second frame)
-     * function: draw matches in a single image
-     */
-    void drawTrackingMatches(const Frame* curr, const Frame* last);
-    /*
-     * addLastProjectNum
-     * function: increase lastProjectNum by 1
-     */
-    void addLastProjectNum();
-};
 
 /*
  * TrackingDepthDrawer

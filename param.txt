@@ -1,9 +1,9 @@
 %YAML:1.0
 
-#DataRoot:/home/lql/slam/data/rgbd_dataset_freiburg1_xyz
-DataRoot:/home/liqile/data/fr1_xyz
-#VocFile:/home/lql/slam/voc/ORBvoc.txt
-VocFile:/home/liqile/software/slam/ORB_SLAM2/Vocabulary/ORBvoc.txt
+DataRoot:/home/lql/slam/data/rgbd_dataset_freiburg1_xyz
+#DataRoot:/home/liqile/data/fr1_xyz
+VocFile:/home/lql/slam/voc/ORBvoc.txt
+#VocFile:/home/liqile/software/slam/ORB_SLAM2/Vocabulary/ORBvoc.txt
 #--------------------------------------------------------------------------------------------
 # Camera Parameters. Adjust them!
 #--------------------------------------------------------------------------------------------

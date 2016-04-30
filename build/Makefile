@@ -39,10 +39,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/liqile/git/cvhw
+CMAKE_SOURCE_DIR = /home/lql/slam/cvhw
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/liqile/git/cvhw/build
+CMAKE_BINARY_DIR = /home/lql/slam/cvhw/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -69,9 +69,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/liqile/git/cvhw/build/CMakeFiles /home/liqile/git/cvhw/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lql/slam/cvhw/build/CMakeFiles /home/lql/slam/cvhw/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/liqile/git/cvhw/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lql/slam/cvhw/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -340,6 +340,30 @@ src/image/Features.cc.s:
 	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/image/Features.cc.s
 .PHONY : src/image/Features.cc.s
 
+src/image/MatcherCounter.o: src/image/MatcherCounter.cc.o
+.PHONY : src/image/MatcherCounter.o
+
+# target to build an object file
+src/image/MatcherCounter.cc.o:
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/image/MatcherCounter.cc.o
+.PHONY : src/image/MatcherCounter.cc.o
+
+src/image/MatcherCounter.i: src/image/MatcherCounter.cc.i
+.PHONY : src/image/MatcherCounter.i
+
+# target to preprocess a source file
+src/image/MatcherCounter.cc.i:
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/image/MatcherCounter.cc.i
+.PHONY : src/image/MatcherCounter.cc.i
+
+src/image/MatcherCounter.s: src/image/MatcherCounter.cc.s
+.PHONY : src/image/MatcherCounter.s
+
+# target to generate assembly for a file
+src/image/MatcherCounter.cc.s:
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/image/MatcherCounter.cc.s
+.PHONY : src/image/MatcherCounter.cc.s
+
 src/image/ORBVocabulary.o: src/image/ORBVocabulary.cc.o
 .PHONY : src/image/ORBVocabulary.o
 
@@ -593,6 +617,9 @@ help:
 	@echo "... src/image/Features.o"
 	@echo "... src/image/Features.i"
 	@echo "... src/image/Features.s"
+	@echo "... src/image/MatcherCounter.o"
+	@echo "... src/image/MatcherCounter.i"
+	@echo "... src/image/MatcherCounter.s"
 	@echo "... src/image/ORBVocabulary.o"
 	@echo "... src/image/ORBVocabulary.i"
 	@echo "... src/image/ORBVocabulary.s"

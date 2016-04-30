@@ -4,6 +4,10 @@ namespace lqlslam {
 
 Map mapInfo;
 
+Map::Map() {
+    keyFrames.clear();
+}
+
 void Map::getNeighborKF(const Frame *frame, vector<Frame *> &neigh) {
     neigh.clear();
     const Features* features = frame->features;
@@ -18,7 +22,9 @@ void Map::getNeighborKF(const Frame *frame, vector<Frame *> &neigh) {
         const map<Frame*, int>& obs = p->observation.observations;
         map<Frame*, int>::const_iterator it = obs.begin();
         while (it != obs.end()) {
-            counter[it->first] ++;
+            if (it->first->frameId != frame->frameId) {
+                counter[it->first] ++;
+            }
             it ++;
         }
     }

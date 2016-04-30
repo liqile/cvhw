@@ -64,6 +64,7 @@ src/frame/Pose.cc
 #src/frame/KeyFrame.cc
 src/image/ORBextractor.cc
 src/image/ORBmatcher.cc
+src/image/MatcherCounter.cc
 src/System.cc
 src/image/Features.cc
 src/image/ORBVocabulary.cc

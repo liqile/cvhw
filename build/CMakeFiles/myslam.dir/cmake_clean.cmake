@@ -4,6 +4,7 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/myslam.dir/src/frame/Pose.cc.o"
   "CMakeFiles/myslam.dir/src/image/ORBextractor.cc.o"
   "CMakeFiles/myslam.dir/src/image/ORBmatcher.cc.o"
+  "CMakeFiles/myslam.dir/src/image/MatcherCounter.cc.o"
   "CMakeFiles/myslam.dir/src/System.cc.o"
   "CMakeFiles/myslam.dir/src/image/Features.cc.o"
   "CMakeFiles/myslam.dir/src/image/ORBVocabulary.cc.o"
