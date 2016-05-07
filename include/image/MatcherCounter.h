@@ -80,34 +80,14 @@ public:
      */
     void reduceMatch(int currIdx);
     /*
-     * drawMatches
-     * @param const Frame* curr, current frame (first frame)
-     * @param const Frame* last, last frame (second frame)
-     * function: draw matches of current frame and last frame in two images
-     */
-    void drawMatches(const Frame* curr, const Frame* last);
-    /*
-     * drawMatchOneByOne
-     * @param const Frame* curr, current frame (first frame)
-     * @param const Frame* last, last frame (second frame)
-     * @param const cv::Mat& F12, fundamental matrix of frame1 and frame2,
-     *         empty for no such fundamental matrix
-     * function: draw matches one by one
-     */
-    void drawMatchOneByOne(const Frame* curr, const Frame* last, const cv::Mat& F12);
-    /*
-     * drawTrackingMatches
-     * @param const Frame* curr, current frame (first frame)
-     * @param const Frame* last, last frame (second frame)
-     * function: draw matches in a single image
-     */
-    void drawTrackingMatches(const Frame* curr, const Frame* last);
-    /*
      * addLastProjectNum
      * function: increase lastProjectNum by 1
      */
     void addLastProjectNum();
 };
+
+extern MatcherCounter trackingMatcherCounter;
+extern MatcherCounter mappingMatcherCounter;
 
 }
 

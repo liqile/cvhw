@@ -4,6 +4,7 @@
 #include "drawers.h"
 #include "display.h"
 #include "Map.h"
+#include <set>
 
 namespace lqlslam {
 
@@ -22,12 +23,14 @@ void LocalMap::triangularPoints(Frame* f1, Frame* f2) {
         const Feature& ft2 = f2->features->keyPoints[idx2];
         cv::Mat pos = Pose::triangular(f1->pose, f2->pose, ft1.keyPoint, ft2.keyPoint);
         if (pos.empty()) {
+            mappingMatcherCounter.reduceMatch(i);
             continue;
         }
         //todo add new point
         MapPoint* p = new MapPoint(pos, f1, i);
         p->addObservation(f2, idx2);
         num ++;
+        newMapPoints.push_back(p);
     }
     cout << "[local map] tot triangular matches: " << tot << endl;
     cout << "[local map] tot map point: " << num << endl;
@@ -42,14 +45,22 @@ void LocalMap::createMapPoints(Frame *keyFrame) {
         cout << "[local map] triangular : " << keyFrame->frameId << " with " << neigh->frameId << endl;
         matcher.searchByTriangular(neigh);
         triangularPoints(keyFrame, neigh);
+#if DEBUG_TRIANGULAR_MATCH
+        mappingMatcherDrawer.drawMatches(keyFrame, neigh, mappingMatcherCounter.lastIdx);
         if (displayer->show()) {
             cout << "[local map] triangular debug" << endl;
-            matcher.debugTriangular ();
+            //matcher.debugTriangular ();
+            cv::Mat f12 = matcher.getFun12();
+            mappingMatcherDrawer.drawMatchOneByOne(keyFrame, neigh, f12, mappingMatcherCounter.lastIdx);
         }
+#endif
     }
 }
 
 void LocalMap::fuseMatches(Frame *f1, Frame *f2) {
+    cout << "[local mapping] fuse by project " << f2->frameId << " to " << f1->frameId << endl;
+    int countNull = 0;
+    int countFuse = 0;
     for (int i = 0; i < mappingMatcherCounter.lastIdx.size(); i++) {
         int i2 = mappingMatcherCounter.lastIdx[i];
         if (i2 == -1) {
@@ -57,23 +68,34 @@ void LocalMap::fuseMatches(Frame *f1, Frame *f2) {
         }
         Feature& fe1 = f1->features->keyPoints[i];
         Feature& fe2 = f2->features->keyPoints[i2];
-        if (fe2.mapPoint == NULL) {
+        if (fe2.mapPoint == NULL || !fe2.mapPoint->good) {
             continue;
         }
-        if (fe1.mapPoint == NULL) {
+        if (fe1.mapPoint == NULL || !fe1.mapPoint->good) {
+            countNull ++;
             fe1.mapPoint = fe2.mapPoint;
+            mappingMatcherCounter.reduceMatch(i);
         } else {
-            MapPoint* p = MapPoint::merge(fe1.mapPoint, fe2.mapPoint);
-            p->trackLog.setMapMatchedFrame(f1->frameId);
+            if (fe1.mapPoint->pointId != fe2.mapPoint->pointId) {
+                MapPoint* p = MapPoint::merge(fe1.mapPoint, fe2.mapPoint);
+                p->trackLog.setMapMatchedFrame(f1->frameId);
+                countFuse ++;
+            } else {
+                mappingMatcherCounter.reduceMatch(i);
+            }
         }
     }
+    cout << "[local mapping] fill hole " << countNull << endl;
+    cout << "[local mapping] fuse " << countFuse << endl;
+    mappingMatcherDrawer.drawMatches(f1, f2, mappingMatcherCounter.lastIdx);
+    displayer->show();
 }
 
 void LocalMap::fuseMapPoints(Frame* keyFrame) {
     ORBmatcher matcher(keyFrame);
     for (int i = 0; i < neighbor.size(); i++) {
         Frame* f2 = neighbor[i];
-        matcher.searchForFuse(f2, 2);
+        matcher.searchForFuse(f2, 1.5);
         fuseMatches(keyFrame, f2);
     }
     for (int i = 0; i < neighbor.size(); i++) {
@@ -86,7 +108,7 @@ void LocalMap::fuseMapPoints(Frame* keyFrame) {
             }
             f.mapPoint->trackLog.setMapMatchedFrame(-1);
         }
-        m.searchForFuse(keyFrame, 2);
+        m.searchForFuse(keyFrame, 1.5);
         fuseMatches(f1, keyFrame);
     }
     for (int i = 0; i < keyFrame->features->keyPointsNum; i++) {
@@ -110,24 +132,92 @@ void LocalMap::processTrackedPoints(Frame *keyFrame) {
 }
 
 void LocalMap::cullMapPoint(Frame *keyFrame) {
+    cout << "[localmap] start culling ... " << endl;
     list<MapPoint*>::iterator itr = newMapPoints.begin();
+    int count = 0;
     while (itr != newMapPoints.end()) {
         MapPoint* p = *itr;
+        /*
+        if (p == NULL) {
+            cout << "[local map] null point at : " << count << endl;
+            count ++;
+            itr = newMapPoints.erase(itr);
+            continue;
+        }*/
         if (!p->good) {
             itr = newMapPoints.erase(itr);
             continue;
         }
         if (keyFrame->keyFrameId - p->observation.firstKFId() >= 2 && p->observation.observations.size() <= 2) {
+            count ++;
             p->destroy();
             itr = newMapPoints.erase(itr);
             continue;
         }
+        if (keyFrame->keyFrameId - p->observation.firstKFId() >= 1 && p->observation.observations.size() < 2 && p->observation.firstKFId() ==0) {
+            count ++;
+            p->destroy();
+            itr = newMapPoints.erase(itr);
+        }
         if (keyFrame->keyFrameId - p->observation.firstKFId() >= 3) {
+            count ++;
             itr = newMapPoints.erase(itr);
             continue;
         }
         itr ++;
     }
+    cout << "[localmap] finish culling ... " << endl;
+    cout << "[localmap] culling num: " << count << endl;
+}
+
+void LocalMap::localOptimize(Frame* keyFrame) {
+    list<Frame*> localFrames;
+    list<MapPoint*> localPoints;
+    list<Frame*> fixedFrames;
+    set<int> mark;
+    mark.clear();
+    localFrames.clear();
+    localFrames.push_back(keyFrame);
+    fixedFrames.push_back();
+    mapInfo.getNeighborKF(keyFrame, neighbor, 15, 5);
+    for (int i = 0; i < neighbor.size(); i++) {
+        Frame* f = neighbor[i];
+        if (f->keyFrameId != 0) {
+            localFrames.push_back(f);
+            mark.insert(f->keyFrameId);
+        } else {
+            fixedFrames.push_back(f);
+        }
+    }
+
+    localPoints.clear();
+    list<Frame*>::iterator itr= localFrames.begin();
+    while (itr != localFrames.end()) {
+        Frame* f = *itr;
+        for (int i = 0; i < f->features->keyPointsNum; i++) {
+            Feature& fe = f->features->keyPoints[i];
+            if (!fe.mapPoint || !fe.mapPoint->good) {
+                continue;
+            }
+            localPoints.push_back(fe.mapPoint);
+        }
+        itr ++;
+    }
+
+    list<Frame*>::iterator pitr = localPoints.begin();
+    while (pitr != localPoints.end()) {
+        MapPoint* p = *pitr;
+        map<Frame*, int>& ob = p->observation.observations;
+        map<Frame*, int> fitr = ob.begin();
+        while (fitr != ob.end()) {
+            Frame* f = fitr->first;
+            if (mark.count(f->keyFrameId) == 0) {
+                fixedFrames.push_back(f);
+            }
+            fitr ++;
+        }
+    }
+    //todo local bundle adjustment
 }
 
 void LocalMap::processNewKeyFrame(Frame *keyFrame) {
@@ -141,7 +231,8 @@ void LocalMap::processNewKeyFrame(Frame *keyFrame) {
     }
     cout << endl;
     createMapPoints(keyFrame);
-    keyFrames.push_back (keyFrame);
+    fuseMapPoints(keyFrame);
+    //keyFrames.push_back (keyFrame);
 }
 
 LocalMap::LocalMap() {
@@ -152,12 +243,15 @@ void LocalMap::initialize(Frame* keyFrame) {
     newMapPoints.clear();
     for (int i = 0; i < keyFrame->features->keyPointsNum; i++) {
         Feature& f = keyFrame->features->keyPoints[i];
+        if (f.mapPoint == NULL) {
+            continue;
+        }
         newMapPoints.push_back(f.mapPoint);
     }
 }
 
 void LocalMap::clear() {
-    keyFrames.clear();
+    //keyFrames.clear();
 }
 
 void LocalMap::addKeyFrame(Frame* keyFrame) {

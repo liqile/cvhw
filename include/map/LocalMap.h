@@ -60,6 +60,13 @@ class LocalMap {
      */
     void cullMapPoint(Frame* keyFrame);
     /*
+     * localOptimize
+     * @param Frame* keyFrame, current key frame
+     * function: optimize frame poses and mappoints in local map
+     *     of current key frame (local bundle adjustment)
+     */
+    void localOptimize(Frame* keyFrame);
+    /*
      * processNewKeyFrame
      * @param Frame* keyFrame, a new key frame
      * function: deal with a keyframe received by local map thread

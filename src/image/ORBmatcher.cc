@@ -266,7 +266,7 @@ int ORBmatcher::searchByProject(Frame* lastFrame, float th, bool usePointDes) {
     cout << "[tracking] last frame map point num: " << pointNum << endl;
     cout << "[tracking] last frame unvisit point num: " << unvisitNum << endl;
     filterByRot();
-#if DEBUG_MATCHER
+#if 0
     //counter->drawTrackingMatches(currFrame, lastFrame);
     counter->drawMatches(currFrame, lastFrame);
 #endif
@@ -312,7 +312,7 @@ void ORBmatcher::searchByTriangular(Frame *secondFrame) {
         matches.push_back(make_pair(idx1, idx2));
     }
 #endif
-#if DEBUG_MATCHER
+#if 0
     counter->drawMatches(currFrame, lastFrame);
 #endif
     //return matches.size();
@@ -351,9 +351,9 @@ void ORBmatcher::searchForFuse(Frame *keyFrame, float th) {
     delete mark;
 }
 
-void ORBmatcher::debugTriangular() {
+cv::Mat ORBmatcher::getFun12() {
     TChecker* c = (TChecker*) checker;
-    mappingMatcherCounter.drawMatchOneByOne (currFrame, lastFrame, c->fun12);
+    return c->fun12;
 }
 
 }

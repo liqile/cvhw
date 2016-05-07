@@ -15,11 +15,8 @@ void System::initialize (Frame* frame) {
     frame->generate3dPoints();
     lastKeyFrame = frame;
     frame->becomeKeyframe();
-    map->addKeyFrame(lastKeyFrame);
-    //KeyFrame* keyFrame = new KeyFrame(frame);
-    //keyFrame->reset();
-    //map->clear ();
-    //map->addKeyFrame(keyFrame);
+    //map->addKeyFrame(lastKeyFrame);
+    map->initialize(lastKeyFrame);
 }
 bool System::needKeyFrame(Frame *frame, int points) {
     //if (frame->frameId <= 1) {
@@ -28,17 +25,23 @@ bool System::needKeyFrame(Frame *frame, int points) {
 
     Frame* ref = tracker->neigh[0];
     int num = 0;
+    int tot = 0;
     for (int i = 0; i < ref->features->keyPointsNum; i++) {
         const Feature& f = ref->features->keyPoints[i];
         if (f.mapPoint != NULL) {
-            num ++;
+            tot ++;
+            if (f.mapPoint->good) {
+                num ++;
+            }
         }
     }
     float rate = (float)points / num;
-    cout << "[tracking] ref keyframe map point: " << num << endl;
+    cout << "[tracking] ref keyframe frameid:" << ref->frameId << endl;
+    cout << "[tracking] ref keyframe map point: " << tot << endl;
+    cout << "[tracking] ref keyframe map point (after culling): " << num << endl;
     cout << "[tracking] points tracking number: " << points << endl;
     cout << "[tracking] points tracking rate: " << rate << endl;
-    if (frame->frameId - lastKeyFrame->frameId >= 20 && rate < 0.9) {
+    if (frame->frameId - lastKeyFrame->frameId >= 20 && rate < 0.9 || rate < 0.15) {
         return true;
     }
     //if (points < 90) {

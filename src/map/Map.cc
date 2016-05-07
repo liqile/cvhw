@@ -8,7 +8,7 @@ Map::Map() {
     keyFrames.clear();
 }
 
-void Map::getNeighborKF(const Frame *frame, vector<Frame *> &neigh) {
+void Map::getNeighborKF(const Frame *frame, vector<Frame *> &neigh, int plb, int lim) {
     neigh.clear();
     const Features* features = frame->features;
     map<Frame*, int> counter;

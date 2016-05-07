@@ -7,6 +7,7 @@
 
 namespace lqlslam {
 
+#define DEBUG_TRIANGULAR_MATCH 1
 #define TH_HIGH 100
 #define TH_LOW 50
 #define HISTO_LENGTH 30
@@ -87,15 +88,15 @@ struct TChecker:public Checker {
 #if ONLY_TRACKING
         return true;
 #endif
-        return true;
-        return (f.mapPoint == NULL);
+        //return true;
+        return (f.mapPoint == NULL || !f.mapPoint->good);
     }
     bool need2(const Feature& f) {
 #if ONLY_TRACKING
         return true;
 #endif
-        return true;
-        return (f.mapPoint == NULL);
+        //return true;
+        return (f.mapPoint == NULL || !f.mapPoint->good);
     }
 
     /*
@@ -325,10 +326,10 @@ class ORBmatcher {
     void searchForFuse(Frame* keyFrame, float th);
 #if DEBUG_MATCHER
     /*
-     * debugTriangular
-     * function: debug triangular matches last time
+     * getFun12
+     * function: get fundamental matrix of frame1 and frame2
      */
-    void debugTriangular();
+    cv::Mat getFun12();
 #endif
 };
 

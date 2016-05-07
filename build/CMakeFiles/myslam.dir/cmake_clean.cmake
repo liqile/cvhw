@@ -15,6 +15,7 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/myslam.dir/src/track/Tracking.cc.o"
   "CMakeFiles/myslam.dir/src/display/display.cc.o"
   "CMakeFiles/myslam.dir/src/display/drawer/TrackingDrawer.cc.o"
+  "CMakeFiles/myslam.dir/src/display/drawer/MatcherDrawer.cc.o"
   "CMakeFiles/myslam.dir/src/display/drawers.cc.o"
   "CMakeFiles/myslam.dir/src/converter/Converter.cc.o"
   "../lib/libmyslam.pdb"

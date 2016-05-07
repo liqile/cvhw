@@ -75,6 +75,7 @@ src/optimizer/Optimizer.cc
 src/track/Tracking.cc
 src/display/display.cc
 src/display/drawer/TrackingDrawer.cc
+src/display/drawer/MatcherDrawer.cc
 src/display/drawers.cc
 src/converter/Converter.cc
 #src/Converter.cc

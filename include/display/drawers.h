@@ -2,12 +2,14 @@
 #define DRAWERS_H
 
 #include "TrackingDrawer.h"
-#include "MatcherCounter.h"
+#include "MatcherDrawer.h"
 
 namespace lqlslam {
-    extern MatcherCounter trackingMatcherCounter;
-    extern MatcherCounter mappingMatcherCounter;
+
+    extern MatcherDrawer trackingMatcherDrawer;
+    extern MatcherDrawer mappingMatcherDrawer;
     extern TrackingDepthDrawer trackingDepthDrawer;
+
 }
 
 #endif

@@ -1,6 +1,8 @@
 %YAML:1.0
 
-DataRoot:/home/lql/slam/data/rgbd_dataset_freiburg1_xyz
+#DataRoot:/home/lql/slam/data/rgbd_dataset_freiburg1_xyz
+#DataRoot:/home/lql/slam/data/rgbd_dataset_freiburg1_rpy
+DataRoot:/home/lql/slam/data/rgbd_dataset_freiburg2_large_no_loop
 #DataRoot:/home/liqile/data/fr1_xyz
 VocFile:/home/lql/slam/voc/ORBvoc.txt
 #VocFile:/home/liqile/software/slam/ORB_SLAM2/Vocabulary/ORBvoc.txt
@@ -9,17 +11,25 @@ VocFile:/home/lql/slam/voc/ORBvoc.txt
 #--------------------------------------------------------------------------------------------
 
 # Camera calibration and distortion parameters (OpenCV) 
-Camera.fx: 517.306408
-Camera.fy: 516.469215
-Camera.cx: 318.643040
-Camera.cy: 255.313989
+#Camera.fx: 517.306408
+Camera.fx: 520.9
+#Camera.fy: 516.469215
+Camera.fy: 521.0
+#Camera.cx: 318.643040
+Camera.cx: 325.1
+#Camera.cy: 255.313989
+Camera.cy: 249.7
 
-Camera.k1: 0.262383
-Camera.k2: -0.953104
-Camera.p1: -0.005358
-Camera.p2: 0.002628
-Camera.k3: 1.163314
-
+#Camera.k1: 0.262383
+Camera.k1: 0.2312
+#Camera.k2: -0.953104
+Camera.k2: -0.7849
+#Camera.p1: -0.005358
+Camera.p1: -0.0033
+#Camera.p2: 0.002628
+Camera.p2: -0.0001
+#Camera.k3: 1.163314
+Camera.k3: 0.9172
 Camera.width: 640
 Camera.height: 480
 

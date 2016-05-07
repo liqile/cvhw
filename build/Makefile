@@ -220,6 +220,30 @@ src/display/display.cc.s:
 	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/display/display.cc.s
 .PHONY : src/display/display.cc.s
 
+src/display/drawer/MatcherDrawer.o: src/display/drawer/MatcherDrawer.cc.o
+.PHONY : src/display/drawer/MatcherDrawer.o
+
+# target to build an object file
+src/display/drawer/MatcherDrawer.cc.o:
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/display/drawer/MatcherDrawer.cc.o
+.PHONY : src/display/drawer/MatcherDrawer.cc.o
+
+src/display/drawer/MatcherDrawer.i: src/display/drawer/MatcherDrawer.cc.i
+.PHONY : src/display/drawer/MatcherDrawer.i
+
+# target to preprocess a source file
+src/display/drawer/MatcherDrawer.cc.i:
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/display/drawer/MatcherDrawer.cc.i
+.PHONY : src/display/drawer/MatcherDrawer.cc.i
+
+src/display/drawer/MatcherDrawer.s: src/display/drawer/MatcherDrawer.cc.s
+.PHONY : src/display/drawer/MatcherDrawer.s
+
+# target to generate assembly for a file
+src/display/drawer/MatcherDrawer.cc.s:
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/display/drawer/MatcherDrawer.cc.s
+.PHONY : src/display/drawer/MatcherDrawer.cc.s
+
 src/display/drawer/TrackingDrawer.o: src/display/drawer/TrackingDrawer.cc.o
 .PHONY : src/display/drawer/TrackingDrawer.o
 
@@ -602,6 +626,9 @@ help:
 	@echo "... src/display/display.o"
 	@echo "... src/display/display.i"
 	@echo "... src/display/display.s"
+	@echo "... src/display/drawer/MatcherDrawer.o"
+	@echo "... src/display/drawer/MatcherDrawer.i"
+	@echo "... src/display/drawer/MatcherDrawer.s"
 	@echo "... src/display/drawer/TrackingDrawer.o"
 	@echo "... src/display/drawer/TrackingDrawer.i"
 	@echo "... src/display/drawer/TrackingDrawer.s"
