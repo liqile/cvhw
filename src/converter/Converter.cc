@@ -16,6 +16,14 @@ cv::Mat Converter::toCvMat(const g2o::SE3Quat &SE3) {
     Eigen::Matrix<double,4,4> eigMat = SE3.to_homogeneous_matrix();
     return toCvMat(eigMat);
 }
+cv::Mat Converter::toCvMat(const g2o::Vector3d& v) {
+    cv::Mat cvMat(3,1,CV_32F);
+    for(int i=0;i<3;i++) {
+        cvMat.at<float>(i)=v(i);
+    }
+    return cvMat.clone();
+}
+
 /*
 cv::Mat Converter::toCvMat(const g2o::Sim3 &Sim3)
 {
@@ -43,4 +51,5 @@ Eigen::Isometry3d Converter::toEigenT(const cv::Mat& mTcw) {
     }
     return pose;
 }
+
 } //namespace ORB_SLAM

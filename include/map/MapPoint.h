@@ -60,6 +60,14 @@ struct Observation {
     void addObservation(const cv::Mat& pos, Frame* keyFrame, int index);
 
     /*
+     * decObservation
+     * @param Frame* keyframe, a current keyframe
+     * function: erase observation of keyframe from mappoint
+     *     return number of observation keyframe remained
+     */
+    int decObservation(Frame* keyFrame);
+
+    /*
      * firstKFId
      * function : return id of ref kf
      */
@@ -137,12 +145,26 @@ struct MapPoint {
     void addObservation(Frame* keyFrame, int index);
 
     /*
+     * decObservation
+     * @param Frame* keyframe, a current keyframe
+     * function: erase observation of keyframe from mappoint
+     */
+    void decObservation(Frame* keyFrame);
+
+    /*
      * getCamPose
      * @param const Pose& pose, pose of camera
      * function: compute and return the coordinate of mappoint under the
      *         system of camera
      */
     cv::Mat getCamPos(const Pose& pose);
+
+    /*
+     * setPointPos
+     * @param const cv::Mat& pos, pos of mappoint
+     * function: set pos of mappoint
+     */
+    void setPointPos(const cv::Mat& pos);
 
     /*
      * reProject

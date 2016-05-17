@@ -15,6 +15,7 @@ class Converter {
 public:
     static g2o::SE3Quat mat2SE3Quat(const cv::Mat& cvT);
     static cv::Mat toCvMat(const g2o::SE3Quat &SE3);
+    static cv::Mat toCvMat(const g2o::Vector3d& v);
     /*
     static cv::Mat toCvMat(const g2o::Sim3 &Sim3);
     */

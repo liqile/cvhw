@@ -4,6 +4,7 @@
 #include "drawers.h"
 #include "display.h"
 #include "Map.h"
+#include "Optimizer.h"
 #include <set>
 
 namespace lqlslam {
@@ -175,19 +176,25 @@ void LocalMap::localOptimize(Frame* keyFrame) {
     list<MapPoint*> localPoints;
     list<Frame*> fixedFrames;
     set<int> mark;
+    set<int> pointMark;
+    set<int> ffMark;
     mark.clear();
+    pointMark.clear();
+    ffMark.clear();
     localFrames.clear();
+    fixedFrames.clear();
     localFrames.push_back(keyFrame);
-    fixedFrames.push_back();
+    mark.insert(keyFrame->keyFrameId);
+    //fixedFrames.push_back();
     mapInfo.getNeighborKF(keyFrame, neighbor, 15, 5);
     for (int i = 0; i < neighbor.size(); i++) {
         Frame* f = neighbor[i];
-        if (f->keyFrameId != 0) {
+        //if (f->keyFrameId != 0) {
             localFrames.push_back(f);
             mark.insert(f->keyFrameId);
-        } else {
-            fixedFrames.push_back(f);
-        }
+        //} else {
+        //    fixedFrames.push_back(f);
+        //}
     }
 
     localPoints.clear();
@@ -199,25 +206,32 @@ void LocalMap::localOptimize(Frame* keyFrame) {
             if (!fe.mapPoint || !fe.mapPoint->good) {
                 continue;
             }
+            if (pointMark.count(fe.mapPoint->pointId) > 0) {
+                continue;
+            }
+            pointMark.insert(fe.mapPoint->pointId);
             localPoints.push_back(fe.mapPoint);
         }
         itr ++;
     }
 
-    list<Frame*>::iterator pitr = localPoints.begin();
+    list<MapPoint*>::iterator pitr = localPoints.begin();
     while (pitr != localPoints.end()) {
         MapPoint* p = *pitr;
         map<Frame*, int>& ob = p->observation.observations;
-        map<Frame*, int> fitr = ob.begin();
+        map<Frame*, int>::iterator fitr = ob.begin();
         while (fitr != ob.end()) {
             Frame* f = fitr->first;
-            if (mark.count(f->keyFrameId) == 0) {
+            if (mark.count(f->keyFrameId) == 0 && ffMark.count(f->keyFrameId) == 0) {
                 fixedFrames.push_back(f);
+                ffMark.insert(f->keyFrameId);
             }
             fitr ++;
         }
+        pitr ++;
     }
-    //todo local bundle adjustment
+    // local bundle adjustment
+    Optimizer::localBA(localFrames, localPoints, fixedFrames);
 }
 
 void LocalMap::processNewKeyFrame(Frame *keyFrame) {
@@ -232,6 +246,9 @@ void LocalMap::processNewKeyFrame(Frame *keyFrame) {
     cout << endl;
     createMapPoints(keyFrame);
     fuseMapPoints(keyFrame);
+    cout << "[local map] optimize [frameid]: " << keyFrame->frameId << " start optimize " << endl;
+    localOptimize(keyFrame);
+    cout << "[local map] optimize [frameid]: " << keyFrame->frameId << " finish optimize " << endl;
     //keyFrames.push_back (keyFrame);
 }
 

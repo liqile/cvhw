@@ -70,6 +70,16 @@ void Observation::addObservation(const cv::Mat& pos, Frame* keyFrame, int index)
     }
 }
 
+int Observation::decObservation(Frame *keyFrame) {
+    if (observations.count(keyFrame) > 0) {
+        observations.erase(keyFrame);
+    }
+    if (refKF == keyFrame) {
+        refKF = observations.begin()->first;
+    }
+    return observations.size();
+}
+
 int Observation::firstKFId() {
     return refKF->keyFrameId;
 }
@@ -103,8 +113,21 @@ void MapPoint::addObservation(Frame* keyFrame, int index) {
     keyFrame->features->setMapPoint(index, this);
 }
 
+void MapPoint::decObservation(Frame* keyFrame) {
+    int index = observation.observations[keyFrame];
+    int r = observation.decObservation(keyFrame);
+    if (r < 2) {
+        this->destroy();
+    }
+    keyFrame->features->eraseMapPoint(index);
+}
+
 cv::Mat MapPoint::getCamPos(const Pose& pose) {
     return pose.mRcw * pos + pose.mtcw;
+}
+
+void MapPoint::setPointPos(const cv::Mat& pos) {
+    this->pos = pos;
 }
 
 bool MapPoint::reProject (const Pose &pose, float &u, float &v, float &invz, float &ur) {
