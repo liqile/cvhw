@@ -40,12 +40,12 @@ class Frame {
          */
         static int nextKFId;
 
+        public:
+
         /*
          * whether current frame becomes a keyframe
          */
         bool isKeyFrame;
-
-        public:
 
         /*
          * id of current frame
@@ -116,6 +116,14 @@ class Frame {
          * function: set isKeyframe as true;
          */
         void becomeKeyframe();
+
+        /*
+         * covCount
+         * @param map<Frame*, int>& count, counter of common map points
+         * function: for each keyframe, count number of common map points with current frame
+         *     results stored in count
+         */
+        void covCount(map<Frame*, int>& count);
 
 #if 0
         /*

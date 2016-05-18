@@ -34,6 +34,7 @@ SET(CMAKE_C_TARGET_INCLUDE_PATH
   "../include/image"
   "../include/loop"
   "../include/map"
+  "../include/map/graph"
   "../include/setting"
   "../include/track"
   "../include/optimizer"

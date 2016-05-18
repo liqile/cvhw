@@ -77,6 +77,27 @@ void Frame::reset() {
     }
 }
 #endif
+
+void Frame::covCount(map<Frame*, int>& count) {
+    count.clear();
+    for (int i = 0; i < features->keyPointsNum; i++) {
+        const Feature& feature = features->keyPoints[i];
+        if (!feature.mapPoint || !feature.mapPoint->good) {
+            continue;
+        }
+        map<Frame*, int>::const_iterator itr = feature.mapPoint->observation.observations.begin();
+        while (itr != feature.mapPoint->observation.observations.end()) {
+            Frame* f = itr->first;
+            if (count.count(f) > 0) {
+                count[f] ++;
+            } else {
+                count[f] = 1;
+            }
+            itr ++;
+        }
+    }
+}
+
 void testFrame() {
     Param* param = readParam ("/home/liqile/qtwork/lqlslam/param.txt");
     CameraParam* camera = param->getCamera ();

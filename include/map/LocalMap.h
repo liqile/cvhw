@@ -14,7 +14,9 @@ class LocalMap {
     /*
      * neighbor keyframe of current keyframe
      */
-    vector<Frame*> neighbor;
+    //vector<Frame*> neighbor;
+
+
     /*
      * newly created map points
      */
@@ -105,7 +107,7 @@ class LocalMap {
      *         frame when return
      * function: get neighbor keyframes of frame
      */
-    void getNeighborKeyFrames(const Frame* frame, std::vector<Frame*>& frames);
+     //void getNeighborKeyFrames(const Frame* frame, std::vector<Frame*>& frames);
 };
 
 }

@@ -41,6 +41,7 @@ ${PROJECT_SOURCE_DIR}/include/frame
 ${PROJECT_SOURCE_DIR}/include/image
 ${PROJECT_SOURCE_DIR}/include/loop
 ${PROJECT_SOURCE_DIR}/include/map
+${PROJECT_SOURCE_DIR}/include/map/graph
 ${PROJECT_SOURCE_DIR}/include/setting
 ${PROJECT_SOURCE_DIR}/include/track
 ${PROJECT_SOURCE_DIR}/include/optimizer
@@ -71,6 +72,7 @@ src/image/ORBVocabulary.cc
 src/map/Map.cc
 src/map/LocalMap.cc
 src/map/MapPoint.cc
+src/map/graph/CovGraph.cc
 src/optimizer/Optimizer.cc
 src/track/Tracking.cc
 src/display/display.cc

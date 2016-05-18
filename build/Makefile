@@ -532,6 +532,30 @@ src/map/MapPoint.cc.s:
 	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/map/MapPoint.cc.s
 .PHONY : src/map/MapPoint.cc.s
 
+src/map/graph/CovGraph.o: src/map/graph/CovGraph.cc.o
+.PHONY : src/map/graph/CovGraph.o
+
+# target to build an object file
+src/map/graph/CovGraph.cc.o:
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/map/graph/CovGraph.cc.o
+.PHONY : src/map/graph/CovGraph.cc.o
+
+src/map/graph/CovGraph.i: src/map/graph/CovGraph.cc.i
+.PHONY : src/map/graph/CovGraph.i
+
+# target to preprocess a source file
+src/map/graph/CovGraph.cc.i:
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/map/graph/CovGraph.cc.i
+.PHONY : src/map/graph/CovGraph.cc.i
+
+src/map/graph/CovGraph.s: src/map/graph/CovGraph.cc.s
+.PHONY : src/map/graph/CovGraph.s
+
+# target to generate assembly for a file
+src/map/graph/CovGraph.cc.s:
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/map/graph/CovGraph.cc.s
+.PHONY : src/map/graph/CovGraph.cc.s
+
 src/optimizer/Optimizer.o: src/optimizer/Optimizer.cc.o
 .PHONY : src/optimizer/Optimizer.o
 
@@ -665,6 +689,9 @@ help:
 	@echo "... src/map/MapPoint.o"
 	@echo "... src/map/MapPoint.i"
 	@echo "... src/map/MapPoint.s"
+	@echo "... src/map/graph/CovGraph.o"
+	@echo "... src/map/graph/CovGraph.i"
+	@echo "... src/map/graph/CovGraph.s"
 	@echo "... src/optimizer/Optimizer.o"
 	@echo "... src/optimizer/Optimizer.i"
 	@echo "... src/optimizer/Optimizer.s"

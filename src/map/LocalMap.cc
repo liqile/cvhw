@@ -40,6 +40,8 @@ void LocalMap::triangularPoints(Frame* f1, Frame* f2) {
 void LocalMap::createMapPoints(Frame *keyFrame) {
     //vector<Frame*> neighbor;
     //getNeighborKeyFrames(keyFrame, neighbor);
+    vector<Frame*> neighbor;
+    mapInfo.getNeighbors(keyFrame, neighbor, 15, -1);
     ORBmatcher matcher(keyFrame);
     for (int i = 0; i < neighbor.size(); i++) {
         Frame* neigh = neighbor[i];
@@ -93,6 +95,8 @@ void LocalMap::fuseMatches(Frame *f1, Frame *f2) {
 }
 
 void LocalMap::fuseMapPoints(Frame* keyFrame) {
+    vector<Frame*> neighbor;
+    mapInfo.getNeighbors(keyFrame, neighbor, 15, -1);
     ORBmatcher matcher(keyFrame);
     for (int i = 0; i < neighbor.size(); i++) {
         Frame* f2 = neighbor[i];
@@ -119,6 +123,10 @@ void LocalMap::fuseMapPoints(Frame* keyFrame) {
         }
         f.mapPoint->observation.updateDescriptor();
     }
+    mapInfo.updateKeyFrame(keyFrame);
+    //for (int i = 0; i < neighbor.size(); i++) {
+    //    mapInfo.updateKeyFrame(neighbor[i]);
+    //}
 }
 
 void LocalMap::processTrackedPoints(Frame *keyFrame) {
@@ -172,6 +180,8 @@ void LocalMap::cullMapPoint(Frame *keyFrame) {
 }
 
 void LocalMap::localOptimize(Frame* keyFrame) {
+    vector<Frame*> neighbor;
+    mapInfo.getNeighbors(keyFrame, neighbor, 15, -1);
     list<Frame*> localFrames;
     list<MapPoint*> localPoints;
     list<Frame*> fixedFrames;
@@ -185,13 +195,11 @@ void LocalMap::localOptimize(Frame* keyFrame) {
     fixedFrames.clear();
     localFrames.push_back(keyFrame);
     mark.insert(keyFrame->keyFrameId);
-    //fixedFrames.push_back();
-    mapInfo.getNeighborKF(keyFrame, neighbor, 15, 5);
     for (int i = 0; i < neighbor.size(); i++) {
         Frame* f = neighbor[i];
         //if (f->keyFrameId != 0) {
-            localFrames.push_back(f);
-            mark.insert(f->keyFrameId);
+        localFrames.push_back(f);
+        mark.insert(f->keyFrameId);
         //} else {
         //    fixedFrames.push_back(f);
         //}
@@ -235,10 +243,12 @@ void LocalMap::localOptimize(Frame* keyFrame) {
 }
 
 void LocalMap::processNewKeyFrame(Frame *keyFrame) {
+    mapInfo.addKeyFrame(keyFrame);
     processTrackedPoints(keyFrame);
     cullMapPoint(keyFrame);
+    vector<Frame*> neighbor;
     neighbor.clear();
-    getNeighborKeyFrames(keyFrame, neighbor);
+    mapInfo.getNeighbors(keyFrame, neighbor, 15, -1);
     cout << "[local map] key frame [frameid]: " << keyFrame->frameId << endl;
     for (int i = 0; i < neighbor.size(); i++) {
         cout << neighbor[i]->frameId << " ";
@@ -257,6 +267,7 @@ LocalMap::LocalMap() {
 }
 
 void LocalMap::initialize(Frame* keyFrame) {
+    mapInfo.addKeyFrame(keyFrame);
     newMapPoints.clear();
     for (int i = 0; i < keyFrame->features->keyPointsNum; i++) {
         Feature& f = keyFrame->features->keyPoints[i];
@@ -274,7 +285,7 @@ void LocalMap::clear() {
 void LocalMap::addKeyFrame(Frame* keyFrame) {
     processNewKeyFrame(keyFrame);
 }
-
+/*
 void LocalMap::getNeighborKeyFrames(const Frame* frame, std::vector<Frame*>& frames) {
     frames.clear();
 #if 0
@@ -286,7 +297,7 @@ void LocalMap::getNeighborKeyFrames(const Frame* frame, std::vector<Frame*>& fra
         }
     }
 #endif
-    mapInfo.getNeighborKF(frame, frames);
-}
+    mapInfo.getNeighbors(frame, frames);
+}*/
 
 }

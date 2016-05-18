@@ -11,6 +11,7 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/myslam.dir/src/map/Map.cc.o"
   "CMakeFiles/myslam.dir/src/map/LocalMap.cc.o"
   "CMakeFiles/myslam.dir/src/map/MapPoint.cc.o"
+  "CMakeFiles/myslam.dir/src/map/graph/CovGraph.cc.o"
   "CMakeFiles/myslam.dir/src/optimizer/Optimizer.cc.o"
   "CMakeFiles/myslam.dir/src/track/Tracking.cc.o"
   "CMakeFiles/myslam.dir/src/display/display.cc.o"

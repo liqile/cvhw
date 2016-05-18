@@ -62,7 +62,7 @@ int Tracking::trackLastFrame(Frame* frame) {
 
 int Tracking::trackLocalMap(Frame* frame) {
     neigh.clear();
-    mapInfo.getNeighborKF(frame, neigh);
+    mapInfo.getNeighbors(frame, neigh, -1, -1);
     ORBmatcher matcher(frame);
     for (int i = 0; i < neigh.size(); i++) {
         Frame* ref = neigh[i];
