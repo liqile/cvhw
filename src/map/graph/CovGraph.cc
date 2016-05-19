@@ -75,10 +75,24 @@ void CovGraph::updateNode(Node *node, bool uniDirection) {
     cout << "[local map] frameid: " << frame->frameId << " leave cov count" << endl;
     map<Frame*, int>::iterator itr = counter.begin();
     while (itr != counter.end()) {
+       // if (frame->frameId == 94) {
+            cout <<"[localmap] enter itr"<<endl;
+       // }
         Frame* f = itr->first;
+       // if (frame->frameId == 94) {
+            cout <<"[localmap] leave itr"<<endl;
+       // }
         if (f->frameId != frame->frameId) {
+            cout << "[local map] before link, frameid: " << f->frameId<< endl;
+            assert(nodes.count(f->keyFrameId));
             Node* n = nodes[f->keyFrameId];
+            if (n == NULL) {
+                cout << "NULL" << endl;
+            } else {
+                cout << "NOT NULL" << endl;
+            }
             node->link(n, itr->second);
+            cout << "[local map] after link, frameId: " << f->frameId << endl;
             if (!uniDirection) {
                 n->link(node, itr->second);
             }
@@ -111,6 +125,18 @@ CovGraph::CovGraph() {
 void CovGraph::addKeyFrame(Frame *frame) {
     Node* node = newNode(frame);
     updateNode(node, false);
+}
+
+void CovGraph::delKeyFrame(Frame *frame) {
+    Node* node = nodes[frame->keyFrameId];
+    vector<int> id;
+    node->getNeighbors(id, -1, -1);
+    for (int i = 0; i < id.size(); i++) {
+        Node* n = nodes[id[i]];
+        n->unLink(node);
+    }
+    nodes.erase(frame->keyFrameId);
+    delete node;
 }
 
 void CovGraph::updateKeyFrame(Frame *frame) {

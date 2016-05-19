@@ -41,7 +41,8 @@ bool System::needKeyFrame(Frame *frame, int points) {
     cout << "[tracking] ref keyframe map point (after culling): " << num << endl;
     cout << "[tracking] points tracking number: " << points << endl;
     cout << "[tracking] points tracking rate: " << rate << endl;
-    if (frame->frameId - lastKeyFrame->frameId >= 20 && rate < 0.9 || rate < 0.15) {
+    int delta = frame->frameId - lastKeyFrame->frameId;
+    if (delta >= 20 && rate < 0.9 || delta >= 8 && (rate < 0.6 || points <=35) || rate < 0.3) {
         return true;
     }
     //if (points < 90) {

@@ -10,7 +10,7 @@ Observation::Observation() {
 }
 
 void Observation::updateDescriptor() {
-    if (needUpdate) {
+    if (!needUpdate) {
         return;
     }
     if (observations.empty()) {
@@ -46,7 +46,7 @@ void Observation::updateDescriptor() {
         }
     }
     descriptor = vDes[bestIdx].clone();
-    needUpdate = true;
+    needUpdate = false;
 }
 
 void Observation::addObservation(const cv::Mat& pos, Frame* keyFrame, int index) {
@@ -66,7 +66,7 @@ void Observation::addObservation(const cv::Mat& pos, Frame* keyFrame, int index)
     if (observations.size() <= 2) {
         needUpdate = false;
     } else {
-        needUpdate = false;
+        needUpdate = true;
     }
 }
 
@@ -179,12 +179,15 @@ void MapPoint::merge(MapPoint *p) {
         Frame* f = itr->first;
         if (observation.observations.count(f) != 0) {
             f->features->eraseMapPoint(itr->second);
+            itr = o.erase(itr);
         } else {
             addObservation(f, itr->second);
+            itr ++;
         }
-        itr ++;
     }
     observation.updateDescriptor();
+    p->destroy();
+    //o.clear();
 }
 
 void MapPoint::destroy() {

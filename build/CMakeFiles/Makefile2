@@ -47,10 +47,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/lql/slam/cvhw
+CMAKE_SOURCE_DIR = /home/liqile/git/cvhw
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/lql/slam/cvhw/build
+CMAKE_BINARY_DIR = /home/liqile/git/cvhw/build
 
 #=============================================================================
 # Target rules for target CMakeFiles/main.dir
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/lql/slam/cvhw/build
 CMakeFiles/main.dir/all: CMakeFiles/myslam.dir/all
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/depend
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/lql/slam/cvhw/build/CMakeFiles  1
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/liqile/git/cvhw/build/CMakeFiles  1
 	@echo "Built target main"
 .PHONY : CMakeFiles/main.dir/all
 
@@ -69,9 +69,9 @@ all: CMakeFiles/main.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/main.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lql/slam/cvhw/build/CMakeFiles 21
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/liqile/git/cvhw/build/CMakeFiles 21
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/main.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lql/slam/cvhw/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/liqile/git/cvhw/build/CMakeFiles 0
 .PHONY : CMakeFiles/main.dir/rule
 
 # Convenience name for target.
@@ -94,7 +94,7 @@ clean: CMakeFiles/main.dir/clean
 CMakeFiles/myslam.dir/all:
 	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/depend
 	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/lql/slam/cvhw/build/CMakeFiles  2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/liqile/git/cvhw/build/CMakeFiles  2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21
 	@echo "Built target myslam"
 .PHONY : CMakeFiles/myslam.dir/all
 
@@ -104,9 +104,9 @@ all: CMakeFiles/myslam.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/myslam.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lql/slam/cvhw/build/CMakeFiles 20
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/liqile/git/cvhw/build/CMakeFiles 20
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/myslam.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lql/slam/cvhw/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/liqile/git/cvhw/build/CMakeFiles 0
 .PHONY : CMakeFiles/myslam.dir/rule
 
 # Convenience name for target.

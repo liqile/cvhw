@@ -120,6 +120,12 @@ public:
      */
     void addKeyFrame(Frame* frame);
     /*
+     * delKeyFrame
+     * @param Frame* frame, keyFrame to del
+     * function: del keyframe in cov graph
+     */
+    void delKeyFrame(Frame* frame);
+    /*
      * updateKeyFrame
      * @param Frame* frame, a key frame in covisibility graph
      * function: update links of keyframe in covisibility graph

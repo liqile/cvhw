@@ -22,6 +22,7 @@ void Display::setTrackingPCL(PointCloud::Ptr pcl){
 
 bool Display::show() {
     viewer->showCloud(trackingPCL);
+
     bool imgShow = false;
     if (!trackingMatchImg.empty()) {
         cv::imshow("tracking matches", trackingMatchImg);
@@ -38,6 +39,7 @@ bool Display::show() {
     if (ch != ' ') {
         return true;
     }
+    //cv::waitKey(30);
     return false;
 }
 

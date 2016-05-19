@@ -88,7 +88,7 @@ cv::Mat Pose::triangular(const Pose &p1, const Pose &p2, const cv::KeyPoint &k1,
     cv::Mat ray2 = p2.toWorld(x2);
     float cosRay = ray1.dot(ray2) / (cv::norm(ray1) * cv::norm(ray2));
     //cout << "cos ray: " << cosRay << endl;
-    if (cosRay > 0 && cosRay < 0.99998) {
+    if (cosRay > 0 && cosRay < 0.9998) {
         //cout << " enter cos " << endl;
         cv::Mat A(4, 4, CV_32F);
         A.row(0) = x1.at<float>(0) * p1.mTcw.row(2) - p1.mTcw.row(0);

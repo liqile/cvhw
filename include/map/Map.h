@@ -52,6 +52,12 @@ class Map {
      *    - update covisibility graph
      */
     void addKeyFrame(Frame* frame);
+    /*
+     * delKeyFrame
+     * @param Frame* keyFrame,
+     * function: delete keyFrame in map
+     */
+    void delKeyFrame(Frame* frame);
 };
 
 /*

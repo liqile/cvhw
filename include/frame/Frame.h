@@ -43,6 +43,11 @@ class Frame {
         public:
 
         /*
+         * if it is bad key frame
+         */
+        bool badKeyFrame;
+
+        /*
          * whether current frame becomes a keyframe
          */
         bool isKeyFrame;

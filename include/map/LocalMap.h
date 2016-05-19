@@ -62,6 +62,20 @@ class LocalMap {
      */
     void cullMapPoint(Frame* keyFrame);
     /*
+     * needCullKF
+     * @param Frame* keyFrame, a key frame
+     * function: check if need to the keyframe
+     *     condition: 90% mappoints in a keyframe was observed in other
+     *     key frames at better octave
+     */
+    bool needCullKF(Frame* keyFrame);
+    /*
+     * cullKeyFrame
+     * @param Frame* keyFrame, current key frame
+     * function: cull the key frame
+     */
+    void cullKeyFrame(Frame* keyFrame);
+    /*
      * localOptimize
      * @param Frame* keyFrame, current key frame
      * function: optimize frame poses and mappoints in local map
@@ -100,14 +114,6 @@ class LocalMap {
      * keyframes
      */
     std::vector<Frame*> keyFrames;
-    /*
-     * getNeighborKeyFrames
-     * @param const Frame* frame, a key frame
-     * @param std::vector<Frame*> frames, store neighbor keyframes of
-     *         frame when return
-     * function: get neighbor keyframes of frame
-     */
-     //void getNeighborKeyFrames(const Frame* frame, std::vector<Frame*>& frames);
 };
 
 }

@@ -62,6 +62,7 @@ void Frame::becomeKeyframe () {
     isKeyFrame = true;
     keyFrameId = nextKFId;
     nextKFId ++;
+    badKeyFrame = false;
 }
 #if 0
 void Frame::reset() {
@@ -88,6 +89,10 @@ void Frame::covCount(map<Frame*, int>& count) {
         map<Frame*, int>::const_iterator itr = feature.mapPoint->observation.observations.begin();
         while (itr != feature.mapPoint->observation.observations.end()) {
             Frame* f = itr->first;
+            if (f->badKeyFrame) {
+                cout << "bad key frame! " << f->frameId << endl;
+                exit(0);
+            }
             if (count.count(f) > 0) {
                 count[f] ++;
             } else {
