@@ -41,6 +41,7 @@ SET(CMAKE_C_TARGET_INCLUDE_PATH
   "../include/display"
   "../include/display/drawer"
   "../include/converter"
+  "../include/initializer"
   "/usr/include/eigen3"
   "/usr/include/pcl-1.7"
   "/usr/include/ni"

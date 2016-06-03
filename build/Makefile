@@ -460,6 +460,54 @@ src/image/ORBmatcher.cc.s:
 	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/image/ORBmatcher.cc.s
 .PHONY : src/image/ORBmatcher.cc.s
 
+src/initializer/Initializer.o: src/initializer/Initializer.cc.o
+.PHONY : src/initializer/Initializer.o
+
+# target to build an object file
+src/initializer/Initializer.cc.o:
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/initializer/Initializer.cc.o
+.PHONY : src/initializer/Initializer.cc.o
+
+src/initializer/Initializer.i: src/initializer/Initializer.cc.i
+.PHONY : src/initializer/Initializer.i
+
+# target to preprocess a source file
+src/initializer/Initializer.cc.i:
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/initializer/Initializer.cc.i
+.PHONY : src/initializer/Initializer.cc.i
+
+src/initializer/Initializer.s: src/initializer/Initializer.cc.s
+.PHONY : src/initializer/Initializer.s
+
+# target to generate assembly for a file
+src/initializer/Initializer.cc.s:
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/initializer/Initializer.cc.s
+.PHONY : src/initializer/Initializer.cc.s
+
+src/initializer/Svd.o: src/initializer/Svd.cc.o
+.PHONY : src/initializer/Svd.o
+
+# target to build an object file
+src/initializer/Svd.cc.o:
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/initializer/Svd.cc.o
+.PHONY : src/initializer/Svd.cc.o
+
+src/initializer/Svd.i: src/initializer/Svd.cc.i
+.PHONY : src/initializer/Svd.i
+
+# target to preprocess a source file
+src/initializer/Svd.cc.i:
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/initializer/Svd.cc.i
+.PHONY : src/initializer/Svd.cc.i
+
+src/initializer/Svd.s: src/initializer/Svd.cc.s
+.PHONY : src/initializer/Svd.s
+
+# target to generate assembly for a file
+src/initializer/Svd.cc.s:
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/initializer/Svd.cc.s
+.PHONY : src/initializer/Svd.cc.s
+
 src/map/LocalMap.o: src/map/LocalMap.cc.o
 .PHONY : src/map/LocalMap.o
 
@@ -680,6 +728,12 @@ help:
 	@echo "... src/image/ORBmatcher.o"
 	@echo "... src/image/ORBmatcher.i"
 	@echo "... src/image/ORBmatcher.s"
+	@echo "... src/initializer/Initializer.o"
+	@echo "... src/initializer/Initializer.i"
+	@echo "... src/initializer/Initializer.s"
+	@echo "... src/initializer/Svd.o"
+	@echo "... src/initializer/Svd.i"
+	@echo "... src/initializer/Svd.s"
 	@echo "... src/map/LocalMap.o"
 	@echo "... src/map/LocalMap.i"
 	@echo "... src/map/LocalMap.s"

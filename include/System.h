@@ -6,6 +6,7 @@
 #include "ORBextractor.h"
 #include "ORBmatcher.h"
 #include "Tracking.h"
+#include "Initializer.h"
 
 namespace lqlslam {
 
@@ -20,6 +21,7 @@ class System {
      */
     Tracking* tracker;
 
+    Initializer* initializer;
 
     #if DEBUG_MATCHER
     /*

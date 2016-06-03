@@ -48,6 +48,7 @@ ${PROJECT_SOURCE_DIR}/include/optimizer
 ${PROJECT_SOURCE_DIR}/include/display
 ${PROJECT_SOURCE_DIR}/include/display/drawer
 ${PROJECT_SOURCE_DIR}/include/converter
+${PROJECT_SOURCE_DIR}/include/initializer
 ${EIGEN3_INCLUDE_DIR}
 ${PCL_INCLUDE_DIRS}
 ${Pangolin_INCLUDE_DIRS}
@@ -80,6 +81,8 @@ src/display/drawer/TrackingDrawer.cc
 src/display/drawer/MatcherDrawer.cc
 src/display/drawers.cc
 src/converter/Converter.cc
+src/initializer/Initializer.cc
+src/initializer/Svd.cc
 #src/Converter.cc
 )
 

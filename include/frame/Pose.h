@@ -7,7 +7,7 @@ namespace lqlslam {
 struct Pose {
         /*
          * mTcw = [ mRcw mtcw]
-         *               [     0          1  ]
+         *        [    0  1  ]
          */
         cv::Mat mTcw;
         /*
@@ -32,10 +32,16 @@ struct Pose {
         cv::Mat mOw;
         /*
          * setPose
-         * @param const cv::Mat& mTcw, pose information, mTcw period
+         * @param const cv::Mat& mTcw, pose information, mTcw period, elements are float type
          * function: set pose information
          */
         void setPose(const cv::Mat& mTcw);
+        /*
+         * setPoseWC
+         * @param const cv::Mat& mTwc, elements are float type
+         * function: set pose information
+         */
+        void setPoseWC(const cv::Mat& mTwc);
         /*
          * toWorld
          * @param const cv::Mat& localPos

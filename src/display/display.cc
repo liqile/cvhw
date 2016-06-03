@@ -34,11 +34,11 @@ bool Display::show() {
     }
     char ch = ' ';
     if (imgShow) {
-        ch = cv::waitKey(0);
+        ch = cv::waitKey(30);
     }
-    if (ch != ' ') {
-        return true;
-    }
+    //if (ch != ' ') {
+    //    return true;
+    //}
     //cv::waitKey(30);
     return false;
 }

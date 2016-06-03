@@ -64,8 +64,11 @@ CMakeFiles/main.dir/main.cc.o: ../include/image/MatcherCounter.h
 CMakeFiles/main.dir/main.cc.o: ../include/image/ORBVocabulary.h
 CMakeFiles/main.dir/main.cc.o: ../include/image/ORBextractor.h
 CMakeFiles/main.dir/main.cc.o: ../include/image/ORBmatcher.h
+CMakeFiles/main.dir/main.cc.o: ../include/initializer/Initializer.h
 CMakeFiles/main.dir/main.cc.o: ../include/map/LocalMap.h
+CMakeFiles/main.dir/main.cc.o: ../include/map/Map.h
 CMakeFiles/main.dir/main.cc.o: ../include/map/MapPoint.h
+CMakeFiles/main.dir/main.cc.o: ../include/map/graph/CovGraph.h
 CMakeFiles/main.dir/main.cc.o: ../include/optimizer/Optimizer.h
 CMakeFiles/main.dir/main.cc.o: ../include/setting/parameter.h
 CMakeFiles/main.dir/main.cc.o: ../include/track/Tracking.h

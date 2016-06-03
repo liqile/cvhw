@@ -541,6 +541,8 @@ ORBmatcher.h
 ../include/ORBmatcher.h
 Tracking.h
 ../include/Tracking.h
+Initializer.h
+../include/Initializer.h
 
 ../include/converter/Converter.h
 opencv2/core/core.hpp
@@ -628,11 +630,31 @@ Frame.h
 MatcherCounter.h
 ../include/image/MatcherCounter.h
 
+../include/initializer/Initializer.h
+Frame.h
+../include/initializer/Frame.h
+Map.h
+../include/initializer/Map.h
+Tracking.h
+../include/initializer/Tracking.h
+vector
+-
+
 ../include/map/LocalMap.h
 MapPoint.h
 ../include/map/MapPoint.h
 Frame.h
 ../include/map/Frame.h
+
+../include/map/Map.h
+iostream
+-
+vector
+-
+Frame.h
+../include/map/Frame.h
+CovGraph.h
+../include/map/CovGraph.h
 
 ../include/map/MapPoint.h
 Frame.h
@@ -647,6 +669,16 @@ opencv2/opencv.hpp
 -
 map
 -
+
+../include/map/graph/CovGraph.h
+set
+-
+map
+-
+vector
+-
+Frame.h
+../include/map/graph/Frame.h
 
 ../include/optimizer/Optimizer.h
 Frame.h

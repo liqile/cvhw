@@ -509,6 +509,52 @@ CMakeFiles/myslam.dir/src/converter/Converter.cc.o.provides: CMakeFiles/myslam.d
 
 CMakeFiles/myslam.dir/src/converter/Converter.cc.o.provides.build: CMakeFiles/myslam.dir/src/converter/Converter.cc.o
 
+CMakeFiles/myslam.dir/src/initializer/Initializer.cc.o: CMakeFiles/myslam.dir/flags.make
+CMakeFiles/myslam.dir/src/initializer/Initializer.cc.o: ../src/initializer/Initializer.cc
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/liqile/git/cvhw/build/CMakeFiles $(CMAKE_PROGRESS_21)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/myslam.dir/src/initializer/Initializer.cc.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/myslam.dir/src/initializer/Initializer.cc.o -c /home/liqile/git/cvhw/src/initializer/Initializer.cc
+
+CMakeFiles/myslam.dir/src/initializer/Initializer.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/myslam.dir/src/initializer/Initializer.cc.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/liqile/git/cvhw/src/initializer/Initializer.cc > CMakeFiles/myslam.dir/src/initializer/Initializer.cc.i
+
+CMakeFiles/myslam.dir/src/initializer/Initializer.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/myslam.dir/src/initializer/Initializer.cc.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/liqile/git/cvhw/src/initializer/Initializer.cc -o CMakeFiles/myslam.dir/src/initializer/Initializer.cc.s
+
+CMakeFiles/myslam.dir/src/initializer/Initializer.cc.o.requires:
+.PHONY : CMakeFiles/myslam.dir/src/initializer/Initializer.cc.o.requires
+
+CMakeFiles/myslam.dir/src/initializer/Initializer.cc.o.provides: CMakeFiles/myslam.dir/src/initializer/Initializer.cc.o.requires
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/initializer/Initializer.cc.o.provides.build
+.PHONY : CMakeFiles/myslam.dir/src/initializer/Initializer.cc.o.provides
+
+CMakeFiles/myslam.dir/src/initializer/Initializer.cc.o.provides.build: CMakeFiles/myslam.dir/src/initializer/Initializer.cc.o
+
+CMakeFiles/myslam.dir/src/initializer/Svd.cc.o: CMakeFiles/myslam.dir/flags.make
+CMakeFiles/myslam.dir/src/initializer/Svd.cc.o: ../src/initializer/Svd.cc
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/liqile/git/cvhw/build/CMakeFiles $(CMAKE_PROGRESS_22)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/myslam.dir/src/initializer/Svd.cc.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/myslam.dir/src/initializer/Svd.cc.o -c /home/liqile/git/cvhw/src/initializer/Svd.cc
+
+CMakeFiles/myslam.dir/src/initializer/Svd.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/myslam.dir/src/initializer/Svd.cc.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/liqile/git/cvhw/src/initializer/Svd.cc > CMakeFiles/myslam.dir/src/initializer/Svd.cc.i
+
+CMakeFiles/myslam.dir/src/initializer/Svd.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/myslam.dir/src/initializer/Svd.cc.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/liqile/git/cvhw/src/initializer/Svd.cc -o CMakeFiles/myslam.dir/src/initializer/Svd.cc.s
+
+CMakeFiles/myslam.dir/src/initializer/Svd.cc.o.requires:
+.PHONY : CMakeFiles/myslam.dir/src/initializer/Svd.cc.o.requires
+
+CMakeFiles/myslam.dir/src/initializer/Svd.cc.o.provides: CMakeFiles/myslam.dir/src/initializer/Svd.cc.o.requires
+	$(MAKE) -f CMakeFiles/myslam.dir/build.make CMakeFiles/myslam.dir/src/initializer/Svd.cc.o.provides.build
+.PHONY : CMakeFiles/myslam.dir/src/initializer/Svd.cc.o.provides
+
+CMakeFiles/myslam.dir/src/initializer/Svd.cc.o.provides.build: CMakeFiles/myslam.dir/src/initializer/Svd.cc.o
+
 # Object files for target myslam
 myslam_OBJECTS = \
 "CMakeFiles/myslam.dir/src/setting/parameter.cc.o" \
@@ -530,7 +576,9 @@ myslam_OBJECTS = \
 "CMakeFiles/myslam.dir/src/display/drawer/TrackingDrawer.cc.o" \
 "CMakeFiles/myslam.dir/src/display/drawer/MatcherDrawer.cc.o" \
 "CMakeFiles/myslam.dir/src/display/drawers.cc.o" \
-"CMakeFiles/myslam.dir/src/converter/Converter.cc.o"
+"CMakeFiles/myslam.dir/src/converter/Converter.cc.o" \
+"CMakeFiles/myslam.dir/src/initializer/Initializer.cc.o" \
+"CMakeFiles/myslam.dir/src/initializer/Svd.cc.o"
 
 # External object files for target myslam
 myslam_EXTERNAL_OBJECTS =
@@ -555,6 +603,8 @@ myslam_EXTERNAL_OBJECTS =
 ../lib/libmyslam.so: CMakeFiles/myslam.dir/src/display/drawer/MatcherDrawer.cc.o
 ../lib/libmyslam.so: CMakeFiles/myslam.dir/src/display/drawers.cc.o
 ../lib/libmyslam.so: CMakeFiles/myslam.dir/src/converter/Converter.cc.o
+../lib/libmyslam.so: CMakeFiles/myslam.dir/src/initializer/Initializer.cc.o
+../lib/libmyslam.so: CMakeFiles/myslam.dir/src/initializer/Svd.cc.o
 ../lib/libmyslam.so: CMakeFiles/myslam.dir/build.make
 ../lib/libmyslam.so: /usr/local/lib/libopencv_videostab.so.2.4.9
 ../lib/libmyslam.so: /usr/local/lib/libopencv_video.so.2.4.9
@@ -700,6 +750,8 @@ CMakeFiles/myslam.dir/requires: CMakeFiles/myslam.dir/src/display/drawer/Trackin
 CMakeFiles/myslam.dir/requires: CMakeFiles/myslam.dir/src/display/drawer/MatcherDrawer.cc.o.requires
 CMakeFiles/myslam.dir/requires: CMakeFiles/myslam.dir/src/display/drawers.cc.o.requires
 CMakeFiles/myslam.dir/requires: CMakeFiles/myslam.dir/src/converter/Converter.cc.o.requires
+CMakeFiles/myslam.dir/requires: CMakeFiles/myslam.dir/src/initializer/Initializer.cc.o.requires
+CMakeFiles/myslam.dir/requires: CMakeFiles/myslam.dir/src/initializer/Svd.cc.o.requires
 .PHONY : CMakeFiles/myslam.dir/requires
 
 CMakeFiles/myslam.dir/clean:

@@ -68,6 +68,7 @@ System::System(const string& fileName) {
     state = 0;
     map = new LocalMap();
     tracker = new Tracking();
+    initializer = new Initializer(tracker, map);
     Display::start();
 }
 
@@ -76,9 +77,9 @@ Pose System::track(const cv::Mat& img, const cv::Mat& depth, const double& times
     //cv::waitKey(0);
     Frame* frame = new Frame(img, depth, timestamp);
     cout << "keyPoints num " << frame->features->keyPointsNum << endl;
-    if (state == 0) {
-        initialize(frame);
-        state = 1;
+    if (initializer->needInitialize()) {
+        initializer->addFrame(frame);
+        lastKeyFrame = initializer->getLastFrame();
     } else {
         int points = tracker->track(frame);
         cout << "track points: " << points << endl;

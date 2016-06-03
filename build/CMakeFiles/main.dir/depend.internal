@@ -65,8 +65,11 @@ CMakeFiles/main.dir/main.cc.o
  ../include/image/ORBVocabulary.h
  ../include/image/ORBextractor.h
  ../include/image/ORBmatcher.h
+ ../include/initializer/Initializer.h
  ../include/map/LocalMap.h
+ ../include/map/Map.h
  ../include/map/MapPoint.h
+ ../include/map/graph/CovGraph.h
  ../include/optimizer/Optimizer.h
  ../include/setting/parameter.h
  ../include/track/Tracking.h

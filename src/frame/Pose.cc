@@ -5,11 +5,28 @@ namespace lqlslam {
 
 void Pose::setPose(const cv::Mat& mTcw) {
     this->mTcw = mTcw.clone ();
-    mRcw = mTcw.rowRange(0,3).colRange(0,3);
+    mRcw = mTcw.rowRange(0, 3).colRange(0, 3);
     mRwc = mRcw.t();
-    mtcw = mTcw.rowRange(0,3).col(3);
+    mtcw = mTcw.rowRange(0, 3).col(3);
     mOw = -mRcw.t()*mtcw;
 }
+
+void Pose::setPoseWC(const cv::Mat &mTwc) {
+    mRwc = mTwc.rowRange(0, 3).colRange(0, 3);
+    mOw = mTwc.rowRange(0, 3).col(3);
+    mRcw = mRwc.t();
+    mtcw = -mRwc.t() * mOw;
+    this->mTcw = mTwc.clone();
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            this->mTcw.at<float>(i, j) = mRcw.at<float>(i, j);
+        }
+        this->mTcw.at<float>(i, 3) = mtcw.at<float>(i, 0);
+        this->mTcw.at<float>(3, i) = 0;
+    }
+    this->mTcw.at<float>(3, 3) = 1;
+}
+
 cv::Mat Pose::toWorld(const cv::Mat& localPos) const {
     return mRwc * localPos + mOw;
 }
