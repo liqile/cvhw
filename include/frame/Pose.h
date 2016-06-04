@@ -30,6 +30,13 @@ struct Pose {
          * wp = mRwc * lp + mOw
          */
         cv::Mat mOw;
+        Pose();
+        /*
+         * Pose
+         * @param const Pose& pose,
+         * function: copy
+         */
+        Pose(const Pose& pose);
         /*
          * setPose
          * @param const cv::Mat& mTcw, pose information, mTcw period, elements are float type
@@ -38,10 +45,11 @@ struct Pose {
         void setPose(const cv::Mat& mTcw);
         /*
          * setPoseWC
-         * @param const cv::Mat& mTwc, elements are float type
+         * @param const cv::Mat& Rcw, elements are float type
+         * @param const cv::Mat& tcw,
          * function: set pose information
          */
-        void setPoseWC(const cv::Mat& mTwc);
+        void setPose(const cv::Mat& Rcw, const cv::Mat& tcw);
         /*
          * toWorld
          * @param const cv::Mat& localPos
@@ -120,6 +128,8 @@ struct Pose {
          *         return an empty mat
          */
         static cv::Mat triangular(const Pose& p1, const Pose& p2, const cv::KeyPoint& k1, const cv::KeyPoint& k2);
+
+        static cv::Mat triangularInit(const Pose& p1, const Pose& p2, const cv::KeyPoint& k1, const cv::KeyPoint& k2);
 };
 
 }

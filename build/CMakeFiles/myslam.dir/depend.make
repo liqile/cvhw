@@ -4350,6 +4350,7 @@ CMakeFiles/myslam.dir/src/initializer/Initializer.cc.o: ../Thirdparty/g2o/g2o/ty
 CMakeFiles/myslam.dir/src/initializer/Initializer.cc.o: ../Thirdparty/g2o/g2o/types/types_six_dof_expmap.h
 CMakeFiles/myslam.dir/src/initializer/Initializer.cc.o: ../include/converter/Converter.h
 CMakeFiles/myslam.dir/src/initializer/Initializer.cc.o: ../include/display/display.h
+CMakeFiles/myslam.dir/src/initializer/Initializer.cc.o: ../include/display/drawer/MatcherDrawer.h
 CMakeFiles/myslam.dir/src/initializer/Initializer.cc.o: ../include/frame/Frame.h
 CMakeFiles/myslam.dir/src/initializer/Initializer.cc.o: ../include/frame/Pose.h
 CMakeFiles/myslam.dir/src/initializer/Initializer.cc.o: ../include/image/Features.h
@@ -4358,6 +4359,7 @@ CMakeFiles/myslam.dir/src/initializer/Initializer.cc.o: ../include/image/ORBVoca
 CMakeFiles/myslam.dir/src/initializer/Initializer.cc.o: ../include/image/ORBextractor.h
 CMakeFiles/myslam.dir/src/initializer/Initializer.cc.o: ../include/image/ORBmatcher.h
 CMakeFiles/myslam.dir/src/initializer/Initializer.cc.o: ../include/initializer/Initializer.h
+CMakeFiles/myslam.dir/src/initializer/Initializer.cc.o: ../include/initializer/Svd.h
 CMakeFiles/myslam.dir/src/initializer/Initializer.cc.o: ../include/map/LocalMap.h
 CMakeFiles/myslam.dir/src/initializer/Initializer.cc.o: ../include/map/Map.h
 CMakeFiles/myslam.dir/src/initializer/Initializer.cc.o: ../include/map/MapPoint.h
@@ -4863,6 +4865,7 @@ CMakeFiles/myslam.dir/src/initializer/Initializer.cc.o: /usr/local/include/openc
 CMakeFiles/myslam.dir/src/initializer/Initializer.cc.o: /usr/local/include/opencv2/video/tracking.hpp
 CMakeFiles/myslam.dir/src/initializer/Initializer.cc.o: /usr/local/include/opencv2/video/video.hpp
 
+CMakeFiles/myslam.dir/src/initializer/Svd.cc.o: ../include/frame/Pose.h
 CMakeFiles/myslam.dir/src/initializer/Svd.cc.o: ../include/image/ORBextractor.h
 CMakeFiles/myslam.dir/src/initializer/Svd.cc.o: ../include/initializer/Svd.h
 CMakeFiles/myslam.dir/src/initializer/Svd.cc.o: ../include/setting/parameter.h

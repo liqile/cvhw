@@ -16,7 +16,8 @@ private:
     Tracking* tracker;
     LocalMap* localMap;
     Frame* lastFrame;
-
+    bool initialize();
+    bool need;
 public:
     Initializer(Tracking* tracker, LocalMap* localMap);
     bool needInitialize();

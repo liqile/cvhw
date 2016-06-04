@@ -13,7 +13,7 @@ TrackingDepthDrawer::TrackingDepthDrawer() {
 
 PointCloud::Ptr TrackingDepthDrawer::singleFrameDepth(const cv::Mat&rgb, const cv::Mat& depth) {
     PointCloud::Ptr cloud(new PointCloud);
-
+/*
     for (int m = 0; m < depth.rows; m++) {
         for (int n = 0; n < depth.cols; n++) {
             float d = depth.ptr<float>(m)[n];
@@ -30,7 +30,7 @@ PointCloud::Ptr TrackingDepthDrawer::singleFrameDepth(const cv::Mat&rgb, const c
             cloud->points.push_back(p);
         }
     }
-
+*/
     PointT p;
     p.z = 0;
     p.x = 0;

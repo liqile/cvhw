@@ -324,6 +324,14 @@ class ORBmatcher {
      *         map point in current frame will be fused
      */
     void searchForFuse(Frame* keyFrame, float th);
+
+    /*
+     * searchInWindow
+     * @param Frame* frame2, second frame
+     * @param vector<cv::DMatch>& matches, store match result
+     * function: search matches in window
+     */
+    void searchForInit(Frame* frame2, vector<cv::DMatch>& matches);
 #if DEBUG_MATCHER
     /*
      * getFun12

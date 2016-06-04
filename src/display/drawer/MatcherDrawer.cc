@@ -95,4 +95,19 @@ void MatcherDrawer::drawTrackingMatches(const Frame *curr, const Frame *last, co
     displayer->setTrackingMatchGraph(img1);
 }
 
+void MatcherDrawer::drawInitMatch(const Frame *f1, const Frame *f2, const vector<cv::DMatch> &matches) {
+
+    cv::Mat imgMatches;
+    cv::drawMatches(
+                f1->rawData->img,
+                f1->features->rawKeyPoints,
+                f2->rawData->img,
+                f2->features->rawKeyPoints,
+                matches,
+                imgMatches
+    );
+    cv::imshow("initial matches", imgMatches);
+    cv::waitKey(0);
+}
+
 }

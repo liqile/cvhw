@@ -3,20 +3,31 @@
 
 namespace lqlslam {
 
+Pose::Pose() {
+}
+
+Pose::Pose(const Pose& pose) {
+    mTcw = pose.mTcw.clone();
+    mRcw = pose.mRcw.clone();
+    mtcw = pose.mtcw.clone();
+    mRwc = pose.mRwc.clone();
+    mOw = pose.mOw.clone();
+}
+
 void Pose::setPose(const cv::Mat& mTcw) {
     this->mTcw = mTcw.clone ();
-    mRcw = mTcw.rowRange(0, 3).colRange(0, 3);
+    mRcw = this->mTcw.rowRange(0, 3).colRange(0, 3);
     mRwc = mRcw.t();
-    mtcw = mTcw.rowRange(0, 3).col(3);
+    mtcw = this->mTcw.rowRange(0, 3).col(3);
     mOw = -mRcw.t()*mtcw;
 }
 
-void Pose::setPoseWC(const cv::Mat &mTwc) {
-    mRwc = mTwc.rowRange(0, 3).colRange(0, 3);
-    mOw = mTwc.rowRange(0, 3).col(3);
-    mRcw = mRwc.t();
-    mtcw = -mRwc.t() * mOw;
-    this->mTcw = mTwc.clone();
+void Pose::setPose(const cv::Mat& Rcw, const cv::Mat& tcw) {
+    this->mTcw = cv::Mat(4, 4, CV_32F);
+    mRcw = Rcw.clone();
+    mRwc = mRcw.t();
+    mtcw = tcw.clone();
+    mOw = -mRcw.t()*mtcw;
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
             this->mTcw.at<float>(i, j) = mRcw.at<float>(i, j);
@@ -134,6 +145,34 @@ cv::Mat Pose::triangular(const Pose &p1, const Pose &p2, const cv::KeyPoint &k1,
         if (rateDistance * s < rateOctave || rateDistance > rateOctave * s) {
             return cv::Mat();
         }
+        return pos;
+    }
+    return cv::Mat();
+}
+
+cv::Mat Pose::triangularInit(const Pose &p1, const Pose &p2, const cv::KeyPoint &k1, const cv::KeyPoint &k2) {
+    //todo
+    cv::Mat x1 = camera->getRay(k1.pt.x, k1.pt.y);
+    cv::Mat ray1 = p1.toWorld(x1);
+    cv::Mat x2 = camera->getRay(k2.pt.x, k2.pt.y);
+    cv::Mat ray2 = p2.toWorld(x2);
+    float cosRay = ray1.dot(ray2) / (cv::norm(ray1) * cv::norm(ray2));
+    //cout << "cos ray: " << cosRay << endl;
+    if (cosRay > 0 && cosRay < 0.9998) {
+        //cout << " enter cos " << endl;
+        cv::Mat A(4, 4, CV_32F);
+        A.row(0) = x1.at<float>(0) * p1.mTcw.row(2) - p1.mTcw.row(0);
+        A.row(1) = x1.at<float>(1) * p1.mTcw.row(2) - p1.mTcw.row(1);
+        A.row(2) = x2.at<float>(0) * p2.mTcw.row(2) - p2.mTcw.row(0);
+        A.row(3) = x2.at<float>(1) * p2.mTcw.row(2) - p2.mTcw.row(1);
+        cv::Mat w,u,vt;
+        cv::SVD::compute(A,w,u,vt,cv::SVD::MODIFY_A| cv::SVD::FULL_UV);
+        cv::Mat pos = vt.row(3).t();
+        if (pos.at<float>(3) == 0) {
+            return cv::Mat();
+        }
+        pos = pos.rowRange(0, 3) / pos.at<float>(3);
+        pos = pos.rowRange(0, 3);
         return pos;
     }
     return cv::Mat();

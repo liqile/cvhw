@@ -15,6 +15,7 @@ namespace lqlslam {
 #define ONLY_TRACKING 0
 #define FRAME_GRID_ROWS 48
 #define FRAME_GRID_COLS 64
+#define SEMI_MONOCULAR 0
 
 struct CameraParam {
     int rows;

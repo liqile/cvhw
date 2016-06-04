@@ -50,6 +50,8 @@ public:
      * function: draw matches in a single image
      */
     void drawTrackingMatches(const Frame* curr, const Frame* last, const vector<int>& lastIdx);
+
+    static void drawInitMatch(const Frame* f1, const Frame* f2, const vector<cv::DMatch>& matches);
 };
 
 }

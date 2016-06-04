@@ -4351,6 +4351,7 @@ CMakeFiles/myslam.dir/src/initializer/Initializer.cc.o
  ../Thirdparty/g2o/g2o/types/types_six_dof_expmap.h
  ../include/converter/Converter.h
  ../include/display/display.h
+ ../include/display/drawer/MatcherDrawer.h
  ../include/frame/Frame.h
  ../include/frame/Pose.h
  ../include/image/Features.h
@@ -4359,6 +4360,7 @@ CMakeFiles/myslam.dir/src/initializer/Initializer.cc.o
  ../include/image/ORBextractor.h
  ../include/image/ORBmatcher.h
  ../include/initializer/Initializer.h
+ ../include/initializer/Svd.h
  ../include/map/LocalMap.h
  ../include/map/Map.h
  ../include/map/MapPoint.h
@@ -4864,6 +4866,7 @@ CMakeFiles/myslam.dir/src/initializer/Initializer.cc.o
  /usr/local/include/opencv2/video/tracking.hpp
  /usr/local/include/opencv2/video/video.hpp
 CMakeFiles/myslam.dir/src/initializer/Svd.cc.o
+ ../include/frame/Pose.h
  ../include/image/ORBextractor.h
  ../include/initializer/Svd.h
  ../include/setting/parameter.h

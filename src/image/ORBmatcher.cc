@@ -1,5 +1,7 @@
 #include "ORBmatcher.h"
 #include "drawers.h"
+#include "opencv2/core/core.hpp"
+#include "opencv2/features2d/features2d.hpp"
 
 namespace lqlslam {
 
@@ -349,6 +351,32 @@ void ORBmatcher::searchForFuse(Frame *keyFrame, float th) {
     counter = &mappingMatcherCounter;
     searchByProject(keyFrame, th, true);
     delete mark;
+}
+
+void ORBmatcher::searchForInit(Frame *frame2, vector<cv::DMatch>& matches) {
+    Frame* frame1 = currFrame;
+    cv::BFMatcher matcher(cv::NORM_HAMMING2);
+    matches.clear();
+    vector<cv::DMatch> allMatches;
+    matcher.match(frame1->features->descriptors, frame2->features->descriptors, allMatches);
+    float maxDis = 0;
+    float minDis = 128;
+    for (int i = 0; i < allMatches.size(); i++) {
+        const cv::DMatch& match = allMatches[i];
+        if (maxDis < match.distance) {
+            maxDis = match.distance;
+        }
+        if (minDis > match.distance) {
+            minDis = match.distance;
+        }
+    }
+    for (int i = 0; i < allMatches.size(); i++) {
+        const cv::DMatch& match = allMatches[i];
+        if (match.distance < maxDis / 2) {
+            matches.push_back(match);
+        }
+    }
+    cout << maxDis << " :: " << minDis << endl;
 }
 
 cv::Mat ORBmatcher::getFun12() {

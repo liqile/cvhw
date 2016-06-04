@@ -35,6 +35,9 @@ bool Display::show() {
     char ch = ' ';
     if (imgShow) {
         ch = cv::waitKey(30);
+        cout << "imshow" << endl;
+    } else {
+        cout << "nothing" << endl;
     }
     //if (ch != ' ') {
     //    return true;
